@@ -597,6 +597,67 @@
                 width: 100%;
             }
         }
+        /* Policies Section */
+.policies {
+    background: #f9f9f9;
+    padding: 60px 0;
+    border-top: 1px solid #eee;
+}
+
+.policies .container {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.policy-card {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.policy-card i {
+    font-size: 40px;
+    color: #ff6b6b;
+    margin-bottom: 20px;
+}
+
+.policy-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.policy-card ul {
+    text-align: left;
+    list-style: none;
+}
+
+.policy-card li {
+    margin-bottom: 12px;
+    padding-left: 30px;
+    position: relative;
+}
+
+.policy-card li:before {
+    content: "•";
+    color: #ff6b6b;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .policy-card {
+        max-width: 100%;
+    }
+}
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -661,6 +722,34 @@
             </div>
         </div>
     </section>
+    <!-- Policies Section -->
+<section class="policies">
+    <div class="container">
+        <!-- Shipping Policy -->
+        <div class="policy-card">
+            <i class="fas fa-truck"></i>
+            <h3>Shipping Policy</h3>
+            <ul>
+                <li>🚚 <strong>Free shipping</strong> on orders over $100</li>
+                <li>⏱️ Processed within <strong>1-2 business days</strong></li>
+                <li>🇺🇸 <strong>3-5 day</strong> US delivery</li>
+                <li>🌍 International shipping available</li>
+            </ul>
+        </div>
+
+        <!-- Returns Policy -->
+        <div class="policy-card">
+            <i class="fas fa-exchange-alt"></i>
+            <h3>Returns & Exchanges</h3>
+            <ul>
+                <li>↩️ <strong>30-day returns</strong> (unworn, with original box)</li>
+                <li>📦 Buyer pays return shipping</li>
+                <li>💸 Refunds processed within <strong>5 business days</strong></li>
+                <li>❌ No returns on used/worn items</li>
+            </ul>
+        </div>
+    </div>
+</section>
 
 
     <!-- Product Modal -->
@@ -713,8 +802,7 @@
                 <div class="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#">Shipping Policy</a></li>
-                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Some Policies</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
@@ -728,8 +816,6 @@
                         <span>03201413504</span>
                     </div>
                     <div class="contact-item">
-                        <i class="fas fa-envelope contact-icon"></i>
-                        <span>info@sneakerbazaar.com</span>
                     </div>
                 </div>
             </div>
