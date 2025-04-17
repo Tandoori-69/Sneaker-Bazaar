@@ -5,6 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sneaker Bazaar - Premium Used Sneakers Marketplace</title>
     <style>
+        /* Authenticity Guarantee Section */
+.authenticity-section {
+    background-color: #f9f9f9;
+    padding: 60px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.authenticity-guarantee {
+    display: flex;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.authenticity-icon {
+    font-size: 60px;
+    color: #4CAF50;
+    flex-shrink: 0;
+}
+
+.authenticity-content h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.authenticity-content p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.learn-more-btn {
+    color: #ff6b6b;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.learn-more-btn:hover {
+    color: #ff5252;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .authenticity-guarantee {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .authenticity-icon {
+        margin-bottom: 20px;
+    }
+}
         /* Global Styles */
         :root {
             --primary: #000000;
@@ -414,7 +472,21 @@
             background: var(--primary);
             color: white;
         }
-        
+        <!-- Authenticity Guarantee Section -->
+<section class="authenticity-section">
+    <div class="container">
+        <div class="authenticity-guarantee">
+            <div class="authenticity-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="authenticity-content">
+                <h2>Authenticity Guarantee</h2>
+                <p>Every sneaker sold on Sneaker Bazaar undergoes a rigorous verification process by our expert team. We inspect stitching, labels, materials, and sole patterns to ensure 100% authenticity. If we find any item to be inauthentic, we'll provide a full refund and remove the seller from our platform. Shop with confidence knowing your sneakers are guaranteed genuine.</p>
+                <a href="#" class="learn-more-btn">Learn More About Our Verification Process</a>
+            </div>
+        </div>
+    </div>
+</section>
         /* Footer */
         footer {
             background: var(--primary);
