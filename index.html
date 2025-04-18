@@ -434,6 +434,145 @@
             color: white;
         }
         
+        /* Cart Modal */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .cart-modal-content {
+            background: white;
+            margin: 50px auto;
+            max-width: 700px;
+            border-radius: 10px;
+            overflow: hidden;
+            animation: modalFadeIn 0.3s;
+        }
+        
+        .cart-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: var(--primary);
+            color: white;
+        }
+        
+        .cart-modal-header h2 {
+            font-size: 1.8rem;
+        }
+        
+        .cart-modal-body {
+            padding: 20px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+        
+        .cart-item-info {
+            flex: 1;
+        }
+        
+        .cart-item-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .quantity-btn {
+            background: var(--light);
+            border: 1px solid #ddd;
+            padding: 5px 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        
+        .quantity-btn:hover {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .quantity-display {
+            margin: 0 10px;
+            font-weight: 600;
+        }
+        
+        .remove-item {
+            background: transparent;
+            border: none;
+            color: #ff4d4d;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+        
+        .remove-item:hover {
+            color: #cc0000;
+        }
+        
+        .cart-modal-footer {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .cart-total {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .clear-cart {
+            background: #ff4d4d;
+        }
+        
+        .clear-cart:hover {
+            background: #cc0000;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 50px 0;
+            font-size: 1.2rem;
+            color: var(--gray);
+        }
+        
         /* Footer */
         footer {
             background: var(--primary);
@@ -460,14 +599,14 @@
             opacity: 0.8;
         }
         
-        .footer-links h3, .footer-contact h3 {
+        .footer-contact h3 {
             font-size: 1.2rem;
             margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
         }
         
-        .footer-links h3:after, .footer-contact h3:after {
+        .footer-contact h3:after {
             content: '';
             position: absolute;
             left: 0;
@@ -475,27 +614,6 @@
             width: 40px;
             height: 2px;
             background: var(--secondary);
-        }
-        
-        .footer-links ul {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            opacity: 0.8;
-            transition: all 0.3s;
-        }
-        
-        .footer-links a:hover {
-            opacity: 1;
-            color: var(--secondary);
-            padding-left: 5px;
         }
         
         .contact-item {
@@ -560,6 +678,10 @@
             .modal-body {
                 flex-direction: column;
             }
+            
+            .cart-modal-content {
+                max-width: 90%;
+            }
         }
         
         @media (max-width: 768px) {
@@ -605,6 +727,20 @@
             .policy-card {
                 max-width: 100%;
             }
+            
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .cart-item-img {
+                margin-bottom: 10px;
+            }
+            
+            .remove-item {
+                margin-left: 0;
+                margin-top: 10px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -631,6 +767,15 @@
             .search-bar {
                 display: none;
             }
+            
+            .cart-modal-footer {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .cart-total {
+                margin-bottom: 10px;
+            }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -650,7 +795,7 @@
                 <div class="search-bar">
                     <input type="text" placeholder="Search sneakers..." id="searchInput">
                 </div>
-                <div class="cart-icon" onclick="toggleCart()">
+                <div class="cart-icon" onclick="openCartModal()">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="cart-count">0</span>
                 </div>
@@ -738,7 +883,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2 id="modalTitle">Product Details</h2>
-                <span class="close-modal" onclick="closeModal()">&times;</span>
+                <span class="close-modal" onclick="closeModal()">×</span>
             </div>
             <div class="modal-body">
                 <div class="modal-image">
@@ -763,6 +908,26 @@
         </div>
     </div>
 
+    <!-- Cart Modal -->
+    <div id="cartModal" class="cart-modal">
+        <div class="cart-modal-content">
+            <div class="cart-modal-header">
+                <h2>Your Cart</h2>
+                <span class="close-modal" onclick="closeCartModal()">×</span>
+            </div>
+            <div class="cart-modal-body" id="cartItems">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="cart-modal-footer">
+                <div class="cart-total" id="cartTotal">Total: 0 PKR</div>
+                <div>
+                    <button class="btn clear-cart" onclick="clearCart()">Clear Cart</button>
+                    <button class="btn" onclick="alert('Proceeding to checkout...')">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
@@ -775,15 +940,6 @@
                         <a href="https://www.facebook.com/profile.php?id=61568479594469" target="_blank"><i class="fab fa-facebook"></i></a>
                         <a href="https://wa.me/923201413504" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
-                </div>
-                <div class="footer-links">
-                    <h3>Our Policies</h3>
-                    <ul>
-                        <li><a href="#policies">Shipping Policy</a></li>
-                        <li><a href="#policies">Returns & Exchanges</a></li>
-                        <li><a href="#privacy-policy">Privacy Policy</a></li>
-                        <li><a href="#terms">Terms of Service</a></li>
-                    </ul>
                 </div>
                 <div class="footer-contact">
                     <h3>Contact Us</h3>
@@ -802,15 +958,14 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 Sneaker Bazaar. All rights reserved.</p>
+                <p>© 2023 Sneaker Bazaar. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
         // Cart functionality
-        let cart = [];
-        let cartCount = 0;
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
         
         // Product data
         const products = {
@@ -836,6 +991,9 @@
             }
         };
 
+        // Initialize cart count
+        updateCartCount();
+
         // Search functionality
         document.getElementById('searchInput').addEventListener('keyup', function(e) {
             if (e.key === 'Enter') {
@@ -855,7 +1013,7 @@
             }
         });
 
-        // Modal functions
+        // Product Modal functions
         function openModal(productId) {
             const product = products[productId];
             document.getElementById('modalTitle').textContent = product.name;
@@ -874,52 +1032,122 @@
             document.body.style.overflow = 'auto';
         }
 
-        // Cart functions
+        // Cart Modal functions
+        function openCartModal() {
+            updateCartDisplay();
+            document.getElementById('cartModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCartModal() {
+            document.getElementById('cartModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Cart management functions
         function addToCart() {
             const productName = document.getElementById('modalProductName').textContent;
             const productId = Object.keys(products).find(key => products[key].name === productName);
             
             if (productId) {
-                cart.push(products[productId]);
-                cartCount++;
+                const existingItem = cart.find(item => item.id === productId);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({ ...products[productId], quantity: 1 });
+                }
+                saveCart();
                 updateCartCount();
                 alert(`${productName} added to cart!`);
                 closeModal();
             }
         }
 
-        function toggleCart() {
-            if (cart.length > 0) {
-                let cartItems = '';
-                let total = 0;
-                
-                cart.forEach(item => {
-                    cartItems += `${item.name} - ${item.price}\n`;
-                    total += item.priceValue;
-                });
-                
-                alert(`Your Cart:\n\n${cartItems}\nTotal: ${total.toLocaleString()} PKR`);
+        function updateCartCount() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.querySelector('.cart-count').textContent = totalItems;
+        }
+
+        function updateCartDisplay() {
+            const cartItemsContainer = document.getElementById('cartItems');
+            const cartTotalElement = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<div class="empty-cart">Your cart is empty!</div>';
+                cartTotalElement.textContent = 'Total: 0 PKR';
+                return;
+            }
+            
+            let total = 0;
+            cartItemsContainer.innerHTML = cart.map((item, index) => {
+                const itemTotal = item.priceValue * item.quantity;
+                total += itemTotal;
+                return `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">${item.price}</div>
+                            <div class="cart-item-quantity">
+                                <button class="quantity-btn" onclick="changeQuantity(${index}, -1)">-</button>
+                                <span class="quantity-display">${item.quantity}</span>
+                                <button class="quantity-btn" onclick="changeQuantity(${index}, 1)">+</button>
+                                <button class="remove-item" onclick="removeFromCart(${index})">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            cartTotalElement.textContent = `Total: ${total.toLocaleString()} PKR`;
+        }
+
+        function changeQuantity(index, change) {
+            if (cart[index].quantity + change <= 0) {
+                removeFromCart(index);
             } else {
-                alert('Your cart is empty!');
+                cart[index].quantity += change;
+                saveCart();
+                updateCartCount();
+                updateCartDisplay();
             }
         }
 
-        function updateCartCount() {
-            document.querySelector('.cart-count').textContent = cartCount;
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            saveCart();
+            updateCartCount();
+            updateCartDisplay();
         }
 
-        // Close modal when clicking outside
+        function clearCart() {
+            cart = [];
+            saveCart();
+            updateCartCount();
+            updateCartDisplay();
+        }
+
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        // Close modals when clicking outside
         window.onclick = function(event) {
-            const modal = document.getElementById('productModal');
-            if (event.target == modal) {
+            const productModal = document.getElementById('productModal');
+            const cartModal = document.getElementById('cartModal');
+            if (event.target == productModal) {
                 closeModal();
             }
+            if (event.target == cartModal) {
+                closeCartModal();
+            }
         }
 
-        // Close modal with Escape key
+        // Close modals with Escape key
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeModal();
+                closeCartModal();
             }
         });
     </script>
