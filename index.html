@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sneaker Bazaar - Pre-Loved Sneakers</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
     body {
       background: #1a1a1a url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADKSURBVHgB7ZOxDYAwDEQ7ESQJEqCIIAkSiBOgJEGCJFiAJEgS5P1fZmxnZ2e4tAKkVig1AqRWKDWCoVYoNYKhVig1gqFWKDWCoVYoNYKhVig1gqFWKDWCoVYoNYKhVig1gqFWKDWCoVYoNYKhVig1gqFWKDWCoVYoNYKhVig1gqFWKDWCoVYoNYKhVig1gqFWKDWCoVYoNYKhVig1gqFWKDWCoVYoNYKhVig1gqFWKDWCoVYoNYKhVig1gqFWKDWCoVYoNYKhVig1gqFWKDWC/gG2/BvZ6zAAAAAElFTkSuQmCC') repeat;
@@ -66,13 +66,27 @@
     .social-icon:hover {
       fill: #3b82f6;
     }
+    section {
+      scroll-margin-top: 80px; /* Offset for sticky navbar */
+    }
+    .section-spacing {
+      margin-bottom: 2rem; /* 8px */
+    }
+    @media (min-width: 640px) {
+      .section-spacing {
+        margin-bottom: 3rem; /* 12px */
+      }
+    }
   </style>
 </head>
 <body class="font-inter">
   <!-- Navigation -->
   <nav class="bg-gray-900 p-4 sticky top-0 z-10 shadow-lg">
     <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-xl sm:text-2xl font-bebas text-white">Sneaker Bazaar</h1>
+      <h1 class="text-xl sm:text-2xl font-bebas">
+        <span class="text-white">Sneaker</span>
+        <span class="text-rose-500">Bazaar</span>
+      </h1>
       <button id="menu-toggle" class="sm:hidden text-2xl text-white">☰</button>
       <ul id="nav-links" class="hidden sm:flex sm:space-x-6 flex-col sm:flex-row absolute sm:static top-16 left-0 w-full sm:w-auto bg-gray-900 p-4 sm:p-0">
         <li><a href="#home" class="hover:text-blue-400 block py-2 sm:py-0 text-white">Home</a></li>
@@ -86,25 +100,27 @@
   </nav>
 
   <!-- Hero Section -->
-  <section id="home" class="bg-cover bg-center h-64 sm:h-96 flex items-center animate-fade-in" style="background-image: url('https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
-    <div class="container mx-auto text-center text-white bg-black bg-opacity-60 py-6 sm:py-8 rounded-lg">
+  <section id="home" class="bg-cover bg-center h-[32rem] sm:h-[40rem] flex items-center animate-fade-in" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')">
+    <div class="container mx-auto text-center text-white bg-black bg-opacity-60 py-12 sm:py-16 rounded-lg">
       <h2 class="text-3xl sm:text-5xl font-bebas mb-2 sm:mb-4">Sneaker Bazaar</h2>
       <p class="text-base sm:text-xl mb-4 sm:mb-6">Pre-loved sneakers with style & savings</p>
+      <p class="text-base sm:text-lg mb-6 sm:mb-8 max-w-3xl mx-auto font-semibold text-gray-200 tracking-wide">Welcome to Sneaker Bazaar, where <span class="italic">pre-loved sneakers</span> find new homes. Our curated collection offers authentic, high-quality shoes at unbeatable prices, blending sustainability with iconic style. Step into fashion that’s kind to your wallet and the planet.</p>
       <a href="#shop" class="bg-blue-600 text-white px-4 sm:px-6 py-2 sm:py-3 text-sm sm:text-base rounded-full hover:bg-blue-700">Shop Pre-Loved</a>
     </div>
   </section>
 
   <!-- Search Bar -->
-  <section class="py-4 sm:py-6 bg-gray-800 animate-fade-in">
+  <section class="py-6 sm:py-8 bg-gray-800 animate-fade-in section-spacing">
     <div class="container mx-auto px-4">
-      <input type="text" id="search-bar" placeholder="Search sneakers..." class="w-full max-w-md mx-auto p-3 border-2 border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 bg-white text-gray-900">
+      <input type="text" id="search-bar" placeholder="Search sneakers..." class="w-full max-w-3xl mx-auto p-3 border-2 border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-600 bg-white text-gray-900 text-base sm:text-lg">
     </div>
   </section>
 
   <!-- Shop Section -->
-  <section id="shop" class="py-8 sm:py-12 bg-gray-800 animate-fade-in">
+  <section id="shop" class="py-16 sm:py-20 bg-gray-800 animate-fade-in section-spacing">
     <div class="container mx-auto px-4">
       <h2 class="text-2xl sm:text-3xl font-bebas text-center mb-6 sm:mb-8 text-white">Our Pre-Loved Collection</h2>
+      <p class="text-base sm:text-lg mb-8 sm:mb-12 text-gray-300 text-center max-w-3xl mx-auto font-semibold tracking-wide">Discover our hand-picked <span class="italic">pre-loved sneakers</span>, each inspected for quality and authenticity. Find iconic styles at affordable prices.</p>
       <div id="shoe-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         <!-- Product Card 1 -->
         <div class="shoe-card bg-white rounded-lg shadow-lg overflow-hidden border-2 border-gray-600 animate-scale-up animate-fade-in" data-name="Nike Air Jordan 1" style="--index: 0;">
@@ -116,11 +132,12 @@
             <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail animate-rotate-thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
             <img src="https://images.unsplash.com/photo-1543508282-6319a3e26236?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail animate-rotate-thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1543508282-6319a3e26236?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
           </div>
-          <div class="p-4">
-            <h3 class="text-base sm:text-lg font-semibold text-gray-900">Nike Air Jordan 1</h3>
+          <div class="p-4 sm:p-6">
+            <h3 class="text-base sm:text-lg font-semibold text-gray-900 mb-3">Nike Air Jordan 1</h3>
             <p class="text-gray-700 font-bold">$120</p>
             <p class="text-sm text-gray-600">Condition: Lightly Used</p>
-            <button onclick="addToCart(1, 'Nike Air Jordan 1', 120)" class="mt-2 bg-blue-600 text-white px-3 sm:px-4 py-1 sm:py-2 text-sm sm:text-base rounded hover:bg-blue-700">Add to Cart</button>
+            <p class="text-sm text-gray-600 font-medium mt-2 line-clamp-2">Classic Air Jordan 1s with minor wear, perfect for casual style.</p>
+            <button onclick="addToCart(1, 'Nike Air Jordan 1', 120)" class="mt-4 bg-blue-600 text-white px-3 sm:px-4 py-1 sm:py-2 text-sm sm:text-base rounded hover:bg-blue-700">Add to Cart</button>
           </div>
         </div>
         <!-- Product Card 2 -->
@@ -133,11 +150,12 @@
             <img src="https://images.unsplash.com/photo-1605408499391-6368c6ef265b?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail animate-rotate-thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1605408499391-6368c6ef265b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
             <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd18f8f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail animate-rotate-thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1595950653106-6c9ebd18f8f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
           </div>
-          <div class="p-4">
-            <h3 class="text-base sm:text-lg font-semibold text-gray-900">Adidas Yeezy Boost</h3>
+          <div class="p-4 sm:p-6">
+            <h3 class="text-base sm:text-lg font-semibold text-gray-900 mb-3">Adidas Yeezy Boost</h3>
             <p class="text-gray-700 font-bold">$150</p>
             <p class="text-sm text-gray-600">Condition: Like New</p>
-            <button onclick="addToCart(2, 'Adidas Yeezy Boost', 150)" class="mt-2 bg-blue-600 text-white px-3 sm:px-4 py-1 sm:py-2 text-sm sm:text-base rounded hover:bg-blue-700">Add to Cart</button>
+            <p class="text-sm text-gray-600 font-medium mt-2 line-clamp-2">Sleek Yeezy Boosts in near-perfect condition, ideal for streetwear.</p>
+            <button onclick="addToCart(2, 'Adidas Yeezy Boost', 150)" class="mt-4 bg-blue-600 text-white px-3 sm:px-4 py-1 sm:py-2 text-sm sm:text-base rounded hover:bg-blue-700">Add to Cart</button>
           </div>
         </div>
         <!-- Product Card 3 -->
@@ -150,11 +168,12 @@
             <img src="https://images.unsplash.com/photo-1607522370275-f14206abe5d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail animate-rotate-thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1607522370275-f14206abe5d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
             <img src="https://images.unsplash.com/photo-1605346576608-48ae66edd4c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail animate-rotate-thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1605346576608-48ae66edd4c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
           </div>
-          <div class="p-4">
-            <h3 class="text-base sm:text-lg font-semibold text-gray-900">Puma Suede Classic</h3>
+          <div class="p-4 sm:p-6">
+            <h3 class="text-base sm:text-lg font-semibold text-gray-900 mb-3">Puma Suede Classic</h3>
             <p class="text-gray-700 font-bold">$80</p>
             <p class="text-sm text-gray-600">Condition: Good</p>
-            <button onclick="addToCart(3, 'Puma Suede Classic', 80)" class="mt-2 bg-blue-600 text-white px-3 sm:px-4 py-1 sm:py-2 text-sm sm:text-base rounded hover:bg-blue-700">Add to Cart</button>
+            <p class="text-sm text-gray-600 font-medium mt-2 line-clamp-2">Puma Suede Classics with light wear, full of retro charm.</p>
+            <button onclick="addToCart(3, 'Puma Suede Classic', 80)" class="mt-4 bg-blue-600 text-white px-3 sm:px-4 py-1 sm:py-2 text-sm sm:text-base rounded hover:bg-blue-700">Add to Cart</button>
           </div>
         </div>
         <!-- Product Card 4 -->
@@ -167,11 +186,12 @@
             <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail animate-rotate-thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
             <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail animate-rotate-thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
           </div>
-          <div class="p-4">
-            <h3 class="text-base sm:text-lg font-semibold text-gray-900">New Balance 990v5</h3>
+          <div class="p-4 sm:p-6">
+            <h3 class="text-base sm:text-lg font-semibold text-gray-900 mb-3">New Balance 990v5</h3>
             <p class="text-gray-700 font-bold">$100</p>
             <p class="text-sm text-gray-600">Condition: Very Good</p>
-            <button onclick="addToCart(4, 'New Balance 990v5', 100)" class="mt-2 bg-blue-600 text-white px-3 sm:px-4 py-1 sm:py-2 text-sm sm:text-base rounded hover:bg-blue-700">Add to Cart</button>
+            <p class="text-sm text-gray-600 font-medium mt-2 line-clamp-2">New Balance 990v5s in great shape, ideal for daily wear.</p>
+            <button onclick="addToCart(4, 'New Balance 990v5', 100)" class="mt-4 bg-blue-600 text-white px-3 sm:px-4 py-1 sm:py-2 text-sm sm:text-base rounded hover:bg-blue-700">Add to Cart</button>
           </div>
         </div>
       </div>
@@ -179,7 +199,7 @@
   </section>
 
   <!-- Cart Section -->
-  <section id="cart" class="py-8 sm:py-12 bg-gray-800 hidden animate-fade-in">
+  <section id="cart" class="py-8 sm:py-12 bg-gray-800 hidden animate-fade-in section-spacing">
     <div class="container mx-auto px-4">
       <h2 class="text-2xl sm:text-3xl font-bebas text-center mb-6 sm:mb-8 text-white">Your Cart</h2>
       <div id="cart-items" class="space-y-4"></div>
@@ -192,53 +212,55 @@
   </section>
 
   <!-- Why Buy Used Section -->
-  <section id="why-used" class="py-8 sm:py-12 bg-gray-800 animate-fade-in">
+  <section id="why-used" class="py-16 sm:py-20 bg-gray-800 animate-fade-in section-spacing">
     <div class="container mx-auto px-4">
       <h2 class="text-2xl sm:text-3xl font-bebas text-center mb-6 sm:mb-8 text-white">Why Buy Used Sneakers?</h2>
+      <p class="text-base sm:text-lg mb-8 sm:mb-12 text-gray-300 text-center max-w-3xl mx-auto font-semibold tracking-wide">At Sneaker Bazaar, we believe in giving <span class="italic">pre-loved sneakers</span> a new life. Choosing used sneakers is a conscious choice for the planet, your wallet, and unique fashion.</p>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8">
-        <div class="p-4 sm:p-6 bg-white rounded-lg shadow-lg border-2 border-gray-600">
-          <h3 class="text-lg sm:text-xl font-bebas text-gray-900">Sustainability</h3>
-          <p class="text-gray-600 mt-2 text-sm sm:text-base">Give sneakers a second life and reduce waste.</p>
+        <div class="p-6 sm:p-8 bg-white rounded-lg shadow-lg border-2 border-gray-600">
+          <h3 class="text-lg sm:text-xl font-bebas text-gray-900 mb-3">Sustainability</h3>
+          <p class="text-gray-600 text-sm sm:text-base font-medium">Opting for pre-loved sneakers reduces waste and promotes a circular economy. Each pair you buy helps divert items from landfills, conserves resources, and lowers the demand for new production, which often involves high carbon emissions. Join us in making eco-friendly fashion choices that benefit the planet.</p>
         </div>
-        <div class="p-4 sm:p-6 bg-white rounded-lg shadow-lg border-2 border-gray-600">
-          <h3 class="text-lg sm:text-xl font-bebas text-gray-900">Affordability</h3>
-          <p class="text-gray-600 mt-2 text-sm sm:text-base">Premium brands at a fraction of the price.</p>
+        <div class="p-6 sm:p-8 bg-white rounded-lg shadow-lg border-2 border-gray-600">
+          <h3 class="text-lg sm:text-xl font-bebas text-gray-900 mb-3">Affordability</h3>
+          <p class="text-gray-600 text-sm sm:text-base font-medium">Score premium brands like Nike, Adidas, Puma, and New Balance at a fraction of their retail cost. Our carefully curated collection is inspected for quality, ensuring you get stylish, durable sneakers without the hefty price tag. Save money while staying on trend with Sneaker Bazaar.</p>
         </div>
-        <div class="p-4 sm:p-6 bg-white rounded-lg shadow-lg border-2 border-gray-600">
-          <h3 class="text-lg sm:text-xl font-bebas text-gray-900">Unique Finds</h3>
-          <p class="text-gray-600 mt-2 text-sm sm:text-base">Rare and vintage sneakers with character.</p>
+        <div class="p-6 sm:p-8 bg-white rounded-lg shadow-lg border-2 border-gray-600">
+          <h3 class="text-lg sm:text-xl font-bebas text-gray-900 mb-3">Unique Finds</h3>
+          <p class="text-gray-600 text-sm sm:text-base font-medium">Find rare, vintage, or discontinued sneakers that add character to your wardrobe. From limited-edition releases to classic styles with a story, our pre-loved collection offers exclusive pieces you won't find in mainstream stores. Stand out with sneakers that are as unique as you are.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Shipping & Returns Section -->
-  <section id="shipping-returns" class="py-8 sm:py-12 bg-gray-800 animate-fade-in">
+  <section id="shipping-returns" class="py-16 sm:py-20 bg-gray-800 animate-fade-in section-spacing">
     <div class="container mx-auto px-4">
       <h2 class="text-2xl sm:text-3xl font-bebas text-center mb-6 sm:mb-8 text-white">Shipping & Returns</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
-        <div class="p-4 sm:p-6 bg-white rounded-lg shadow-lg border-2 border-gray-600">
-          <h3 class="text-lg sm:text-xl font-bebas text-gray-900">Shipping Costs</h3>
-          <p class="text-gray-600 mt-2 text-sm sm:text-base">Standard shipping is $10 within the US. Free shipping on orders over $200.</p>
+      <p class="text-base sm:text-lg mb-8 sm:mb-12 text-gray-300 text-center max-w-3xl mx-auto font-semibold tracking-wide">Enjoy a seamless shopping experience with our clear shipping options and hassle-free <span class="italic">return policy</span>. Learn how we deliver your pre-loved sneakers.</p>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 sm:gap-8">
+        <div class="p-6 sm:p-8 bg-white rounded-lg shadow-lg border-2 border-gray-600">
+          <h3 class="text-lg sm:text-xl font-bebas text-gray-900 mb-3">Shipping Costs</h3>
+          <p class="text-gray-600 text-sm sm:text-base font-medium">Standard shipping within the US is $10, with free shipping on orders over $200. International shipping is available with rates calculated at checkout based on your location and order weight.</p>
         </div>
-        <div class="p-4 sm:p-6 bg-white rounded-lg shadow-lg border-2 border-gray-600">
-          <h3 class="text-lg sm:text-xl font-bebas text-gray-900">Delivery Times</h3>
-          <p class="text-gray-600 mt-2 text-sm sm:text-base">Orders are processed within 1-2 business days. Delivery takes 3-7 business days.</p>
+        <div class="p-6 sm:p-8 bg-white rounded-lg shadow-lg border-2 border-gray-600">
+          <h3 class="text-lg sm:text-xl font-bebas text-gray-900 mb-3">Delivery Times</h3>
+          <p class="text-gray-600 text-sm sm:text-base font-medium">Orders are processed within 1-2 business days. Standard US delivery takes 3-7 business days, while international orders may take 7-14 days. Express shipping is available for urgent needs.</p>
         </div>
-        <div class="p-4 sm:p-6 bg-white rounded-lg shadow-lg border-2 border-gray-600">
-          <h3 class="text-lg sm:text-xl font-bebas text-gray-900">Delivery Options</h3>
-          <p class="text-gray-600 mt-2 text-sm sm:text-base">Standard: $10, 3-7 days. Express: $25, 1-2 days. Available at checkout.</p>
+        <div class="p-6 sm:p-8 bg-white rounded-lg shadow-lg border-2 border-gray-600">
+          <h3 class="text-lg sm:text-xl font-bebas text-gray-900 mb-3">Delivery Options</h3>
+          <p class="text-gray-600 text-sm sm:text-base font-medium">Choose Standard ($10, 3-7 days) or Express ($25, 1-2 days) at checkout. We work with trusted carriers like USPS and FedEx to ensure safe and timely delivery of your sneakers.</p>
         </div>
-        <div class="p-4 sm:p-6 bg-white rounded-lg shadow-lg border-2 border-gray-600">
-          <h3 class="text-lg sm:text-xl font-bebas text-gray-900">Return Policy</h3>
-          <p class="text-gray-600 mt-2 text-sm sm:text-base">Returns accepted within 30 days in original condition. Contact us to initiate.</p>
+        <div class="p-6 sm:p-8 bg-white rounded-lg shadow-lg border-2 border-gray-600">
+          <h3 class="text-lg sm:text-xl font-bebas text-gray-900 mb-3">Return Policy</h3>
+          <p class="text-gray-600 text-sm sm:text-base font-medium">Return or exchange within 30 days if the sneakers are unworn and in original condition. Contact us via phone or social media to start the process, and we’ll guide you through shipping and refunds.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Contact Us Section -->
-  <section id="contact-us" class="py-8 sm:py-12 bg-gray-800 animate-fade-in">
+  <section id="contact-us" class="py-12 sm:py-16 bg-gray-800 animate-fade-in section-spacing">
     <div class="container mx-auto px-4">
       <h2 class="text-2xl sm:text-3xl font-bebas text-center mb-6 sm:mb-8 text-white">Contact Us</h2>
       <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg border-2 border-gray-600 text-gray-900">
@@ -246,7 +268,9 @@
         <p class="text-sm sm:text-base mb-4">123 Sneaker Street, Style City, SC 12345, USA</p>
         <p class="text-base sm:text-lg mb-2 font-semibold">Phone:</p>
         <p class="text-sm sm:text-base mb-4"><a href="tel:+1-800-555-1234" class="hover:text-blue-600">+1-800-555-1234</a></p>
-        <p class="text-sm sm:text-base">Reach out via phone or connect with us on social media!</p>
+        <p class="text-base sm:text-lg mb-2 font-semibold">Business Hours:</p>
+        <p class="text-sm sm:text-base mb-4">Monday - Friday: 9 AM - 5 PM<br>Saturday: 10 AM - 2 PM<br>Sunday: Closed</p>
+        <p class="text-sm sm:text-base">Have questions about our pre-loved sneakers? Reach out via phone or connect with us on social media for quick responses!</p>
       </div>
     </div>
   </section>
@@ -268,7 +292,7 @@
         </a>
         <a href="https://whatsapp.com" class="hover:text-blue-400">
           <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12.04 2c-5.52 0-10 4.48-10 10 0 1.77.46 3.43 1.27 4.88L2 22l5.25-1.38c1.39.79 2.97 1.21 4.79 1.21 5.52 0 10-4.48 10-10s-4.48-10-10-10zm0 18.18c-1.5 0-2.97-.39-4.25-1.13l-.3-.17-3.12.82.83-3.04-.2-.31c-.79-1.25-1.21-2.7-1.21-4.19 0-4.58 3.73-8.31 8.31-8.31s8.31 3.73 8.31 8.31-3.73 8.31-8.31 8.31zm4.58-5.96c-.25-.12-1.47-.73-1.7-.81-.23-.08-.4-.12-.56.12-.16.24-.62.81-.77.97-.14.16-.28.18-.52.06-.25-.12-1.05-.39-2-1.24-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.01-.38.11-.5.11-.11.25-.28.37-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.56-1.34-.77-1.83-.2-.48-.41-.41-.56-.42-.14-.01-.3-.01-.46-.01s-.42.06-.64.31c-.22.25-.85.83-.85 2.02s.87 2.34 1 2.5c.12.16 1.74 2.65 4.22 3.71.59.25 1.05.4 1.41.51.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.22-.16-.47-.28z"/>
+            <path d="M12.04 2c-5.52 0-10 4.48-10 10 0 1.77.46 3.43 1.27 4.88L2 22l5.25-1.38c1.39.79 2.97 1.21 4.79 1.21 5.52 0 10-4.48 10-10s-4.48-10-10-10zm0 18.18c-1.5 0-2.97-.39-4.25-1.13l-.3-.17-3.12.82.83-3.04-.2-.31c-.79-1.25-1.21-2.7-1.21-4.19 0-4.58 3.73-8.31 8.31-8.31s8.31 3.73 8.31 8.31-3.73 8.31-8.31 8.31zm4.58-5.96c-.25-.12-1.47-.73-1.7-.81-.23-.08-.4-.12-.56.12-.16.24-.62.81-.77.97-.14.16-.28.18-.52.06-.25-.12-1.05-.39-2-1.24-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.01-.38.11-.50.11-.11.25-.28.37-.42.12-.14.16-.24.24-.40.08-.16.04-.30-.02-.42-.06-.12-.56-1.34-.77-1.83-.20-.48-.41-.41-.56-.42-.14-.01-.30-.01-.46-.01s-.42.06-.64.31c-.22.25-.85.83-.85 2.02s.87 2.34 1 2.50c.12.16 1.74 2.65 4.22 3.71.59.25 1.05.40 1.41.51.59.19 1.13.16 1.55.10.47-.07 1.47-.60 1.68-1.18.20-.58.20-1.08.14-1.18-.06-.10-.22-.16-.47-.28z"/>
           </svg>
         </a>
       </div>
