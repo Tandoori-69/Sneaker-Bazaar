@@ -1,169 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sneaker Bazaar - Premium Used Sneakers Marketplace</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Existing styles here (unchanged for brevity) */
-        /* Only update styles if necessary */
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sneaker Bazaar - Premium Used Sneakers Marketplace</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* REUSE your existing CSS */
+    /* ONLY trimming here for space — keep everything else from your file */
+    .cart-count {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: #ff6b6b;
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <!-- (Same header code as before) -->
+  <!-- Keep your existing Header, Hero Section, Featured Sneakers, Modal, etc. -->
 
-    <!-- Hero Section -->
-    <!-- (Same hero section code as before) -->
-
-    <!-- Featured Sneakers -->
-    <!-- (Same featured sneakers code as before) -->
-
-    <!-- Our Policies Section - REMOVED -->
-
-    <!-- Product Modal -->
-    <!-- (Same modal code as before) -->
-
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-about">
-                    <a href="#" class="footer-logo">Sneaker <span>Bazaar</span></a>
-                    <p>Your trusted marketplace for authentic pre-owned sneakers. We verify all listings to ensure quality and authenticity.</p>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/sneaker_bazaar_69/" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.facebook.com/profile.php?id=61568479594469" target="_blank"><i class="fab fa-facebook"></i></a>
-                        <a href="https://wa.me/923201413504" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <!-- Removed Our Policies Section -->
-                <div class="footer-contact">
-                    <h3>Contact Us</h3>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt contact-icon"></i>
-                        <span>G-6/1-3, Islamabad, Pakistan</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone-alt contact-icon"></i>
-                        <span>03201413504</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope contact-icon"></i>
-                        <span>info@sneakerbazaar.com</span>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 Sneaker Bazaar. All rights reserved.</p>
-            </div>
+  <!-- Footer (Policies section removed) -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-about">
+          <a href="#" class="footer-logo">Sneaker <span>Bazaar</span></a>
+          <p>Your trusted marketplace for authentic pre-owned sneakers.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/sneaker_bazaar_69/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61568479594469" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://wa.me/923201413504" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          </div>
         </div>
-    </footer>
+        <!-- Removed Policies section -->
+        <div class="footer-contact">
+          <h3>Contact Us</h3>
+          <div class="contact-item"><i class="fas fa-map-marker-alt contact-icon"></i><span>G-6/1-3, Islamabad, Pakistan</span></div>
+          <div class="contact-item"><i class="fas fa-phone-alt contact-icon"></i><span>03201413504</span></div>
+          <div class="contact-item"><i class="fas fa-envelope contact-icon"></i><span>info@sneakerbazaar.com</span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 Sneaker Bazaar. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
-    <script>
-        let cart = [];
+  <script>
+    const products = {
+      jordans: {
+        id: "jordans",
+        name: "Jordans Basketball",
+        brand: "Jordans",
+        price: "10,000 PKR",
+        priceValue: 10000,
+        image: "https://www.basketballemotion.com/imagesarticulos/232965/grandes/zapatillas-jordan-air-jordan-39-lumier-negro-0.webp",
+        description: "Jordans Basketball. Little bit used but in a good condition. Size: US 7",
+        size: "US 7",
+      },
+      qiaodan: {
+        id: "qiaodan",
+        name: "BM2360204",
+        brand: "Qiaodan",
+        price: "6,000 PKR",
+        priceValue: 6000,
+        image: "https://m.media-amazon.com/images/I/41XhwIfERRL.jpg",
+        description: "Qiaodan BM2360204. Running shoes, lightly used, Size: US 7",
+        size: "US 7",
+      },
+    };
 
-        const products = {
-            'jordans': {
-                id: 'jordans',
-                brand: 'Jordans',
-                name: 'Jordans Basketball',
-                price: '10,000 PKR',
-                priceValue: 10000,
-                image: 'https://www.basketballemotion.com/imagesarticulos/232965/grandes/zapatillas-jordan-air-jordan-39-lumier-negro-0.webp',
-                description: 'Jordans Basketball. Little bit used but in a good condition. Size: US 7',
-                size: 'US 7'
-            },
-            'qiaodan': {
-                id: 'qiaodan',
-                brand: 'Qiaodan',
-                name: 'BM2360204',
-                price: '6,000 PKR',
-                priceValue: 6000,
-                image: 'https://m.media-amazon.com/images/I/41XhwIfERRL.jpg',
-                description: 'Qiaodan BM2360204. These are running shoes. Little bit used but in good condition. Size: US 7',
-                size: 'US 7'
-            }
-        };
+    let cart = [];
 
-        document.getElementById('searchInput').addEventListener('keyup', function(e) {
-            if (e.key === 'Enter') {
-                const searchTerm = this.value.toLowerCase();
-                const sneakerCards = document.querySelectorAll('.sneaker-card');
-                sneakerCards.forEach(card => {
-                    const name = card.querySelector('.sneaker-name').textContent.toLowerCase();
-                    const brand = card.querySelector('.sneaker-brand').textContent.toLowerCase();
-                    card.style.display = (name.includes(searchTerm) || brand.includes(searchTerm)) ? 'block' : 'none';
-                });
-            }
-        });
+    function openModal(productId) {
+      const product = products[productId];
+      document.getElementById("modalTitle").textContent = product.name;
+      document.getElementById("modalBrand").textContent = product.brand;
+      document.getElementById("modalProductName").textContent = product.name;
+      document.getElementById("modalPrice").textContent = product.price;
+      document.getElementById("modalImage").src = product.image;
+      document.getElementById("modalDescription").textContent = product.description;
+      document.getElementById("productModal").style.display = "block";
+      document.body.style.overflow = "hidden";
+    }
 
-        function openModal(productId) {
-            const product = products[productId];
-            document.getElementById('modalTitle').textContent = product.name;
-            document.getElementById('modalBrand').textContent = product.brand;
-            document.getElementById('modalProductName').textContent = product.name;
-            document.getElementById('modalPrice').textContent = product.price;
-            document.getElementById('modalImage').src = product.image;
-            document.getElementById('modalImage').alt = product.name;
-            document.getElementById('modalDescription').textContent = product.description;
-            document.getElementById('productModal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
+    function closeModal() {
+      document.getElementById("productModal").style.display = "none";
+      document.body.style.overflow = "auto";
+    }
 
-        function closeModal() {
-            document.getElementById('productModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
+    function addToCart() {
+      const productName = document.getElementById("modalProductName").textContent;
+      const productId = Object.keys(products).find((key) => products[key].name === productName);
 
-        function addToCart() {
-            const productName = document.getElementById('modalProductName').textContent;
-            const productId = Object.keys(products).find(key => products[key].name === productName);
-            if (productId) {
-                const existingItem = cart.find(item => item.id === productId);
-                if (!existingItem) {
-                    cart.push({ ...products[productId], quantity: 1 });
-                } else {
-                    existingItem.quantity++;
-                }
-                updateCartCount();
-                alert(`${productName} added to cart!`);
-                closeModal();
-            }
-        }
+      const existingItem = cart.find((item) => item.id === productId);
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({ ...products[productId], quantity: 1 });
+      }
 
-        function toggleCart() {
-            if (cart.length > 0) {
-                let cartItems = '';
-                let total = 0;
-                cart.forEach(item => {
-                    cartItems += `${item.name} x${item.quantity} - ${item.price}\n`;
-                    total += item.priceValue * item.quantity;
-                });
-                alert(`Your Cart:\n\n${cartItems}\nTotal: ${total.toLocaleString()} PKR`);
-            } else {
-                alert('Your cart is empty!');
-            }
-        }
+      updateCartCount();
+      alert(`${productName} added to cart!`);
+      closeModal();
+    }
 
-        function updateCartCount() {
-            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.querySelector('.cart-count').textContent = count;
-        }
+    function updateCartCount() {
+      const count = cart.reduce((total, item) => total + item.quantity, 0);
+      document.querySelector(".cart-count").textContent = count;
+    }
 
-        window.onclick = function(event) {
-            const modal = document.getElementById('productModal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
+    function toggleCart() {
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
 
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
-        });
-    </script>
+      let summary = cart.map(item => `${item.name} x${item.quantity} - ${item.price}`).join('\\n');
+      let total = cart.reduce((sum, item) => sum + item.priceValue * item.quantity, 0);
+      alert(`Cart:\n${summary}\n\nTotal: ${total.toLocaleString()} PKR`);
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById(\"productModal\");
+      if (event.target === modal) closeModal();
+    };
+
+    document.addEventListener(\"keydown\", (e) => {
+      if (e.key === \"Escape\") closeModal();
+    });
+  </script>
 </body>
 </html>
