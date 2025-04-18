@@ -64,6 +64,7 @@
         .nav-links {
             display: flex;
             list-style: none;
+            align-items: center;
         }
         
         .nav-links li {
@@ -81,10 +82,42 @@
             color: var(--secondary);
         }
         
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-bar {
+            margin-right: 20px;
+        }
+        
+        .search-bar input {
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            width: 200px;
+        }
+        
         .cart-icon {
             font-size: 20px;
-            margin-left: 25px;
             cursor: pointer;
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
         }
         
         /* Hero Section */
@@ -236,44 +269,51 @@
             color: var(--secondary);
         }
         
-        /* How It Works */
-        .how-it-works {
-            background: white;
+        /* Our Policies Section */
+        .our-policies {
             padding: 80px 0;
+            background: white;
+        }
+        
+        .policies-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .policy-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .policy-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
             text-align: center;
         }
         
-        .steps {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-top: 50px;
+        .policy-card ul {
+            list-style: none;
         }
         
-        .step {
-            flex: 1;
-            min-width: 250px;
-            margin: 0 15px 30px;
-            padding: 30px 20px;
-            background: var(--light);
-            border-radius: 10px;
-            transition: all 0.3s;
+        .policy-card li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
         }
         
-        .step:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-        
-        .step-icon {
-            font-size: 50px;
-            margin-bottom: 20px;
+        .policy-card li:before {
+            content: "•";
             color: var(--secondary);
-        }
-        
-        .step h3 {
-            margin-bottom: 15px;
-            font-size: 1.3rem;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
         }
         
         /* Product Modal */
@@ -363,39 +403,18 @@
             margin: 20px 0;
         }
         
-        .modal-description {
-            margin-bottom: 30px;
-            line-height: 1.7;
-        }
-        
-        .size-selector {
+        .size-display {
             margin: 20px 0;
+            font-size: 1.1rem;
         }
         
-        .size-selector label {
-            display: block;
-            margin-bottom: 10px;
+        .size-display span {
             font-weight: 600;
         }
         
-        .size-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .size-option {
-            border: 1px solid #ddd;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .size-option:hover, .size-option.selected {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
+        .modal-description {
+            margin-bottom: 30px;
+            line-height: 1.7;
         }
         
         .modal-actions {
@@ -522,61 +541,16 @@
             font-size: 0.9rem;
         }
         
-        /* Policies Section */
-        .policies {
-            background: #f9f9f9;
-            padding: 60px 0;
-            border-top: 1px solid #eee;
+        .footer-bottom a {
+            color: var(--secondary);
+            text-decoration: none;
+            margin: 0 10px;
         }
-
-        .policies .container {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-            flex-wrap: wrap;
+        
+        .footer-bottom a:hover {
+            text-decoration: underline;
         }
-
-        .policy-card {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            width: 100%;
-            max-width: 500px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-
-        .policy-card i {
-            font-size: 40px;
-            color: #ff6b6b;
-            margin-bottom: 20px;
-        }
-
-        .policy-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .policy-card ul {
-            text-align: left;
-            list-style: none;
-        }
-
-        .policy-card li {
-            margin-bottom: 12px;
-            padding-left: 30px;
-            position: relative;
-        }
-
-        .policy-card li:before {
-            content: "•";
-            color: #ff6b6b;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-
+        
         /* Responsive */
         @media (max-width: 992px) {
             .hero h1 {
@@ -604,8 +578,16 @@
                 margin: 0 10px 10px;
             }
             
-            .cart-icon {
+            .header-actions {
                 margin: 15px 0 0;
+            }
+            
+            .search-bar {
+                margin-right: 10px;
+            }
+            
+            .search-bar input {
+                width: 150px;
             }
             
             .hero {
@@ -618,16 +600,6 @@
             
             .hero p {
                 font-size: 1rem;
-            }
-            
-            .steps {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .step {
-                max-width: 400px;
-                width: 100%;
             }
             
             .policy-card {
@@ -655,6 +627,10 @@
             .btn {
                 width: 100%;
             }
+            
+            .search-bar {
+                display: none;
+            }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -669,8 +645,14 @@
                 <li><a href="#featured">Shop</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="cart-icon">
-                <i class="fas fa-shopping-cart"></i>
+            <div class="header-actions">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search sneakers..." id="searchInput">
+                </div>
+                <div class="cart-icon" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
             </div>
         </div>
     </header>
@@ -718,30 +700,34 @@
         </div>
     </section>
 
-    <!-- Policies Section -->
-    <section class="policies">
+    <!-- Our Policies Section -->
+    <section class="our-policies" id="policies">
         <div class="container">
-            <!-- Shipping Policy -->
-            <div class="policy-card">
-                <i class="fas fa-truck"></i>
-                <h3>Shipping Policy</h3>
-                <ul>
-                    <li>🚚 <strong>Buyer pays shipping</strong></li>
-                    <li>⏱️ Processed within <strong>1-2 business days</strong></li>
-                    <li>🌍 Shipping only available in Pakistan</li>
-                </ul>
-            </div>
+            <h2 class="section-title">Our Policies</h2>
+            <div class="policies-container">
+                <!-- Shipping Policy -->
+                <div class="policy-card">
+                    <h3>Shipping Policy</h3>
+                    <ul>
+                        <li>🚚 <strong>Buyer pays shipping</strong></li>
+                        <li>⏱️ Processed within <strong>1-2 business days</strong></li>
+                        <li>🌍 Shipping only available in Pakistan</li>
+                        <li>📦 Items shipped via courier service</li>
+                        <li>✉️ Tracking number provided</li>
+                    </ul>
+                </div>
 
-            <!-- Returns Policy -->
-            <div class="policy-card">
-                <i class="fas fa-exchange-alt"></i>
-                <h3>Returns & Exchanges</h3>
-                <ul>
-                    <li>↩️ <strong>7-days return</strong></li>
-                    <li>📦 Buyer pays return shipping</li>
-                    <li>💸 Refunds processed within <strong>5 business days</strong></li>
-                    <li>❌ No returns on damaged products</li>
-                </ul>
+                <!-- Returns Policy -->
+                <div class="policy-card">
+                    <h3>Returns & Exchanges</h3>
+                    <ul>
+                        <li>↩️ <strong>7-days return policy</strong></li>
+                        <li>📦 Buyer pays return shipping</li>
+                        <li>💸 Refunds processed within <strong>5 business days</strong></li>
+                        <li>❌ No returns on damaged products</li>
+                        <li>✅ Items must be in original condition</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -760,23 +746,16 @@
                 <div class="modal-details">
                     <span id="modalBrand" class="modal-brand">Brand</span>
                     <h1 id="modalProductName" class="modal-title">Product Name</h1>
-                    <div id="modalPrice" class="modal-price">$0.00</div>
-                    <div class="size-selector">
-                        <label>Size:</label>
-                        <div class="size-options">
-                            <div class="size-option" onclick="selectSize(this)">US 7</div>
-                            <div class="size-option" onclick="selectSize(this)">US 8</div>
-                            <div class="size-option" onclick="selectSize(this)">US 9</div>
-                            <div class="size-option" onclick="selectSize(this)">US 10</div>
-                            <div class="size-option" onclick="selectSize(this)">US 11</div>
-                        </div>
+                    <div id="modalPrice" class="modal-price">0 PKR</div>
+                    <div class="size-display">
+                        <span>Size:</span> US 7
                     </div>
                     <p id="modalDescription" class="modal-description">
-                        These premium sneakers are in excellent condition with minimal signs of wear. The soles show normal wear patterns but have plenty of life left.
+                        Product description will appear here.
                     </p>
                     <div class="modal-actions">
-                        <button class="btn">Add to Cart</button>
-                        <button class="btn btn-outline">Contact Seller</button>
+                        <button class="btn" onclick="addToCart()">Add to Cart</button>
+                        <button class="btn btn-outline" onclick="location.href='#contact'">Contact Seller</button>
                     </div>
                 </div>
             </div>
@@ -793,7 +772,17 @@
                     <div class="social-links">
                         <a href="https://www.instagram.com/sneaker_bazaar_69/" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.facebook.com/profile.php?id=61568479594469" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://wa.me/923201413504" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#featured">Shop</a></li>
+                        <li><a href="#policies">Our Policies</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
                 </div>
                 <div class="footer-contact">
                     <h3>Contact Us</h3>
@@ -805,32 +794,68 @@
                         <i class="fas fa-phone-alt contact-icon"></i>
                         <span>03201413504</span>
                     </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <span>info@sneakerbazaar.com</span>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2023 Sneaker Bazaar. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+                <p>&copy; 2023 Sneaker Bazaar. All rights reserved. | 
+                    <a href="#privacy-policy">Privacy Policy</a> | 
+                    <a href="#terms">Terms of Service</a>
+                </p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Cart functionality
+        let cart = [];
+        let cartCount = 0;
+        
         // Product data
         const products = {
             'jordans': {
+                id: 'jordans',
                 brand: 'Jordans',
                 name: 'Jordans Basketball',
                 price: '10,000 PKR',
+                priceValue: 10000,
                 image: 'https://www.basketballemotion.com/imagesarticulos/232965/grandes/zapatillas-jordan-air-jordan-39-lumier-negro-0.webp',
-                description: 'Jordans Basketball. Little bit used but in a good condition.'
+                description: 'Jordans Basketball. Little bit used but in a good condition. Size: US 7',
+                size: 'US 7'
             },
             'qiaodan': {
+                id: 'qiaodan',
                 brand: 'Qiaodan',
                 name: 'BM2360204',
                 price: '6,000 PKR',
+                priceValue: 6000,
                 image: 'https://m.media-amazon.com/images/I/41XhwIfERRL.jpg',
-                description: 'Qiaodan BM2360204. These are running shoes. Little bit used but in good condition.'
+                description: 'Qiaodan BM2360204. These are running shoes. Little bit used but in good condition. Size: US 7',
+                size: 'US 7'
             }
         };
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                const searchTerm = this.value.toLowerCase();
+                const sneakerCards = document.querySelectorAll('.sneaker-card');
+                
+                sneakerCards.forEach(card => {
+                    const name = card.querySelector('.sneaker-name').textContent.toLowerCase();
+                    const brand = card.querySelector('.sneaker-brand').textContent.toLowerCase();
+                    
+                    if (name.includes(searchTerm) || brand.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+        });
 
         // Modal functions
         function openModal(productId) {
@@ -851,11 +876,38 @@
             document.body.style.overflow = 'auto';
         }
 
-        function selectSize(element) {
-            document.querySelectorAll('.size-option').forEach(opt => {
-                opt.classList.remove('selected');
-            });
-            element.classList.add('selected');
+        // Cart functions
+        function addToCart() {
+            const productName = document.getElementById('modalProductName').textContent;
+            const productId = Object.keys(products).find(key => products[key].name === productName);
+            
+            if (productId) {
+                cart.push(products[productId]);
+                cartCount++;
+                updateCartCount();
+                alert(`${productName} added to cart!`);
+                closeModal();
+            }
+        }
+
+        function toggleCart() {
+            if (cart.length > 0) {
+                let cartItems = '';
+                let total = 0;
+                
+                cart.forEach(item => {
+                    cartItems += `${item.name} - ${item.price}\n`;
+                    total += item.priceValue;
+                });
+                
+                alert(`Your Cart:\n\n${cartItems}\nTotal: ${total.toLocaleString()} PKR`);
+            } else {
+                alert('Your cart is empty!');
+            }
+        }
+
+        function updateCartCount() {
+            document.querySelector('.cart-count').textContent = cartCount;
         }
 
         // Close modal when clicking outside
@@ -871,6 +923,17 @@
             if (event.key === 'Escape') {
                 closeModal();
             }
+        });
+
+        // Privacy Policy and Terms of Service (dummy links)
+        document.querySelector('a[href="#privacy-policy"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Privacy Policy page would open here. This is a demo link.');
+        });
+
+        document.querySelector('a[href="#terms"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Terms of Service page would open here. This is a demo link.');
         });
     </script>
 </body>
