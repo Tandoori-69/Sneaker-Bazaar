@@ -14,9 +14,36 @@
     .animate-fade-in {
       animation: fadeIn 1s ease-in;
     }
+    .animate-scale-up {
+      transition: transform 0.3s ease;
+    }
+    .animate-scale-up:hover {
+      transform: scale(1.05);
+    }
+    .animate-slide-in {
+      animation: slideIn 0.5s ease-out;
+    }
+    .animate-rotate-thumbnail {
+      transition: transform 0.3s ease;
+    }
+    .animate-rotate-thumbnail:hover {
+      transform: rotate(5deg);
+    }
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(20px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes scaleUp {
+      from { transform: scale(1); }
+      to { transform: scale(1.05); }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes rotateThumbnail {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(5deg); }
     }
     .thumbnail {
       cursor: pointer;
@@ -26,6 +53,18 @@
     .thumbnail:hover, .thumbnail.active {
       opacity: 1;
       border: 2px solid #3b82f6;
+    }
+    .shoe-card {
+      animation-delay: calc(var(--index) * 0.1s);
+    }
+    .social-icon {
+      width: 24px;
+      height: 24px;
+      fill: #ffffff;
+      transition: fill 0.3s ease;
+    }
+    .social-icon:hover {
+      fill: #3b82f6;
     }
   </style>
 </head>
@@ -39,7 +78,8 @@
         <li><a href="#home" class="hover:text-blue-400 block py-2 sm:py-0 text-white">Home</a></li>
         <li><a href="#shop" class="hover:text-blue-400 block py-2 sm:py-0 text-white">Shop</a></li>
         <li><a href="#why-used" class="hover:text-blue-400 block py-2 sm:py-0 text-white">Why Used?</a></li>
-        <li><a href="#contact" class="hover:text-blue-400 block py-2 sm:py-0 text-white">Contact</a></li>
+        <li><a href="#shipping-returns" class="hover:text-blue-400 block py-2 sm:py-0 text-white">Shipping & Returns</a></li>
+        <li><a href="#contact-us" class="hover:text-blue-400 block py-2 sm:py-0 text-white">Contact Us</a></li>
         <li><a href="#cart" class="hover:text-blue-400 block py-2 sm:py-0 text-white">Cart (<span id="cart-count">0</span>)</a></li>
       </ul>
     </div>
@@ -67,14 +107,14 @@
       <h2 class="text-2xl sm:text-3xl font-bebas text-center mb-6 sm:mb-8 text-white">Our Pre-Loved Collection</h2>
       <div id="shoe-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         <!-- Product Card 1 -->
-        <div class="shoe-card bg-white rounded-lg shadow-lg overflow-hidden border-2 border-gray-600" data-name="Nike Air Jordan 1">
+        <div class="shoe-card bg-white rounded-lg shadow-lg overflow-hidden border-2 border-gray-600 animate-scale-up animate-fade-in" data-name="Nike Air Jordan 1" style="--index: 0;">
           <div class="relative">
             <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Nike Air Jordan 1" class="w-full h-40 sm:h-48 object-cover main-image">
           </div>
           <div class="flex space-x-2 p-2 bg-gray-100">
-            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail active" onclick="changeImage(this, 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
-            <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
-            <img src="https://images.unsplash.com/photo-1543508282-6319a3e26236?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1543508282-6319a3e26236?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail active animate-rotate-thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
+            <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail animate-rotate-thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
+            <img src="https://images.unsplash.com/photo-1543508282-6319a3e26236?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail animate-rotate-thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1543508282-6319a3e26236?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
           </div>
           <div class="p-4">
             <h3 class="text-base sm:text-lg font-semibold text-gray-900">Nike Air Jordan 1</h3>
@@ -84,14 +124,14 @@
           </div>
         </div>
         <!-- Product Card 2 -->
-        <div class="shoe-card bg-white rounded-lg shadow-lg overflow-hidden border-2 border-gray-600" data-name="Adidas Yeezy Boost">
+        <div class="shoe-card bg-white rounded-lg shadow-lg overflow-hidden border-2 border-gray-600 animate-scale-up animate-fade-in" data-name="Adidas Yeezy Boost" style="--index: 1;">
           <div class="relative">
             <img src="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Adidas Yeezy Boost" class="w-full h-40 sm:h-48 object-cover main-image">
           </div>
           <div class="flex space-x-2 p-2 bg-gray-100">
-            <img src="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail active" onclick="changeImage(this, 'https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
-            <img src="https://images.unsplash.com/photo-1605408499391-6368c6ef265b?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1605408499391-6368c6ef265b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
-            <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd18f8f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1595950653106-6c9ebd18f8f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
+            <img src="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail active animate-rotate-thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
+            <img src="https://images.unsplash.com/photo-1605408499391-6368c6ef265b?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail animate-rotate-thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1605408499391-6368c6ef265b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
+            <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd18f8f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail animate-rotate-thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1595950653106-6c9ebd18f8f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
           </div>
           <div class="p-4">
             <h3 class="text-base sm:text-lg font-semibold text-gray-900">Adidas Yeezy Boost</h3>
@@ -101,14 +141,14 @@
           </div>
         </div>
         <!-- Product Card 3 -->
-        <div class="shoe-card bg-white rounded-lg shadow-lg overflow-hidden border-2 border-gray-600" data-name="Puma Suede Classic">
+        <div class="shoe-card bg-white rounded-lg shadow-lg overflow-hidden border-2 border-gray-600 animate-scale-up animate-fade-in" data-name="Puma Suede Classic" style="--index: 2;">
           <div class="relative">
             <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Puma Suede Classic" class="w-full h-40 sm:h-48 object-cover main-image">
           </div>
           <div class="flex space-x-2 p-2 bg-gray-100">
-            <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail active" onclick="changeImage(this, 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
-            <img src="https://images.unsplash.com/photo-1607522370275-f14206abe5d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1607522370275-f14206abe5d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
-            <img src="https://images.unsplash.com/photo-1605346576608-48ae66edd4c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1605346576608-48ae66edd4c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
+            <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail active animate-rotate-thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
+            <img src="https://images.unsplash.com/photo-1607522370275-f14206abe5d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail animate-rotate-thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1607522370275-f14206abe5d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
+            <img src="https://images.unsplash.com/photo-1605346576608-48ae66edd4c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail animate-rotate-thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1605346576608-48ae66edd4c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
           </div>
           <div class="p-4">
             <h3 class="text-base sm:text-lg font-semibold text-gray-900">Puma Suede Classic</h3>
@@ -118,14 +158,14 @@
           </div>
         </div>
         <!-- Product Card 4 -->
-        <div class="shoe-card bg-white rounded-lg shadow-lg overflow-hidden border-2 border-gray-600" data-name="New Balance 990v5">
+        <div class="shoe-card bg-white rounded-lg shadow-lg overflow-hidden border-2 border-gray-600 animate-scale-up animate-fade-in" data-name="New Balance 990v5" style="--index: 3;">
           <div class="relative">
             <img src="https://images.unsplash.com/photo-1597045566899-1c824782e05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="New Balance 990v5" class="w-full h-40 sm:h-48 object-cover main-image">
           </div>
           <div class="flex space-x-2 p-2 bg-gray-100">
-            <img src="https://images.unsplash.com/photo-1597045566899-1c824782e05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail active" onclick="changeImage(this, 'https://images.unsplash.com/photo-1597045566899-1c824782e05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
-            <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
+            <img src="https://images.unsplash.com/photo-1597045566899-1c824782e05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail active animate-rotate-thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1597045566899-1c824782e05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail animate-rotate-thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
+            <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=60" class="w-16 h-16 object-cover thumbnail animate-rotate-thumbnail" onclick="changeImage(this, 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60')">
           </div>
           <div class="p-4">
             <h3 class="text-base sm:text-lg font-semibold text-gray-900">New Balance 990v5</h3>
@@ -172,18 +212,42 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="py-8 sm:py-12 bg-gray-800 animate-fade-in">
+  <!-- Shipping & Returns Section -->
+  <section id="shipping-returns" class="py-8 sm:py-12 bg-gray-800 animate-fade-in">
     <div class="container mx-auto px-4">
-      <h2 class="text-2xl sm:text-3xl font-bebas text-center mb-6 sm:mb-8 text-white">Get in Touch</h2>
-      <p class="text-base sm:text-lg mb-4 sm:mb-6 text-gray-300 text-center">Questions about our pre-loved sneakers? Reach out!</p>
-      <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg border-2 border-gray-600">
-        <input type="text" id="contact-name" placeholder="Name" class="w-full p-3 mb-4 border-2 border-gray-600 rounded bg-white text-gray-900">
-        <input type="email" id="contact-email" placeholder="Email" class="w-full p-3 mb-4 border-2 border-gray-600 rounded bg-white text-gray-900">
-        <textarea id="contact-message" placeholder="Message" class="w-full p-3 mb-4 border-2 border-gray-600 rounded bg-white text-gray-900" rows="4"></textarea>
-        <button onclick="submitContact()" class="bg-blue-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded hover:bg-blue-700 w-full sm:w-auto">Send Message</button>
+      <h2 class="text-2xl sm:text-3xl font-bebas text-center mb-6 sm:mb-8 text-white">Shipping & Returns</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
+        <div class="p-4 sm:p-6 bg-white rounded-lg shadow-lg border-2 border-gray-600">
+          <h3 class="text-lg sm:text-xl font-bebas text-gray-900">Shipping Costs</h3>
+          <p class="text-gray-600 mt-2 text-sm sm:text-base">Standard shipping is $10 within the US. Free shipping on orders over $200.</p>
+        </div>
+        <div class="p-4 sm:p-6 bg-white rounded-lg shadow-lg border-2 border-gray-600">
+          <h3 class="text-lg sm:text-xl font-bebas text-gray-900">Delivery Times</h3>
+          <p class="text-gray-600 mt-2 text-sm sm:text-base">Orders are processed within 1-2 business days. Delivery takes 3-7 business days.</p>
+        </div>
+        <div class="p-4 sm:p-6 bg-white rounded-lg shadow-lg border-2 border-gray-600">
+          <h3 class="text-lg sm:text-xl font-bebas text-gray-900">Delivery Options</h3>
+          <p class="text-gray-600 mt-2 text-sm sm:text-base">Standard: $10, 3-7 days. Express: $25, 1-2 days. Available at checkout.</p>
+        </div>
+        <div class="p-4 sm:p-6 bg-white rounded-lg shadow-lg border-2 border-gray-600">
+          <h3 class="text-lg sm:text-xl font-bebas text-gray-900">Return Policy</h3>
+          <p class="text-gray-600 mt-2 text-sm sm:text-base">Returns accepted within 30 days in original condition. Contact us to initiate.</p>
+        </div>
       </div>
-      <p id="contact-confirmation" class="text-green-400 mt-4 text-center hidden">Message sent successfully!</p>
+    </div>
+  </section>
+
+  <!-- Contact Us Section -->
+  <section id="contact-us" class="py-8 sm:py-12 bg-gray-800 animate-fade-in">
+    <div class="container mx-auto px-4">
+      <h2 class="text-2xl sm:text-3xl font-bebas text-center mb-6 sm:mb-8 text-white">Contact Us</h2>
+      <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-lg border-2 border-gray-600 text-gray-900">
+        <p class="text-base sm:text-lg mb-2 font-semibold">Address:</p>
+        <p class="text-sm sm:text-base mb-4">123 Sneaker Street, Style City, SC 12345, USA</p>
+        <p class="text-base sm:text-lg mb-2 font-semibold">Phone:</p>
+        <p class="text-sm sm:text-base mb-4"><a href="tel:+1-800-555-1234" class="hover:text-blue-600">+1-800-555-1234</a></p>
+        <p class="text-sm sm:text-base">Reach out via phone or connect with us on social media!</p>
+      </div>
     </div>
   </section>
 
@@ -192,9 +256,21 @@
     <div class="container mx-auto text-center px-4">
       <p class="text-sm sm:text-base font-bebas">© 2025 Sneaker Bazaar. All rights reserved.</p>
       <div class="flex justify-center space-x-4 mt-4">
-        <a href="#" class="hover:text-blue-400 text-sm sm:text-base">Facebook</a>
-        <a href="#" class="hover:text-blue-400 text-sm sm:text-base">Instagram</a>
-        <a href="#" class="hover:text-blue-400 text-sm sm:text-base">Twitter</a>
+        <a href="https://facebook.com" class="hover:text-blue-400">
+          <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96 0 4.95 3.62 9.06 8.36 9.81v-6.94h-2.52v-2.87h2.52v-2.18c0-2.5 1.49-3.87 3.77-3.87 1.09 0 2.23.19 2.23.19v2.46h-1.26c-1.24 0-1.62.77-1.62 1.56v1.84h2.76l-.44 2.87h-2.32v6.94c4.74-.75 8.36-4.86 8.36-9.81 0-5.5-4.46-9.96-9.96-9.96z"/>
+          </svg>
+        </a>
+        <a href="https://instagram.com" class="hover:text-blue-400">
+          <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2.16c3.21 0 3.58.01 4.85.07 1.17.06 1.81.25 2.23.42.56.22.96.49 1.38.91.42.42.69.82.91 1.38.17.42.36 1.06.42 2.23.06 1.27.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.06 1.17-.25 1.81-.42 2.23-.22.56-.49.96-.91 1.38-.42.42-.82.69-1.38.91-.42.17-1.06.36-2.23.42-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.06-1.81-.25-2.23-.42-.56-.22-.96-.49-1.38-.91-.42-.42-.69-.82-.91-1.38-.17-.42-.36-1.06-.42-2.23-.06-1.27-.07-1.64-.07-4.85s.01-3.58.07-4.85c.06-1.17.25-1.81.42-2.23.22-.56.49-.96.91-1.38.42-.42.82-.69 1.38-.91.42-.17 1.06-.36 2.23-.42 1.27-.06 1.64-.07 4.85-.07zm0-2.16c-3.25 0-3.66.01-4.94.07-1.29.06-2.17.26-2.94.56-.8.31-1.48.73-2.15 1.4-.67.67-1.09 1.35-1.4 2.15-.3.77-.5 1.65-.56 2.94-.06 1.28-.07 1.69-.07 4.94s.01 3.66.07 4.94c.06 1.29.26 2.17.56 2.94.31.8.73 1.48 1.4 2.15.67.67 1.35 1.09 2.15 1.4.77.3 1.65.5 2.94.56 1.28.06 1.69.07 4.94.07s3.66-.01 4.94-.07c1.29-.06 2.17-.26 2.94-.56.8-.31 1.48-.73 2.15-1.4.67-.67 1.09-1.35 1.4-2.15.3-.77.5-1.65.56-2.94.06-1.28.07-1.69.07-4.94s-.01-3.66-.07-4.94c-.06-1.29-.26-2.17-.56-2.94-.31-.8-.73-1.48-1.4-2.15-.67-.67-1.35-1.09-2.15-1.4-.77-.3-1.65-.5-2.94-.56-1.28-.06-1.69-.07-4.94-.07zm0 5.83c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 9.83c-2.1 0-3.83-1.73-3.83-3.83s1.73-3.83 3.83-3.83 3.83 1.73 3.83 3.83-1.73 3.83-3.83 3.83zm6.26-9.66c0 .78-.63 1.41-1.41 1.41s-1.41-.63-1.41-1.41.63-1.41 1.41-1.41 1.41.63 1.41 1.41z"/>
+          </svg>
+        </a>
+        <a href="https://whatsapp.com" class="hover:text-blue-400">
+          <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12.04 2c-5.52 0-10 4.48-10 10 0 1.77.46 3.43 1.27 4.88L2 22l5.25-1.38c1.39.79 2.97 1.21 4.79 1.21 5.52 0 10-4.48 10-10s-4.48-10-10-10zm0 18.18c-1.5 0-2.97-.39-4.25-1.13l-.3-.17-3.12.82.83-3.04-.2-.31c-.79-1.25-1.21-2.7-1.21-4.19 0-4.58 3.73-8.31 8.31-8.31s8.31 3.73 8.31 8.31-3.73 8.31-8.31 8.31zm4.58-5.96c-.25-.12-1.47-.73-1.7-.81-.23-.08-.4-.12-.56.12-.16.24-.62.81-.77.97-.14.16-.28.18-.52.06-.25-.12-1.05-.39-2-1.24-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.01-.38.11-.5.11-.11.25-.28.37-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.56-1.34-.77-1.83-.2-.48-.41-.41-.56-.42-.14-.01-.3-.01-.46-.01s-.42.06-.64.31c-.22.25-.85.83-.85 2.02s.87 2.34 1 2.5c.12.16 1.74 2.65 4.22 3.71.59.25 1.05.4 1.41.51.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.22-.16-.47-.28z"/>
+          </svg>
+        </a>
       </div>
     </div>
   </footer>
@@ -245,7 +321,7 @@
       cart.forEach(item => {
         total += item.price * item.quantity;
         const itemElement = document.createElement('div');
-        itemElement.className = 'flex justify-between items-center p-4 bg-white rounded-lg shadow-md border-2 border-gray-600';
+        itemElement.className = 'flex justify-between items-center p-4 bg-white rounded-lg shadow-md border-2 border-gray-600 animate-slide-in';
         itemElement.innerHTML = `
           <span class="text-sm sm:text-base text-gray-900">${item.name} (x${item.quantity})</span>
           <span class="text-sm sm:text-base text-gray-900">$${item.price * item.quantity}</span>
@@ -284,24 +360,6 @@
         card.style.display = name.includes(searchTerm) ? 'block' : 'none';
       });
     });
-
-    // Contact Form Submission
-    function submitContact() {
-      const name = document.getElementById('contact-name').value;
-      const email = document.getElementById('contact-email').value;
-      const message = document.getElementById('contact-message').value;
-      if (name && email && message) {
-        document.getElementById('contact-confirmation').classList.remove('hidden');
-        document.getElementById('contact-name').value = '';
-        document.getElementById('contact-email').value = '';
-        document.getElementById('contact-message').value = '';
-        setTimeout(() => {
-          document.getElementById('contact-confirmation').classList.add('hidden');
-        }, 3000);
-      } else {
-        alert('Please fill in all fields.');
-      }
-    }
 
     // Test Render
     document.addEventListener('DOMContentLoaded', () => {
