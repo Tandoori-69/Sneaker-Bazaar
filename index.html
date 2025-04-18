@@ -1,119 +1,927 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sneaker Bazaar</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      background-color: #f9f9f9;
-      color: #333;
-    }
-
-    footer {
-      background-color: #111;
-      color: #fff;
-      padding: 40px 0 20px;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .footer-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-
-    .footer-about, .footer-contact {
-      flex: 1 1 300px;
-      margin: 20px 0;
-    }
-
-    .footer-logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #fff;
-      text-decoration: none;
-    }
-
-    .footer-logo span {
-      color: #ff6b6b;
-    }
-
-    .footer-about p {
-      margin: 10px 0;
-    }
-
-    .social-links a {
-      color: #fff;
-      margin-right: 10px;
-      font-size: 18px;
-      text-decoration: none;
-    }
-
-    .footer-contact h3 {
-      margin-bottom: 15px;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      margin: 8px 0;
-    }
-
-    .contact-icon {
-      margin-right: 10px;
-      color: #ff6b6b;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      margin-top: 30px;
-      font-size: 14px;
-      border-top: 1px solid #333;
-      padding-top: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneaker Bazaar - Premium Used Sneakers Marketplace</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #000000;
+            --secondary: #ff6b6b;
+            --light: #f5f5f5;
+            --dark: #333333;
+            --gray: #777777;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-bar {
+            margin-right: 20px;
+        }
+        
+        .search-bar input {
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: none;
+            outline: none;
+            width: 200px;
+        }
+        
+        .cart-icon {
+            font-size: 20px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255,107,107,0.3);
+        }
+        
+        /* Featured Sneakers */
+        .featured {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 15px auto 0;
+        }
+        
+        .sneakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .sneaker-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .sneaker-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .sneaker-img-container {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .sneaker-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .sneaker-card:hover .sneaker-img {
+            transform: scale(1.05);
+        }
+        
+        .quick-view {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .sneaker-card:hover .quick-view {
+            opacity: 1;
+        }
+        
+        .sneaker-info {
+            padding: 20px;
+        }
+        
+        .sneaker-brand {
+            color: var(--gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+        
+        .sneaker-name {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .sneaker-price {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--secondary);
+        }
+        
+        /* Our Policies Section */
+        .our-policies {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .policies-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .policy-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .policy-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            text-align: center;
+        }
+        
+        .policy-card ul {
+            list-style: none;
+        }
+        
+        .policy-card li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .policy-card li:before {
+            content: "•";
+            color: var(--secondary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Product Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background: white;
+            margin: 50px auto;
+            max-width: 900px;
+            border-radius: 10px;
+            overflow: hidden;
+            animation: modalFadeIn 0.3s;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .close-modal {
+            font-size: 30px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: var(--secondary);
+        }
+        
+        .modal-body {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        .modal-image {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+        
+        .modal-image img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        
+        .modal-details {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+        }
+        
+        .modal-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .modal-brand {
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .modal-price {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            font-weight: 700;
+            margin: 20px 0;
+        }
+        
+        .size-display {
+            margin: 20px 0;
+            font-size: 1.1rem;
+        }
+        
+        .size-display span {
+            font-weight: 600;
+        }
+        
+        .modal-description {
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+        
+        .modal-actions {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        
+        .footer-about p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .footer-links h3, .footer-contact h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3:after, .footer-contact h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+        
+        .contact-icon {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        .footer-bottom a {
+            color: var(--secondary);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .modal-body {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0 10px 10px;
+            }
+            
+            .header-actions {
+                margin: 15px 0 0;
+            }
+            
+            .search-bar {
+                margin-right: 10px;
+            }
+            
+            .search-bar input {
+                width: 150px;
+            }
+            
+            .hero {
+                height: 400px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .policy-card {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                height: 350px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .modal-image, .modal-details {
+                min-width: 100%;
+            }
+            
+            .modal-actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .search-bar {
+                display: none;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-
-  <!-- Your main site content would be here -->
-
-  <!-- Footer -->
-  <footer id="contact">
-    <div class="container">
-      <div class="footer-container">
-        <div class="footer-about">
-          <a href="#" class="footer-logo">Sneaker <span>Bazaar</span></a>
-          <p>Your trusted marketplace for authentic pre-owned sneakers.</p>
-          <div class="social-links">
-            <a href="https://www.instagram.com/sneaker_bazaar_69/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/profile.php?id=61568479594469" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://wa.me/923201413504" target="_blank"><i class="fab fa-whatsapp"></i></a>
-          </div>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">Sneaker <span>Bazaar</span></a>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#featured">Shop</a></li>
+                <li><a href="#policies">Policies</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="header-actions">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search sneakers..." id="searchInput">
+                </div>
+                <div class="cart-icon" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
         </div>
+    </header>
 
-        <div class="footer-contact">
-          <h3>Contact Us</h3>
-          <div class="contact-item"><i class="fas fa-map-marker-alt contact-icon"></i><span>G-6/1-3, Islamabad, Pakistan</span></div>
-          <div class="contact-item"><i class="fas fa-phone-alt contact-icon"></i><span>03201413504</span></div>
-          <div class="contact-item"><i class="fas fa-envelope contact-icon"></i><span>info@sneakerbazaar.com</span></div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Premium Pre-Loved Sneakers</h1>
+            <p>Discover authentic used sneakers at unbeatable prices. Quality checked and ready to wear.</p>
+            <a href="#featured" class="btn">Shop Now</a>
         </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2023 Sneaker Bazaar. All rights reserved.</p>
-      </div>
+    </section>
+
+    <!-- Featured Sneakers -->
+    <section class="featured" id="featured">
+        <div class="container">
+            <h2 class="section-title">Featured Sneakers</h2>
+            <div class="sneakers-grid">
+                <!-- Sneaker 1 -->
+                <div class="sneaker-card" onclick="openModal('jordans')">
+                    <div class="sneaker-img-container">
+                        <img src="https://www.basketballemotion.com/imagesarticulos/232965/grandes/zapatillas-jordan-air-jordan-39-lumier-negro-0.webp" alt="Jordans" class="sneaker-img">
+                        <div class="quick-view">Quick View</div>
+                    </div>
+                    <div class="sneaker-info">
+                        <p class="sneaker-brand">Jordans</p>
+                        <h3 class="sneaker-name">Jordans Basketball</h3>
+                        <p class="sneaker-price">10,000 PKR</p>
+                    </div>
+                </div>
+                
+                <!-- Sneaker 2 -->
+                <div class="sneaker-card" onclick="openModal('qiaodan')">
+                    <div class="sneaker-img-container">
+                        <img src="https://m.media-amazon.com/images/I/41XhwIfERRL.jpg" alt="Qiaodan" class="sneaker-img">
+                        <div class="quick-view">Quick View</div>
+                    </div>
+                    <div class="sneaker-info">
+                        <p class="sneaker-brand">Qiaodan</p>
+                        <h3 class="sneaker-name">BM2360204</h3>
+                        <p class="sneaker-price">6,000 PKR</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Policies Section -->
+    <section class="our-policies" id="policies">
+        <div class="container">
+            <h2 class="section-title">Our Policies</h2>
+            <div class="policies-container">
+                <!-- Shipping Policy -->
+                <div class="policy-card">
+                    <h3>Shipping Policy</h3>
+                    <ul>
+                        <li>🚚 <strong>Buyer pays shipping</strong></li>
+                        <li>⏱️ Processed within <strong>1-2 business days</strong></li>
+                        <li>🌍 Shipping only available in Pakistan</li>
+                        <li>📦 Items shipped via courier service</li>
+                        <li>✉️ Tracking number provided</li>
+                    </ul>
+                </div>
+
+                <!-- Returns Policy -->
+                <div class="policy-card">
+                    <h3>Returns & Exchanges</h3>
+                    <ul>
+                        <li>↩️ <strong>7-days return policy</strong></li>
+                        <li>📦 Buyer pays return shipping</li>
+                        <li>💸 Refunds processed within <strong>5 business days</strong></li>
+                        <li>❌ No returns on damaged products</li>
+                        <li>✅ Items must be in original condition</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Product Details</h2>
+                <span class="close-modal" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalImage" src="" alt="Product Image">
+                </div>
+                <div class="modal-details">
+                    <span id="modalBrand" class="modal-brand">Brand</span>
+                    <h1 id="modalProductName" class="modal-title">Product Name</h1>
+                    <div id="modalPrice" class="modal-price">0 PKR</div>
+                    <div class="size-display">
+                        <span>Size:</span> US 7
+                    </div>
+                    <p id="modalDescription" class="modal-description">
+                        Product description will appear here.
+                    </p>
+                    <div class="modal-actions">
+                        <button class="btn" onclick="addToCart()">Add to Cart</button>
+                        <button class="btn btn-outline" onclick="location.href='#contact'">Contact Seller</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </footer>
 
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">Sneaker <span>Bazaar</span></a>
+                    <p>Your trusted marketplace for authentic pre-owned sneakers. We verify all listings to ensure quality and authenticity.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/sneaker_bazaar_69/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61568479594469" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://wa.me/923201413504" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Our Policies</h3>
+                    <ul>
+                        <li><a href="#policies">Shipping Policy</a></li>
+                        <li><a href="#policies">Returns & Exchanges</a></li>
+                        <li><a href="#privacy-policy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt contact-icon"></i>
+                        <span>G-6/1-3, Islamabad, Pakistan</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt contact-icon"></i>
+                        <span>03201413504</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope contact-icon"></i>
+                        <span>info@sneakerbazaar.com</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Sneaker Bazaar. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Cart functionality
+        let cart = [];
+        let cartCount = 0;
+        
+        // Product data
+        const products = {
+            'jordans': {
+                id: 'jordans',
+                brand: 'Jordans',
+                name: 'Jordans Basketball',
+                price: '10,000 PKR',
+                priceValue: 10000,
+                image: 'https://www.basketballemotion.com/imagesarticulos/232965/grandes/zapatillas-jordan-air-jordan-39-lumier-negro-0.webp',
+                description: 'Jordans Basketball. Little bit used but in a good condition. Size: US 7',
+                size: 'US 7'
+            },
+            'qiaodan': {
+                id: 'qiaodan',
+                brand: 'Qiaodan',
+                name: 'BM2360204',
+                price: '6,000 PKR',
+                priceValue: 6000,
+                image: 'https://m.media-amazon.com/images/I/41XhwIfERRL.jpg',
+                description: 'Qiaodan BM2360204. These are running shoes. Little bit used but in good condition. Size: US 7',
+                size: 'US 7'
+            }
+        };
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                const searchTerm = this.value.toLowerCase();
+                const sneakerCards = document.querySelectorAll('.sneaker-card');
+                
+                sneakerCards.forEach(card => {
+                    const name = card.querySelector('.sneaker-name').textContent.toLowerCase();
+                    const brand = card.querySelector('.sneaker-brand').textContent.toLowerCase();
+                    
+                    if (name.includes(searchTerm) || brand.includes(searchTerm)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+        });
+
+        // Modal functions
+        function openModal(productId) {
+            const product = products[productId];
+            document.getElementById('modalTitle').textContent = product.name;
+            document.getElementById('modalBrand').textContent = product.brand;
+            document.getElementById('modalProductName').textContent = product.name;
+            document.getElementById('modalPrice').textContent = product.price;
+            document.getElementById('modalImage').src = product.image;
+            document.getElementById('modalImage').alt = product.name;
+            document.getElementById('modalDescription').textContent = product.description;
+            document.getElementById('productModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Cart functions
+        function addToCart() {
+            const productName = document.getElementById('modalProductName').textContent;
+            const productId = Object.keys(products).find(key => products[key].name === productName);
+            
+            if (productId) {
+                cart.push(products[productId]);
+                cartCount++;
+                updateCartCount();
+                alert(`${productName} added to cart!`);
+                closeModal();
+            }
+        }
+
+        function toggleCart() {
+            if (cart.length > 0) {
+                let cartItems = '';
+                let total = 0;
+                
+                cart.forEach(item => {
+                    cartItems += `${item.name} - ${item.price}\n`;
+                    total += item.priceValue;
+                });
+                
+                alert(`Your Cart:\n\n${cartItems}\nTotal: ${total.toLocaleString()} PKR`);
+            } else {
+                alert('Your cart is empty!');
+            }
+        }
+
+        function updateCartCount() {
+            document.querySelector('.cart-count').textContent = cartCount;
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('productModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
