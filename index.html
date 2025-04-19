@@ -460,6 +460,17 @@
       menuToggle.textContent = isExpanded ? '✕' : '☰';
     });
 
+    // Close Menu on Link Click (Mobile)
+    document.querySelectorAll('#nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        const navLinks = document.getElementById('nav-links');
+        const menuToggle = document.getElementById('menu-toggle');
+        navLinks.classList.add('hidden');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.textContent = '☰';
+      });
+    });
+
     // Back to Top Button
     window.addEventListener('scroll', () => {
       const backToTop = document.getElementById('back-to-top');
