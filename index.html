@@ -406,6 +406,21 @@
     </div>
   </div>
 
+  <!-- Modal for Thank You Message -->
+  <div id="thank-you-modal" class="modal hidden">
+    <div class="modal-content">
+      <button id="close-thank-you-modal" class="close-modal" aria-label="Close thank you modal">×</button>
+      <div id="thank-you-content">
+        <h3 class="text-xl font-semibold text-white mb-4 text-center">Payment Confirmation</h3>
+        <p class="text-base text-gray-300 mb-4 text-center">Payment submitted! Please check your JazzCash/EasyPaisa app for confirmation and contact us to verify.</p>
+        <p class="text-base text-white font-semibold text-center">Thank you for buying this product!</p>
+        <div class="text-center mt-4">
+          <button id="thank-you-close-button" class="payment-button">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- JavaScript for Functionality -->
   <script>
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -415,6 +430,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('shoe-modal').classList.add('hidden');
       document.getElementById('payment-modal').classList.add('hidden');
+      document.getElementById('thank-you-modal').classList.add('hidden');
     });
 
     // Hamburger Menu Toggle
@@ -438,6 +454,7 @@
     // Modal Close Buttons
     document.getElementById('close-modal').addEventListener('click', closeShoeDetails);
     document.getElementById('close-payment-modal').addEventListener('click', closePaymentModal);
+    document.getElementById('close-thank-you-modal').addEventListener('click', closeThankYouModal);
 
     // Close modals when clicking outside content
     document.getElementById('shoe-modal').addEventListener('click', (e) => {
@@ -448,6 +465,11 @@
     document.getElementById('payment-modal').addEventListener('click', (e) => {
       if (e.target === document.getElementById('payment-modal')) {
         closePaymentModal();
+      }
+    });
+    document.getElementById('thank-you-modal').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('thank-you-modal')) {
+        closeThankYouModal();
       }
     });
 
@@ -479,9 +501,9 @@
             <p class="text-sm text-gray-400">Rating: ${rating}</p>
             <p class="text-sm text-gray-400 font-medium mt-2">${description}</p>
             <p class="text-sm text-gray-400 mt-2">Size: US 7</p>
-            <div class="flex space-x-2 mt-4">
-              <button onclick="addToCart(${id}, '${name}', ${price})" class="cart-button flex-1 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">Add to Cart</button>
-              <button onclick="addToWishlist(${id}, '${name}', ${price})" class="cart-button bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-800">♥</button>
+            <div class="flex space-x-4 mt-4">
+              <button onclick="addToCart(${id}, '${name}', ${price})" class="cart-button w-full bg-red-500 text-white px-6 py-3 text-lg rounded-full hover:bg-red-600">Add to Cart</button>
+              <button onclick="addToWishlist(${id}, '${name}', ${price})" class="cart-button w-full bg-gray-600 text-white px-6 py-3 text-lg rounded-full hover:bg-gray-700">♥</button>
             </div>
           </div>
         `;
@@ -509,6 +531,22 @@
         document.getElementById('confirm-payment').classList.add('hidden');
         document.getElementById('jazzcash-button').classList.remove('hidden');
         document.getElementById('easypaisa-button').classList.remove('hidden');
+      }
+    }
+
+    // Open Thank You Modal
+    function openThankYouModal() {
+      const modal = document.getElementById('thank-you-modal');
+      if (modal) {
+        modal.classList.remove('hidden');
+      }
+    }
+
+    // Close Thank You Modal
+    function closeThankYouModal() {
+      const modal = document.getElementById('thank-you-modal');
+      if (modal) {
+        modal.classList.add('hidden');
       }
     }
 
@@ -670,12 +708,6 @@
       document.getElementById('cart-count').textContent = '0';
     }
 
-    // Show Thank You Message
-    function showThankYouMessage() {
-      console.log('Confirm payment clicked');
-      alert('Payment submitted! Please check your JazzCash/EasyPaisa app for confirmation and contact us to verify.\n\nThank you for buying this product!');
-    }
-
     // Checkout with Payment Options
     function checkout() {
       if (cart.length === 0) {
@@ -707,12 +739,15 @@
 
       const confirmButton = document.getElementById('confirm-payment');
       // Remove any existing listeners to prevent duplicates
-      confirmButton.removeEventListener('click', showThankYouMessage);
+      confirmButton.removeEventListener('click', openThankYouModal);
       confirmButton.addEventListener('click', () => {
-        showThankYouMessage();
         clearCart();
         closePaymentModal();
+        openThankYouModal();
       });
+
+      const thankYouCloseButton = document.getElementById('thank-you-close-button');
+      thankYouCloseButton.addEventListener('click', closeThankYouModal);
     }
 
     // Add to Wishlist
