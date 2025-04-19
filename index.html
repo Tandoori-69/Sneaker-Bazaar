@@ -29,7 +29,128 @@
     .thumbnail-hover:hover {
       transform: scale(1.15);
       box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-">-</style>
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .thumbnail {
+      cursor: pointer;
+      opacity: 0.8;
+      transition: opacity 0.3s, border 0.3s;
+    }
+    .thumbnail:hover, .thumbnail.active {
+      opacity: 1;
+      border: 2px solid #3b82f6;
+    }
+    .shoe-card {
+      animation-delay: calc(var(--index) * 0.15s);
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+    .shoe-card.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .social-icon, .contact-icon {
+      width: 28px;
+      height: 28px;
+      fill: #ffffff;
+      transition: fill 0.3s ease, transform 0.3s ease;
+    }
+    .social-icon:hover, .contact-icon:hover {
+      fill: #ff4b4b;
+      transform: scale(1.2);
+    }
+    section {
+      scroll-margin-top: 80px;
+    }
+    .section-spacing {
+      margin-bottom: 2.5rem;
+    }
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      background: #1a1a1a;
+      padding: 2rem;
+      border-radius: 1rem;
+      max-width: 600px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #ffffff;
+      z-index: 1100;
+    }
+    .cart-button, .payment-button {
+      min-width: 48px;
+      min-height: 48px;
+      touch-action: manipulation;
+    }
+    .payment-button {
+      background-color: #ff4b4b;
+      color: #ffffff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-align: center;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .payment-button:hover {
+      background-color: #e03e3e;
+      transform: scale(1.05);
+    }
+    @media (max-width: 640px) {
+      .cart-item, .wishlist-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      .cart-button, .payment-button {
+        width: 100%;
+      }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .payment-options {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+    @media (min-width: 640px) {
+      .section-spacing {
+        margin-bottom: 4rem;
+      }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .payment-options {
+        flex-direction: row;
+        gap: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- Navigation -->
@@ -100,7 +221,7 @@
             <h3 class="text-lg font-semibold text-white text-center">Nike Air Jordan 1s</h3>
           </div>
         </div>
-        <!-- Product Card 2 (New Merrell Unlimited Hiking Shoes) -->
+        <!-- Product Card 2 (Merrell Unlimited Hiking Shoes) -->
         <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Merrell Unlimited Hiking Shoes" data-brand="Merrell" data-condition="Good" data-price="20000" data-rating="7/10" data-id="5" data-details='{"name":"Merrell Unlimited Hiking Shoes","price":20000,"condition":"Good","rating":"7/10","description":"Rugged Merrell Unlimited hiking shoes with a durable Vibram sole, in good condition for your next outdoor adventure.","images":["https://images.unsplash.com/photo-1600585152915-d208bec867a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80","https://images.unsplash.com/photo-1600585152915-d208bec867a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80&hue=0.2","https://images.unsplash.com/photo-1600585152915-d208bec867a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80&hue=0.4"]}'>
           <img src="https://images.unsplash.com/photo-1600585152915-d208bec867a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Merrell Unlimited Hiking Shoes" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
           <div class="p-6">
@@ -122,7 +243,7 @@
           </div>
         </div>
         <!-- Product Card 5 -->
-        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Allbirds Women's Wool Runners" data-brand="Allbirds" data-condition="Lightly Used" data-price="20000" data-rating="6/10" data-id="4" data-details='{"name":"Allbirds Women\'s Wool Runners","price":20000,"condition":"Lightly Used","rating":"6/10","description":"Sustainable Allbirds Wool Runners with a cozy merino wool upper, lightly used but still stylish.","images":["https://images.unsplash.com/photo-1595957884097-2a4f532b98ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80","https://images.unsplash.com/photo-1595957884097-2a4f532b98ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80&hue=0.5","https://images.unsplash.com/photo-1595957884097-2a4f532b98ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80&hue=1"]}'>
+        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Allbirds Women's Wool Runners" data-brand="Allbirds" data-condition="Lightly Used" data-price="20000" data-rating="6/10" data-id="4" data-details='{"name":"Allbirds Women\'s Wool Runners","price":20000,"condition":"Lightly Used","rating":"6/10","description":"Sustainable Allbirds Wool Runners with a cozy merino wool upper, lightly used but still stylish.","images":["https://images.unsplash.com/photo-1595957884097-2a4f532b98ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80","https://images.unsplash.com/photo-1607522370275-f14206abe5d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80","https://images.unsplash.com/photo-1605733160314-4fc7dac4bb16?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"]}'>
           <img src="https://images.unsplash.com/photo-1595957884097-2a4f532b98ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Allbirds Women's Wool Runners" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
           <div class="p-6">
             <h3 class="text-lg font-semibold text-white text-center">Allbirds Women's Wool Runners</h3>
@@ -224,7 +345,7 @@
             G-6/1-3, Saddar Rd, Islamabad, Pakistan
           </p>
           <p class="text-sm contact-item">
-            <svg class="contact-icon" viewBox="0 0 24 29" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+            <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
               <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.02l-2.2 2.2z"/>
             </svg>
             <a href="tel:+923201413504" class="text-red-500 hover:text-red-400">03201413504</a>
@@ -318,6 +439,8 @@
       document.getElementById('shoe-modal').classList.add('hidden');
       document.getElementById('payment-modal').classList.add('hidden');
       document.getElementById('thank-you-modal').classList.add('hidden');
+      updateCart();
+      updateWishlist();
     });
 
     // Hamburger Menu Toggle
@@ -342,29 +465,23 @@
     document.getElementById('close-modal').addEventListener('click', closeShoeDetails);
     document.getElementById('close-payment-modal').addEventListener('click', closePaymentModal);
     document.getElementById('close-thank-you-modal').addEventListener('click', closeThankYouModal);
+    document.getElementById('thank-you-close-button').addEventListener('click', closeThankYouModal);
 
     // Close modals when clicking outside content
     document.getElementById('shoe-modal').addEventListener('click', (e) => {
-      if (e.target === document.getElementById('shoe-modal')) {
-        closeShoeDetails();
-      }
+      if (e.target === document.getElementById('shoe-modal')) closeShoeDetails();
     });
     document.getElementById('payment-modal').addEventListener('click', (e) => {
-      if (e.target === document.getElementById('payment-modal')) {
-        closePaymentModal();
-      }
+      if (e.target === document.getElementById('payment-modal')) closePaymentModal();
     });
     document.getElementById('thank-you-modal').addEventListener('click', (e) => {
-      if (e.target === document.getElementById('thank-you-modal')) {
-        closeThankYouModal();
-      }
+      if (e.target === document.getElementById('thank-you-modal')) closeThankYouModal();
     });
 
     // Show Shoe Details
     function showShoeDetails(id, name, price, condition, rating, description, images) {
       const modal = document.getElementById('shoe-modal');
       const modalContent = document.getElementById('modal-content-inner');
-      
       if (!modal || !modalContent) {
         console.error('Modal or modal content not found');
         return;
@@ -372,6 +489,7 @@
 
       try {
         const priceDisplay = `PKR ${price.toLocaleString()}`;
+        const size = name.includes('Merrell') ? 'US-8' : 'US-7';
         modalContent.innerHTML = `
           <div class="relative">
             <img src="${images[0]}" alt="${name}" class="w-full h-64 object-contain main-image rounded-xl" loading="lazy">
@@ -387,9 +505,9 @@
             <p class="text-sm text-gray-400">Condition: ${condition}</p>
             <p class="text-sm text-gray-400">Rating: ${rating}</p>
             <p class="text-sm text-gray-400 font-medium mt-2">${description}</p>
-            <p class="text-sm text-gray-400 mt-2">Size: ${name.includes('Merrell') ? 'US-8' : 'US-7'}</p>
+            <p class="text-sm text-gray-400 mt-2">Size: ${size}</p>
             <div class="flex space-x-4 mt-4">
-              <button onclick="addToCart(${id}, '${name}', ${price})" class="cart-button w-full bg-red-500 text-white px-6 py-3 text-lg rounded-full hover:bg-red-600">Add to Cart</button>
+              <button onclick="addToCart(${id}, '${name}', ${price}, '${size}')" class="cart-button w-full bg-red-500 text-white px-6 py-3 text-lg rounded-full hover:bg-red-600">Add to Cart</button>
               <button onclick="addToWishlist(${id}, '${name}', ${price})" class="cart-button w-full bg-gray-600 text-white px-6 py-3 text-lg rounded-full hover:bg-gray-700">♥</button>
             </div>
           </div>
@@ -424,25 +542,21 @@
     // Open Thank You Modal
     function openThankYouModal() {
       const modal = document.getElementById('thank-you-modal');
-      if (modal) {
-        modal.classList.remove('hidden');
-      }
+      if (modal) modal.classList.remove('hidden');
     }
 
     // Close Thank You Modal
     function closeThankYouModal() {
       const modal = document.getElementById('thank-you-modal');
-      if (modal) {
-        modal.classList.add('hidden');
-      }
+      if (modal) modal.classList.add('hidden');
     }
 
     // Image Thumbnail Switcher
-    function changeImage(thumbnail, newSrc) {
+    window.changeImage = function(thumbnail, newSrc) {
       const modalContent = thumbnail.closest('.modal-content');
       if (!modalContent) {
         console.error('Modal content not found');
-        return;
+        return              ;
       }
       const mainImage = modalContent.querySelector('.main-image');
       if (!mainImage) {
@@ -452,7 +566,7 @@
       mainImage.src = newSrc;
       modalContent.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
       thumbnail.classList.add('active');
-    }
+    };
 
     // Create Cart Section
     function createCartSection() {
@@ -470,9 +584,7 @@
             <p id="cart-total" class="text-xl font-semibold text-center mt-8 text-white">Total: PKR 0</p>
             <div class="text-center mt-8 flex flex-col sm:flex-row sm:justify-center sm:space-x-4 space-y-4 sm:space-y-0">
               <button onclick="checkout()" class="cart-button bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600">Checkout</button>
-              <button onclick="clearţile
-
-Cart()" class="cart-button bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-gray-800">Clear Cart</button>
+              <button onclick="clearCart()" class="cart-button bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-gray-800">Clear Cart</button>
             </div>
           </div>
         `;
@@ -512,8 +624,7 @@ Cart()" class="cart-button bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-
     }
 
     // Add to Cart
-    function addToCart(id, name, price) {
-      const size = name.includes('Merrell') ? 'US-8' : 'US-7';
+    function addToCart(id, name, price, size) {
       const existingItem = cart.find(item => item.id === id && item.size === size);
       if (existingItem) {
         existingItem.quantity += 1;
@@ -535,19 +646,29 @@ Cart()" class="cart-button bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-
       }
     }
 
-    // Remove from Cart (Clears Entire Cart)
-    function removeFromCart() {
-      clearCart();
+    // Remove from Cart
+    function removeFromCart(id, size) {
+      cart = cart.filter(item => !(item.id === id && item.size === size));
+      updateCart();
+      if (cart.length === 0) {
+        const cartSection = document.getElementById('cart');
+        if (cartSection) cartSection.remove();
+      }
     }
 
     // Update Cart Display
     function updateCart() {
-      const cartSection = document.getElementById('cart');
-      if (!cartSection) return;
+      const cartCount = document.getElementById('cart-count');
+      cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+      if (cart.length === 0) {
+        const cartSection = document.getElementById('cart');
+        if (cartSection) cartSection.remove();
+        return;
+      }
+      const cartSection = createCartSection();
       const cartItems = document.getElementById('cart-items');
       const cartEmpty = document.getElementById('cart-empty');
       const cartTotal = document.getElementById('cart-total');
-      const cartCount = document.getElementById('cart-count');
 
       cartItems.innerHTML = '';
       let totalPKR = 0;
@@ -565,14 +686,13 @@ Cart()" class="cart-button bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-
             <button onclick="updateQuantity(${item.id}, '${item.size}', 1)" class="cart-button bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700">+</button>
           </div>
           <span class="text-base text-white">${priceDisplay}</span>
-          <button onclick="removeFromCart()" class="cart-button bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">Clear</button>
+          <button onclick="removeFromCart(${item.id}, '${item.size}')" class="cart-button bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">Remove</button>
         `;
         cartItems.appendChild(itemElement);
       });
 
       cartEmpty.style.display = cart.length === 0 ? 'block' : 'none';
       cartTotal.textContent = `Total: PKR ${totalPKR.toLocaleString()}`;
-      cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
 
       try {
         localStorage.setItem('cart', JSON.stringify(cart));
@@ -591,9 +711,7 @@ Cart()" class="cart-button bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-
         console.error('Local storage error:', e);
       }
       const cartSection = document.getElementById('cart');
-      if (cartSection) {
-        cartSection.remove();
-      }
+      if (cartSection) cartSection.remove();
       document.getElementById('cart-count').textContent = '0';
     }
 
@@ -605,8 +723,7 @@ Cart()" class="cart-button bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-
       }
       let totalPKR = 0;
       cart.forEach(item => {
-        const itemPrice = item.price * item.quantity;
-        totalPKR += itemPrice;
+        totalPKR += item.price * item.quantity;
       });
       const modal = document.getElementById('payment-modal');
       const paymentTotal = document.getElementById('payment-total');
@@ -627,16 +744,11 @@ Cart()" class="cart-button bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-
       };
 
       const confirmButton = document.getElementById('confirm-payment');
-      // Remove any existing listeners to prevent duplicates
-      confirmButton.removeEventListener('click', openThankYouModal);
-      confirmButton.addEventListener('click', () => {
+      confirmButton.onclick = () => {
         clearCart();
         closePaymentModal();
         openThankYouModal();
-      });
-
-      const thankYouCloseButton = document.getElementById('thank-you-close-button');
-      thankYouCloseButton.addEventListener('click', closeThankYouModal);
+      };
     }
 
     // Add to Wishlist
@@ -657,18 +769,28 @@ Cart()" class="cart-button bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-
       }
     }
 
-    // Remove from Wishlist (Clears Entire Wishlist)
-    function removeFromWishlist() {
-      clearWishlist();
+    // Remove from Wishlist
+    function removeFromWishlist(id) {
+      wishlist = wishlist.filter(item => item.id !== id);
+      updateWishlist();
+      if (wishlist.length === 0) {
+        const wishlistSection = document.getElementById('wishlist');
+        if (wishlistSection) wishlistSection.remove();
+      }
     }
 
     // Update Wishlist Display
     function updateWishlist() {
-      const wishlistSection = document.getElementById('wishlist');
-      if (!wishlistSection) return;
+      const wishlistCount = document.getElementById('wishlist-count');
+      wishlistCount.textContent = wishlist.length;
+      if (wishlist.length === 0) {
+        const wishlistSection = document.getElementById('wishlist');
+        if (wishlistSection) wishlistSection.remove();
+        return;
+      }
+      const wishlistSection = createWishlistSection();
       const wishlistItems = document.getElementById('wishlist-items');
       const wishlistEmpty = document.getElementById('wishlist-empty');
-      const wishlistCount = document.getElementById('wishlist-count');
 
       wishlistItems.innerHTML = '';
       wishlist.forEach(item => {
@@ -678,13 +800,12 @@ Cart()" class="cart-button bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-
         itemElement.innerHTML = `
           <span class="text-base text-white">${item.name}</span>
           <span class="text-base text-white">${priceDisplay}</span>
-          <button onclick="removeFromWishlist()" class="cart-button bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">Clear</button>
+          <button onclick="removeFromWishlist(${item.id})" class="cart-button bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">Remove</button>
         `;
         wishlistItems.appendChild(itemElement);
       });
 
       wishlistEmpty.style.display = wishlist.length === 0 ? 'block' : 'none';
-      wishlistCount.textContent = wishlist.length;
 
       try {
         localStorage.setItem('wishlist', JSON.stringify(wishlist));
@@ -703,9 +824,7 @@ Cart()" class="cart-button bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-
         console.error('Local storage error:', e);
       }
       const wishlistSection = document.getElementById('wishlist');
-      if (wishlistSection) {
-        wishlistSection.remove();
-      }
+      if (wishlistSection) wishlistSection.remove();
       document.getElementById('wishlist-count').textContent = '0';
     }
 
@@ -768,8 +887,6 @@ Cart()" class="cart-button bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-
         });
       });
       updateShoeList();
-      document.getElementById('cart-count').textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-      document.getElementById('wishlist-count').textContent = wishlist.length;
     });
   </script>
 </body>
