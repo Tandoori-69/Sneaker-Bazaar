@@ -12,6 +12,7 @@
       color: #ffffff;
       font-family: 'Poppins', sans-serif;
       padding-top: 80px;
+      margin: 0;
     }
     .animate-slide-up {
       animation: slideUp 0.8s ease-out;
@@ -77,7 +78,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      z-index: 30;
+      z-index: 1000;
     }
     .modal-content {
       background: #1a1a1a;
@@ -95,181 +96,8 @@
       right: 1rem;
       font-size: 1.5rem;
       cursor: pointer;
-      z-index: 40;
-    }
-    .cart-button, .payment-button {
-      min-width: 48px;
-      min-height: 48px;
-      touch-action: manipulation;
-    }
-    .payment-button {
-      background-color: #ff4b4b;
       color: #ffffff;
-      padding: 0.75rem 1.5rem;
-      border-radius: 0.5rem;
-      text-align: center;
-      font-size: 1rem;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-    .payment-button:hover {
-      background-color: #e03e3e;
-      transform: scale(1.05);
-    }
-    @media (max-width: 640px) {
-      .cart-item, .wishlist-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-      }
-      .cart-button, .payment-button {
-        width: 100%;
-      }
-      .contact-item {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-      .payment-options {
-        flex-direction: column;
-        gap: 1rem;
-      }
-    }
-    @media (min-width: 640px) {
-      .section-spacing {
-        margin-bottom: 4rem;
-      }
-      .contact-item {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-      .payment-options {
-        flex-direction: row;
-        gap: 1rem;
-      }
-    }
-  </style>
-</head>
-<body>
-  <!-- Navigation -->
-  <nav class="bg-black p-4 fixed top-0 w-full z-20 shadow-xl">
-    <div class="container mx-auto flex justify-between items-center">
-      <h1 class="text-2xl sm:text-3xl font-anton">
-        <span class="text-white">Sneaker</span>
-        <span class="text-red-500">Bazaar</span>
-      </h1>
-      <button id="menu-toggle" class="sm:hidden text-2xl text-white" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-      <ul id="nav-links" class="hidden sm:flex sm:space-x-8 flex-col sm:flex-row absolute sm:static top-16 left-0 w-full sm:w-auto bg-black p-6 sm:p-0">
-        <li><a href="#home" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Home</a></li>
-        <li><a href="#shop" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Shop</a></li>
-        <li><a href="#why-used" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Why Used?</a></li>
-        <li><a href="#shipping-returns" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Shipping & Returns</a></li>
-        <li><a href="#contact-us" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Contact Us</a></li>
-        <li><a href="#cart" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Cart (<span id="cartárov
-
-System: To fulfill your request, I will modify the provided HTML to include multiple images for each product in the "Our Pre-Owned Collection" section and ensure that when a product is clicked, a high-resolution (1000x1000) image is displayed in the modal. The `data-details` attribute for each shoe will be updated to include three images per product, and the JavaScript will be adjusted to handle the display of high-resolution images in the modal. I'll focus on updating the shop section's product cards and the relevant JavaScript logic, keeping the rest of the code intact.
-
-Here’s the updated HTML with the requested changes:
-
-<xaiArtifact artifact_id="1f7691a0-2074-4aa6-860c-af1e24142028" artifact_version_id="a4bde467-dad3-44fd-ab2c-4bb9f59ba845" title="index.html" contentType="text/html">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sneaker Bazaar - Pre-Owned Sneakers</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Anton&display=swap" rel="stylesheet">
-  <style>
-    body {
-      background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
-      color: #ffffff;
-      font-family: 'Poppins', sans-serif;
-      padding-top: 80px;
-    }
-    .animate-slide-up {
-      animation: slideUp 0.8s ease-out;
-    }
-    .animate-zoom-in {
-      transition: transform 0.3s ease;
-    }
-    .animate-zoom-in:hover {
-      transform: scale(1.03);
-    }
-    .thumbnail-hover {
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .thumbnail-hover:hover {
-      transform: scale(1.15);
-      box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-    }
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .thumbnail {
-      cursor: pointer;
-      opacity: 0.8;
-      transition: opacity 0.3s, border 0.3s;
-    }
-    .thumbnail:hover, .thumbnail.active {
-      opacity: 1;
-      border: 2px solid #3b82f6;
-    }
-    .shoe-card {
-      animation-delay: calc(var(--index) * 0.15s);
-      cursor: pointer;
-      transition: opacity 0.3s ease;
-    }
-    .shoe-card.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-    .social-icon, .contact-icon {
-      width: 28px;
-      height: 28px;
-      fill: #ffffff;
-      transition: fill 0.3s ease, transform 0.3s ease;
-    }
-    .social-icon:hover, .contact-icon:hover {
-      fill: #ff4b4b;
-      transform: scale(1.2);
-    }
-    section {
-      scroll-margin-top: 80px;
-    }
-    .section-spacing {
-      margin-bottom: 2.5rem;
-    }
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 30;
-    }
-    .modal-content {
-      background: #1a1a1a;
-      padding: 2rem;
-      border-radius: 1rem;
-      max-width: 600px;
-      width: 90%;
-      max-height: 90vh;
-      overflow-y: auto;
-      position: relative;
-    }
-    .close-modal {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 1.5rem;
-      cursor: pointer;
-      z-index: 40;
+      z-index: 1100;
     }
     .cart-button, .payment-button {
       min-width: 48px;
@@ -350,7 +178,7 @@ Here’s the updated HTML with the requested changes:
     <div class="container mx-auto text-center text-white bg-black bg-opacity-70 py-12 sm:py-16 px-4 rounded-xl">
       <h2 class="text-4xl sm:text-6xl font-anton mb-4">Sneaker Bazaar</h2>
       <p class="text-lg sm:text-2xl mb-6">Pre-Owned Sneakers, Unmatched Style</p>
-      <p class="text-base sm:text-lg mb mb-8 max-w-2xl mx-auto font-medium text-gray-200">Discover Sneaker Bazaar, your go-to for authentic pre-owned sneakers. Save big on iconic brands while embracing sustainable fashion. Every pair tells a story—start yours today.</p>
+      <p class="text-base sm:text-lg mb-8 max-w-2xl mx-auto font-medium text-gray-200">Discover Sneaker Bazaar, your go-to for authentic pre-owned sneakers. Save big on iconic brands while embracing sustainable fashion. Every pair tells a story—start yours today.</p>
       <a href="#shop" class="bg-red-500 text-white px-6 py-3 text-base sm:text-lg rounded-full hover:bg-red-600">Shop Now</a>
     </div>
   </section>
@@ -379,9 +207,9 @@ Here’s the updated HTML with the requested changes:
         </select>
         <select id="filter-price" class="w-full sm:w-1/3 p-4 border-2 border-gray-700 rounded-lg bg-gray-800 text-white text-lg focus:outline-none focus:ring-2 focus:ring-red-500" aria-label="Filter by price">
           <option value="">All Prices</option>
-          <option value="0-100">$0 - $100</option>
-          <option value="100-150">$100 - $150</option>
-          <option value="150+">$150+</option>
+          <option value="0-5000">PKR 0 - 5,000</option>
+          <option value="5000-10000">PKR 5,000 - 10,000</option>
+          <option value="10000+">PKR 10,000+</option>
         </select>
       </div>
       <div id="shoe-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -407,7 +235,7 @@ Here’s the updated HTML with the requested changes:
           </div>
         </div>
         <!-- Product Card 4 -->
-        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="New Balance 990v5" data-brand="New Balance" data-condition="Very Good" data-price="100" data-rating="8.5/10" data-id="4" data-details='{"name":"New Balance 990v5","price":100,"condition":"Very Good","rating":"8.5/10","description":"Comfortable 990v5s in excellent condition for everyday wear.","images":["https://images.unsplash.com/photo-1597045566899-1c824782e05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80","https://images.unsplash.com/photo-1600585153490-76fb20a0f2c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80","https://images.unsplash.com/photo-1600585152915-d208bec867a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"]}'>
+        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="New Balance 990v5" data-brand="New Balance" data-condition="Very Good" data-price="28000" data-rating="8.5/10" data-id="4" data-details='{"name":"New Balance 990v5","price":28000,"condition":"Very Good","rating":"8.5/10","description":"Comfortable 990v5s in excellent condition for everyday wear.","images":["https://images.unsplash.com/photo-1597045566899-1c824782e05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80","https://images.unsplash.com/photo-1600585153490-76fb20a0f2c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80","https://images.unsplash.com/photo-1600585152915-d208bec867a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"]}'>
           <img src="https://images.unsplash.com/photo-1597045566899-1c824782e05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="New Balance 990v5" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
           <div class="p-6">
             <h3 class="text-lg font-semibold text-white text-center">New Balance 990v5</h3>
@@ -523,7 +351,7 @@ Here’s the updated HTML with the requested changes:
           </a>
           <a href="https://www.instagram.com/sneaker_bazaar_69/?hl=en" target="_blank" class="hover:text-red-500" aria-label="Visit our Instagram page">
             <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-              <path d="M12 2.16c3.21 0 3.58.01 4.85.07 1.17.06 1.81.25 2.23.42.56.22.96.49 1.38.91.42.42.69.82.91 1.38.17.42.36 1.06.42 2.23.06 1.27.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.06 1.17-.25 1.81-.42 2.23-.22.56-.49.96-.91 1.38-.42.42-.82.69-1.38.91-.42.17-1.06.36-2.23.42-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.06-1.81-.25-2.23-.42-.56-.22-.96-.49-1.38-.91-.42-.42-.69-.82-.91-1.38-.17-.42-.36-1.06-.42-2.23-.06-1.27-.07-1.64-.07-4.85s.01-3.58.07-4.85c.06-1.17.25-1.81.42-2.23.22-.56.49-.96.91-1.38.42-.42.82-.69 1.38-.91.42-.17 1.06-.36 2.23-.42 1.27-.06 1.64-.07 4.85-.07zm0 2.16c-3.25 0-3.66.01-4.94.07-1.29.06-2.17.26-2.94.56-.8.31-1.48.73-2.15 1.4-.67.67-1.09 1.35-1.4 2.15-.3.77-.5 1.65-.56 2.94-.06 1.28-.07 1.69-.07 4.94s.01 3.66.07 4.94c.06 1.29.26 2.17.56 2.94.31.8.73 1.48 1.4 2.15.67.67 1.35 1.09 2.15 1.4.77.3 1.65.5 2.94.56 1.28.06 1.69.07 4.94.07s3.66-.01 4.94-.07c1.29-.06 2.17-.26 2.94-.56.8-.31 1.48-.73 2.15-1.4.67-.67 1.35-1.09 2.15-1.4-.77-.3-1.65-.5-2.94-.56-1.28-.06-1.69-.07-4.94-.07zm0 5.83c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 9.83c-2.1 0-3.83-1.73-3.83-3.83s1.73-3.83 3.83-3.83 3.83 1.73 3.83 3.83-1.73 3.83-3.83 3.83zm6.26-9.66c0 .78-.63 1.41-1.41-1.41s-1.41-.63-1.41-1.41.63-1.41 1.41-1.41 1.41.63 1.41 1.41z"/>
+              <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.06 1.81.25 2.23.42.56.22.96.49 1.38.91s.69.82.91 1.38c.17.42.36 1.06.42 2.23.06 1.27.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.06 1.17-.25 1.81-.42 2.23-.22.56-.49.96-.91 1.38s-.82.69-1.38.91c-.42.17-1.06.36-2.23.42-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.06-1.81-.25-2.23-.42-.56-.22-.96-.49-1.38-.91s-.69-.82-.91-1.38c-.17-.42-.36-1.06-.42-2.23-.06-1.27-.07-1.64-.07-4.85s.01-3.58.07-4.85c.06-1.17.25-1.81.42-2.23.22-.56.49-.96.91-1.38s.82-.69 1.38-.91c.42-.17 1.06-.36 2.23-.42 1.27-.06 1.64-.07 4.85-.07zm0 1.68c-3.14 0-3.53.01-4.77.07-.95.05-1.46.2-1.8.34-.45.18-.78.4-1.12.74s-.56.67-.74 1.12c-.14.34-.29.85-.34 1.8-.06 1.24-.07 1.58-.07 4.77s.01 3.53.07 4.77c.05.95.2 1.46.34 1.8.18.45.4.78.74 1.12s.67.56 1.12.74c.34.14.85.29 1.8.34 1.24.06 1.58.07 4.77.07s3.53-.01 4.77-.07c.95-.05 1.46-.2 1.8-.34.45-.18.78-.4 1.12-.74s.56-.67.74-1.12c.14-.34.29-.85.34-1.8.06-1.24.07-1.58.07-4.77s-.01-3.53-.07-4.77c-.05-.95-.2-1.46-.34-1.8-.18-.45-.4-.78-.74-1.12s-.67-.56-1.12-.74c-.34-.14-.85-.29-1.8-.34-1.24-.06-1.58-.07-4.77-.07zm0 3.36c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8.33c-1.82 0-3.33-1.48-3.33-3.33s1.48-3.33 3.33-3.33 3.33 1.48 3.33 3.33-1.48 3.33-3.33 3.33zm5.21-6.67c-.65 0-1.17-.52-1.17-1.17s.52-1.17 1.17-1.17 1.17.52 1.17 1.17-.52 1.17-1.17 1.17z"/>
             </svg>
           </a>
           <a href="https://wa.me/923201413504" target="_blank" class="hover:text-red-500" aria-label="Contact us on WhatsApp">
@@ -544,7 +372,7 @@ Here’s the updated HTML with the requested changes:
   <!-- Modal for Shoe Details -->
   <div id="shoe-modal" class="modal hidden">
     <div class="modal-content">
-      <button id="close-modal" class="close-modal text-white" aria-label="Close shoe details modal">×</button>
+      <button id="close-modal" class="close-modal" aria-label="Close shoe details modal">×</button>
       <div id="modal-content-inner"></div>
     </div>
   </div>
@@ -552,10 +380,10 @@ Here’s the updated HTML with the requested changes:
   <!-- Modal for Payment Options -->
   <div id="payment-modal" class="modal hidden">
     <div class="modal-content">
-      <button id="close-payment-modal" class="close-modal text-white" aria-label="Close payment options modal">×</button>
+      <button id="close-payment-modal" class="close-modal" aria-label="Close payment options modal">×</button>
       <div id="payment-content">
         <h3 class="text-xl font-semibold text-white mb-4 text-center">Select Payment Method</h3>
-        <p class="text-base text-gray-300 mb-4 text-center">Total Amount: <span id="payment-total">$0</span></p>
+        <p class="text-base text-gray-300 mb-4 text-center">Total Amount: <span id="payment-total">PKR 0</span></p>
         <div class="payment-options flex justify-center mb-4">
           <button id="jazzcash-button" class="payment-button">Pay with JazzCash</button>
           <button id="easypaisa-button" class="payment-button">Pay with EasyPaisa</button>
@@ -582,6 +410,12 @@ Here’s the updated HTML with the requested changes:
   <script>
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+    // Ensure modals are hidden on load
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('shoe-modal').classList.add('hidden');
+      document.getElementById('payment-modal').classList.add('hidden');
+    });
 
     // Hamburger Menu Toggle
     document.getElementById('menu-toggle').addEventListener('click', () => {
@@ -619,7 +453,6 @@ Here’s the updated HTML with the requested changes:
 
     // Show Shoe Details
     function showShoeDetails(id, name, price, condition, rating, description, images) {
-      console.log('showShoeDetails called with:', { id, name, price, condition, rating, description, images });
       const modal = document.getElementById('shoe-modal');
       const modalContent = document.getElementById('modal-content-inner');
       
@@ -629,8 +462,7 @@ Here’s the updated HTML with the requested changes:
       }
 
       try {
-        const currency = (id === 1 || id === 2 || id === 3) ? 'PKR' : '$';
-        const priceDisplay = (id === 1 || id === 2 || id === 3) ? `${currency} ${price.toLocaleString()}` : `${currency}${price.toLocaleString()}`;
+        const priceDisplay = `PKR ${price.toLocaleString()}`;
         modalContent.innerHTML = `
           <div class="relative">
             <img src="${images[0]}" alt="${name}" class="w-full h-64 object-contain main-image rounded-xl" loading="lazy">
@@ -654,7 +486,6 @@ Here’s the updated HTML with the requested changes:
           </div>
         `;
         modal.classList.remove('hidden');
-        console.log('Modal should be visible now');
       } catch (error) {
         console.error('Error rendering modal:', error);
       }
@@ -666,23 +497,23 @@ Here’s the updated HTML with the requested changes:
       if (modal) {
         modal.classList.add('hidden');
         document.getElementById('modal-content-inner').innerHTML = '';
-        console.log('Modal closed');
       }
     }
 
     // Close Payment Modal
     function closePaymentModal() {
       const modal = document.getElementById('payment-modal');
-      modal.classList.add('hidden');
-      document.getElementById('payment-instructions').classList.add('hidden');
-      document.getElementById('confirm-payment').classList.add('hidden');
-      document.getElementById('jazzcash-button').classList.remove('hidden');
-      document.getElementById('easypaisa-button').classList.remove('hidden');
+      if (modal) {
+        modal.classList.add('hidden');
+        document.getElementById('payment-instructions').classList.add('hidden');
+        document.getElementById('confirm-payment').classList.add('hidden');
+        document.getElementById('jazzcash-button').classList.remove('hidden');
+        document.getElementById('easypaisa-button').classList.remove('hidden');
+      }
     }
 
     // Image Thumbnail Switcher
     function changeImage(thumbnail, newSrc) {
-      console.log('changeImage called with:', newSrc);
       const modalContent = thumbnail.closest('.modal-content');
       if (!modalContent) {
         console.error('Modal content not found');
@@ -711,7 +542,7 @@ Here’s the updated HTML with the requested changes:
             <div id="cart-items" class="space-y-4">
               <p class="text-center text-gray-400" id="cart-empty">Your cart is empty.</p>
             </div>
-            <p id="cart-total" class="text-xl font-semibold text-center mt-8 text-white">Total: $0</p>
+            <p id="cart-total" class="text-xl font-semibold text-center mt-8 text-white">Total: PKR 0</p>
             <div class="text-center mt-8 flex flex-col sm:flex-row sm:justify-center sm:space-x-4 space-y-4 sm:space-y-0">
               <button onclick="checkout()" class="cart-button bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600">Checkout</button>
               <button onclick="clearCart()" class="cart-button bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-gray-800">Clear Cart</button>
@@ -792,18 +623,11 @@ Here’s the updated HTML with the requested changes:
       const cartCount = document.getElementById('cart-count');
 
       cartItems.innerHTML = '';
-      let totalUSD = 0;
       let totalPKR = 0;
       cart.forEach(item => {
         const itemPrice = item.price * item.quantity;
-        const currency = (item.id === 1 || item.id === 2 || item.id === 3) ? 'PKR' : '$';
-        const priceDisplay = (item.id === 1 || item.id === 2 || item.id === 3) ? `${currency} ${itemPrice.toLocaleString()}` : `${currency}${itemPrice.toLocaleString()}`;
-        if (item.id === 1 || item.id === 2 || item.id === 3) {
-          totalPKR += itemPrice;
-          totalUSD += itemPrice / 280;
-        } else {
-          totalUSD += itemPrice;
-        }
+        const priceDisplay = `PKR ${itemPrice.toLocaleString()}`;
+        totalPKR += itemPrice;
         const itemElement = document.createElement('div');
         itemElement.className = 'cart-item flex justify-between items-center p-4 bg-gray-800 rounded-lg shadow-md border border-gray-700 animate-slide-up';
         itemElement.innerHTML = `
@@ -820,8 +644,7 @@ Here’s the updated HTML with the requested changes:
       });
 
       cartEmpty.style.display = cart.length === 0 ? 'block' : 'none';
-      const totalDisplay = totalPKR > 0 ? `Total: $${totalUSD.toFixed(2)} (Includes PKR ${totalPKR.toLocaleString()})` : `Total: $${totalUSD.toFixed(2)}`;
-      cartTotal.textContent = totalDisplay;
+      cartTotal.textContent = `Total: PKR ${totalPKR.toLocaleString()}`;
       cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
 
       try {
@@ -847,27 +670,26 @@ Here’s the updated HTML with the requested changes:
       document.getElementById('cart-count').textContent = '0';
     }
 
+    // Show Thank You Message
+    function showThankYouMessage() {
+      console.log('Confirm payment clicked');
+      alert('Payment submitted! Please check your JazzCash/EasyPaisa app for confirmation and contact us to verify.\n\nThank you for buying this product!');
+    }
+
     // Checkout with Payment Options
     function checkout() {
       if (cart.length === 0) {
         alert('Your cart is empty!');
         return;
       }
-      let totalUSD = 0;
       let totalPKR = 0;
       cart.forEach(item => {
         const itemPrice = item.price * item.quantity;
-        if (item.id === 1 || item.id === 2 || item.id === 3) {
-          totalPKR += itemPrice;
-          totalUSD += itemPrice / 280;
-        } else {
-          totalUSD += itemPrice;
-        }
+        totalPKR += itemPrice;
       });
       const modal = document.getElementById('payment-modal');
       const paymentTotal = document.getElementById('payment-total');
-      const totalDisplay = totalPKR > 0 ? `$${totalUSD.toFixed(2)} (Includes PKR ${totalPKR.toLocaleString()})` : `$${totalUSD.toFixed(2)}`;
-      paymentTotal.textContent = totalDisplay;
+      paymentTotal.textContent = `PKR ${totalPKR.toLocaleString()}`;
       modal.classList.remove('hidden');
 
       document.getElementById('jazzcash-button').onclick = () => {
@@ -883,11 +705,14 @@ Here’s the updated HTML with the requested changes:
         document.getElementById('easypaisa-button').classList.add('hidden');
       };
 
-      document.getElementById('confirm-payment').onclick = () => {
-        alert('Payment submitted! Please check your JazzCash/EasyPaisa app for confirmation and contact us to verify.');
+      const confirmButton = document.getElementById('confirm-payment');
+      // Remove any existing listeners to prevent duplicates
+      confirmButton.removeEventListener('click', showThankYouMessage);
+      confirmButton.addEventListener('click', () => {
+        showThankYouMessage();
         clearCart();
         closePaymentModal();
-      };
+      });
     }
 
     // Add to Wishlist
@@ -923,8 +748,7 @@ Here’s the updated HTML with the requested changes:
 
       wishlistItems.innerHTML = '';
       wishlist.forEach(item => {
-        const currency = (item.id === 1 || item.id === 2 || item.id === 3) ? 'PKR' : '$';
-        const priceDisplay = (item.id === 1 || item.id === 2 || item.id === 3) ? `${currency} ${item.price.toLocaleString()}` : `${currency}${item.price.toLocaleString()}`;
+        const priceDisplay = `PKR ${item.price.toLocaleString()}`;
         const itemElement = document.createElement('div');
         itemElement.className = 'wishlist-item flex justify-between items-center p-4 bg-gray-800 rounded-lg shadow-md border border-gray-700 animate-slide-up';
         itemElement.innerHTML = `
@@ -972,21 +796,16 @@ Here’s the updated HTML with the requested changes:
       shoeCards.forEach(card => {
         const name = card.getAttribute('data-name').toLowerCase();
         const condition = card.getAttribute('data-condition').toLowerCase();
-        let price = parseFloat(card.getAttribute('data-price'));
-        const id = parseInt(card.getAttribute('data-id'));
-
-        if (id === 1 || id === 2 || id === 3) {
-          price = price / 280;
-        }
+        const price = parseFloat(card.getAttribute('data-price'));
 
         const matchesSearch = name.includes(searchTerm);
         const matchesName = !filterName || name === filterName;
         const matchesCondition = !filterCondition || condition === filterCondition;
         let matchesPrice = true;
         if (filterPrice) {
-          if (filterPrice === '0-100') matchesPrice = price <= 100;
-          else if (filterPrice === '100-150') matchesPrice = price > 100 && price <= 150;
-          else if (filterPrice === '150+') matchesPrice = price > 150;
+          if (filterPrice === '0-5000') matchesPrice = price <= 5000;
+          else if (filterPrice === '5000-10000') matchesPrice = price > 5000 && price <= 10000;
+          else if (filterPrice === '10000+') matchesPrice = price > 10000;
         }
 
         if (matchesSearch && matchesName && matchesCondition && matchesPrice) {
@@ -1019,7 +838,6 @@ Here’s the updated HTML with the requested changes:
               details.description,
               details.images
             );
-            console.log(`Clicked shoe card ${index + 1}:`, details);
           } catch (error) {
             console.error('Error parsing shoe details:', error);
           }
