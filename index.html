@@ -45,6 +45,11 @@
     .shoe-card {
       animation-delay: calc(var(--index) * 0.15s);
       cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+    .shoe-card.hidden {
+      opacity: 0;
+      pointer-events: none;
     }
     .social-icon, .contact-icon {
       width: 28px;
@@ -159,6 +164,7 @@
         <li><a href="#shop" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Shop</a></li>
         <li><a href="#why-used" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Why Used?</a></li>
         <li><a href="#shipping-returns" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Shipping & Returns</a></li>
+        <li><a href="#contact-us" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Contact Us</a></li>
         <li><a href="#cart" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Cart (<span id="cart-count">0</span>)</a></li>
         <li><a href="#wishlist" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Wishlist (<span id="wishlist-count">0</span>)</a></li>
       </ul>
@@ -170,7 +176,7 @@
     <div class="container mx-auto text-center text-white bg-black bg-opacity-70 py-12 sm:py-16 px-4 rounded-xl">
       <h2 class="text-4xl sm:text-6xl font-anton mb-4">Sneaker Bazaar</h2>
       <p class="text-lg sm:text-2xl mb-6">Pre-Owned Sneakers, Unmatched Style</p>
-      <p class="text-base sm:text-lg mb-8 max-w-2xl mx-auto font-medium text-gray-200">Discover Sneaker Bazaar, your go-to for authentic pre-owned sneakers. Save big on iconic brands while embracing sustainable fashion. Every pair tells a story—start yours today.</p>
+      <p class="text-base sm:text-lg mb  mb-8 max-w-2xl mx-auto font-medium text-gray-200">Discover Sneaker Bazaar, your go-to for authentic pre-owned sneakers. Save big on iconic brands while embracing sustainable fashion. Every pair tells a story—start yours today.</p>
       <a href="#shop" class="bg-red-500 text-white px-6 py-3 text-base sm:text-lg rounded-full hover:bg-red-600">Shop Now</a>
     </div>
   </section>
@@ -206,28 +212,28 @@
       </div>
       <div id="shoe-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- Product Card 1 -->
-        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in animate-slide-up" data-name="Nike Air Jordan 1" data-brand="Nike" data-condition="Lightly Used" data-price="120" data-rating="8/10" onclick="showShoeDetails(1, 'Nike Air Jordan 1', 120, 'Lightly Used', '8/10', 'Iconic Air Jordan 1s with slight wear, ready for your collection.', ['https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60', 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60', 'https://images.unsplash.com/photo-1543508282-6319a3e26236?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'])">
+        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Nike Air Jordan 1" data-brand="Nike" data-condition="Lightly Used" data-price="120" data-rating="8/10" onclick="showShoeDetails(1, 'Nike Air Jordan 1', 120, 'Lightly Used', '8/10', 'Iconic Air Jordan 1s with slight wear, ready for your collection.', ['https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60', 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60', 'https://images.unsplash.com/photo-1543508282-6319a3e26236?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'])">
           <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Nike Air Jordan 1" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
           <div class="p-6">
             <h3 class="text-lg font-semibold text-white text-center">Nike Air Jordan 1</h3>
           </div>
         </div>
         <!-- Product Card 2 -->
-        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in animate-slide-up" data-name="Adidas Yeezy Boost" data-brand="Adidas" data-condition="Like New" data-price="150" data-rating="9/10" onclick="showShoeDetails(2, 'Adidas Yeezy Boost', 150, 'Like New', '9/10', 'Pristine Yeezy Boosts, perfect for streetwear enthusiasts.', ['https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60', 'https://images.unsplash.com/photo-1605408499391-6368c6ef265b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60', 'https://images.unsplash.com/photo-1595950653106-6c9ebd18f8f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'])">
+        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Adidas Yeezy Boost" data-brand="Adidas" data-condition="Like New" data-price="150" data-rating="9/10" onclick="showShoeDetails(2, 'Adidas Yeezy Boost', 150, 'Like New', '9/10', 'Pristine Yeezy Boosts, perfect for streetwear enthusiasts.', ['https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60', 'https://images.unsplash.com/photo-1605408499391-6368c6ef265b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60', 'https://images.unsplash.com/photo-1595950653106-6c9ebd18f8f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'])">
           <img src="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Adidas Yeezy Boost" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
           <div class="p-6">
             <h3 class="text-lg font-semibold text-white text-center">Adidas Yeezy Boost</h3>
           </div>
         </div>
         <!-- Product Card 3 -->
-        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in animate-slide-up" data-name="Puma Suede Classic" data-brand="Puma" data-condition="Good" data-price="80" data-rating="7/10" onclick="showShoeDetails(3, 'Puma Suede Classic', 80, 'Good', '7/10', 'Retro Puma Suede Classics with a timeless vibe.', ['https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60', 'https://images.unsplash.com/photo-1607522370275-f14206abe5d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60', 'https://images.unsplash.com/photo-1605346576608-48ae66edd4c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'])">
+        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Puma Suede Classic" data-brand="Puma" data-condition="Good" data-price="80" data-rating="7/10" onclick="showShoeDetails(3, 'Puma Suede Classic', 80, 'Good', '7/10', 'Retro Puma Suede Classics with a timeless vibe.', ['https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60', 'https://images.unsplash.com/photo-1607522370275-f14206abe5d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60', 'https://images.unsplash.com/photo-1605346576608-48ae66edd4c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'])">
           <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Puma Suede Classic" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
           <div class="p-6">
             <h3 class="text-lg font-semibold text-white text-center">Puma Suede Classic</h3>
           </div>
         </div>
         <!-- Product Card 4 -->
-        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in animate-slide-up" data-name="New Balance 990v5" data-brand="New Balance" data-condition="Very Good" data-price="100" data-rating="8.5/10" onclick="showShoeDetails(4, 'New Balance 990v5', 100, 'Very Good', '8.5/10', 'Comfortable 990v5s in excellent condition for everyday wear.', ['https://images.unsplash.com/photo-1597045566899-1c824782e05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60', 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60', 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'])">
+        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="New Balance 990v5" data-brand="New Balance" data-condition="Very Good" data-price="100" data-rating="8.5/10" onclick="showShoeDetails(4, 'New Balance 990v5', 100, 'Very Good', '8.5/10', 'Comfortable 990v5s in excellent condition for everyday wear.', ['https://images.unsplash.com/photo-1597045566899-1c824782e05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60', 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60', 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'])">
           <img src="https://images.unsplash.com/photo-1597045566899-1c824782e05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="New Balance 990v5" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
           <div class="p-6">
             <h3 class="text-lg font-semibold text-white text-center">New Balance 990v5</h3>
@@ -245,15 +251,27 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="p-6 bg-gray-800 rounded-xl shadow-xl border border-gray-700">
           <h3 class="text-xl font-anton text-white mb-3">Eco-Friendly</h3>
-          <p class="text-gray-400 text-base font-medium">Buying pre-owned reduces waste and supports a circular economy. Extend the life of sneakers and cut down on environmental impact with every purchase.</p>
+          <ul class="text-gray-400 text-base font-medium list-disc list-outside">
+            <li>Reduces waste and supports a circular economy</li>
+            <li>Extends the life of sneakers</li>
+            <li>Cuts down on environmental impact</li>
+          </ul>
         </div>
         <div class="p-6 bg-gray-800 rounded-xl shadow-xl border border-gray-700">
           <h3 class="text-xl font-anton text-white mb-3">Budget-Friendly</h3>
-          <p class="text-gray-400 text-base font-medium">Get premium brands at a steal. Our curated sneakers are quality-checked to deliver top-tier style without the retail price tag.</p>
+          <ul class="text-gray-400 text-base font-medium list-disc list-outside">
+            <li>Offers premium brands at lower prices</li>
+            <li>Quality-checked for top-tier style</li>
+            <li>Affordable without retail price tags</li>
+          </ul>
         </div>
         <div class="p-6 bg-gray-800 rounded-xl shadow-xl border border-gray-700">
           <h3 class="text-xl font-anton text-white mb-3">One-of-a-Kind</h3>
-          <p class="text-gray-400 text-base font-medium">Score rare and vintage finds that set you apart. Our pre-owned collection features unique sneakers with stories to tell.</p>
+          <ul class="text-gray-400 text-base font-medium list-disc list-outside">
+            <li>Features rare and vintage finds</li>
+            <li>Unique sneakers with distinct stories</li>
+            <li>Sets you apart with exclusive styles</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -267,26 +285,42 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div class="p-6 bg-gray-800 rounded-xl shadow-xl border border-gray-700">
           <h3 class="text-xl font-anton text-white mb-3">Shipping Costs</h3>
-          <p class="text-gray-400 text-base font-medium">Buyer pays the shipping. Free on orders over 20,000. International rates vary by location.</p>
+          <ul class="text-gray-400 text-base font-medium list-disc list-outside">
+            <li>Buyer pays the shipping</li>
+            <li>Free on orders over 20,000</li>
+            <li>International rates vary by location</li>
+          </ul>
         </div>
         <div class="p-6 bg-gray-800 rounded-xl shadow-xl border border-gray-700">
           <h3 class="text-xl font-anton text-white mb-3">Delivery Times</h3>
-          <p class="text-gray-400 text-base font-medium">Pakistan orders ship in 3-7 days. International in 7-14 days. Express options available for faster delivery.</p>
+          <ul class="text-gray-400 text-base font-medium list-disc list-outside">
+            <li>Pakistan orders ship in 3-7 days</li>
+            <li>International orders ship in 7-14 days</li>
+            <li>Express options available for faster delivery</li>
+          </ul>
         </div>
         <div class="p-6 bg-gray-800 rounded-xl shadow-xl border border-gray-700">
           <h3 class="text-xl font-anton text-white mb-3">Delivery Options</h3>
-          <p class="text-gray-400 text-base font-medium">Standard 3-7 or Express 1-2 days. We partner with reliable carriers like TCS and Leopard.</p>
+          <ul class="text-gray-400 text-base font-medium list-disc list-outside">
+            <li>Standard delivery: 3-7 days</li>
+            <li>Express delivery: 1-2 days</li>
+            <li>Partnered with reliable carriers like TCS and Leopard</li>
+          </ul>
         </div>
         <div class="p-6 bg-gray-800 rounded-xl shadow-xl border border-gray-700">
           <h3 class="text-xl font-anton text-white mb-3">Return Policy</h3>
-          <p class="text-gray-400 text-base font-medium">7-day returns for sneakers in original condition. No return on damaged sneakers. Contact us to initiate a return or exchange.</p>
+          <ul class="text-gray-400 text-base font-medium list-disc list-outside">
+            <li>7-day returns for sneakers in original condition</li>
+            <li>No returns on damaged sneakers</li>
+            <li>Contact us to initiate a return or exchange</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Footer with Contact Info -->
-  <footer class="bg-black text-white py-8 border-t border-gray-800">
+  <footer id="contact-us" class="bg-black text-white py-8 border-t border-gray-800">
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <div class="mb-4 md:mb-0">
@@ -298,7 +332,7 @@
             <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
             </svg>
-            G-6/1-3, Islamabad
+            G-6/1-3, Saddar Rd, Islamabad, Pakistan
           </p>
           <p class="text-sm contact-item">
             <svg class="contact-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -737,7 +771,11 @@
           else if (filterPrice === '150+') matchesPrice = price > 150;
         }
 
-        card.style.display = matchesSearch && matchesName && matchesCondition && matchesPrice ? 'block' : 'none';
+        if (matchesSearch && matchesName && matchesCondition && matchesPrice) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
       });
     }
 
