@@ -176,7 +176,7 @@
     <div class="container mx-auto text-center text-white bg-black bg-opacity-70 py-12 sm:py-16 px-4 rounded-xl">
       <h2 class="text-4xl sm:text-6xl font-anton mb-4">Sneaker Bazaar</h2>
       <p class="text-lg sm:text-2xl mb-6">Pre-Owned Sneakers, Unmatched Style</p>
-      <p class="text-base sm:text-lg mb  mb-8 max-w-2xl mx-auto font-medium text-gray-200">Discover Sneaker Bazaar, your go-to for authentic pre-owned sneakers. Save big on iconic brands while embracing sustainable fashion. Every pair tells a story—start yours today.</p>
+      <p class="text-base sm:text-lg mb mb-8 max-w-2xl mx-auto font-medium text-gray-200">Discover Sneaker Bazaar, your go-to for authentic pre-owned sneakers. Save big on iconic brands while embracing sustainable fashion. Every pair tells a story—start yours today.</p>
       <a href="#shop" class="bg-red-500 text-white px-6 py-3 text-base sm:text-lg rounded-full hover:bg-red-600">Shop Now</a>
     </div>
   </section>
@@ -191,7 +191,7 @@
         <input type="text" id="search-bar" placeholder="Find your kicks..." class="w-full sm:w-1/3 p-4 border-2 border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-gray-800 text-white text-lg" aria-label="Search for sneakers">
         <select id="filter-name" class="w-full sm:w-1/3 p-4 border-2 border-gray-700 rounded-lg bg-gray-800 text-white text-lg focus:outline-none focus:ring-2 focus:ring-red-500" aria-label="Filter by shoe name">
           <option value="">All Shoes</option>
-          <option value="Nike Air Jordan 1">Nike Air Jordan 1</option>
+          <option value="Nike Air Jordan 1s">Nike Air Jordan 1s</option>
           <option value="Adidas Yeezy Boost">Adidas Yeezy Boost</option>
           <option value="Puma Suede Classic">Puma Suede Classic</option>
           <option value="New Balance 990v5">New Balance 990v5</option>
@@ -212,10 +212,10 @@
       </div>
       <div id="shoe-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- Product Card 1 -->
-        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Nike Air Jordan 1" data-brand="Nike" data-condition="Lightly Used" data-price="120" data-rating="8/10" onclick="showShoeDetails(1, 'Nike Air Jordan 1', 120, 'Lightly Used', '8/10', 'Iconic Air Jordan 1s with slight wear, ready for your collection.', ['https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60', 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60', 'https://images.unsplash.com/photo-1543508282-6319a3e26236?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'])">
-          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Nike Air Jordan 1" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Nike Air Jordan 1s" data-brand="Nike" data-condition="Lightly Used" data-price="20000" data-rating="6/10" onclick="showShoeDetails(1, 'Nike Air Jordan 1s', 20000, 'Lightly Used', '6/10', 'Iconic Air Jordan 1s with slight wear, ready for your collection.', ['https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60', 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60', 'https://images.unsplash.com/photo-1543508282-6319a3e26236?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'])">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Nike Air Jordan 1s" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
           <div class="p-6">
-            <h3 class="text-lg font-semibold text-white text-center">Nike Air Jordan 1</h3>
+            <h3 class="text-lg font-semibold text-white text-center">Nike Air Jordan 1s</h3>
           </div>
         </div>
         <!-- Product Card 2 -->
@@ -447,6 +447,7 @@
     function showShoeDetails(id, name, price, condition, rating, description, images) {
       const modal = document.getElementById('shoe-modal');
       const modalContent = document.getElementById('modal-content-inner');
+      const currency = id === 1 ? 'PKR' : '$'; // Use PKR for the first product, USD for others
       modalContent.innerHTML = `
         <div class="relative">
           <img src="${images[0]}" alt="${name}" class="w-full h-64 object-cover main-image rounded-xl" loading="lazy">
@@ -458,7 +459,7 @@
         </div>
         <div class="p-4">
           <h3 class="text-xl font-semibold text-white mb-2">${name}</h3>
-          <p class="text-red-500 font-bold">$${price}</p>
+          <p class="text-red-500 font-bold">${currency}${price.toLocaleString()}</p>
           <p class="text-sm text-gray-400">Condition: ${condition}</p>
           <p class="text-sm text-gray-400">Rating: ${rating}</p>
           <p class="text-sm text-gray-400 font-medium mt-2">${description}</p>
@@ -600,9 +601,17 @@
       const cartCount = document.getElementById('cart-count');
 
       cartItems.innerHTML = '';
-      let total = 0;
+      let totalUSD = 0;
+      let totalPKR = 0;
       cart.forEach(item => {
-        total += item.price * item.quantity;
+        const itemPrice = item.price * item.quantity;
+        const currency = item.id === 1 ? 'PKR' : '$';
+        if (item.id === 1) {
+          totalPKR += itemPrice;
+          totalUSD += itemPrice / 280; // Convert to USD for total
+        } else {
+          totalUSD += itemPrice;
+        }
         const itemElement = document.createElement('div');
         itemElement.className = 'cart-item flex justify-between items-center p-4 bg-gray-800 rounded-lg shadow-md border border-gray-700 animate-slide-up';
         itemElement.innerHTML = `
@@ -612,14 +621,15 @@
             <span class="text-base text-white">x${item.quantity}</span>
             <button onclick="updateQuantity(${item.id}, '${item.size}', 1)" class="cart-button bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700">+</button>
           </div>
-          <span class="text-base text-white">$${item.price * item.quantity}</span>
+          <span class="text-base text-white">${currency}${itemPrice.toLocaleString()}</span>
           <button onclick="removeFromCart()" class="cart-button bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">Clear</button>
         `;
         cartItems.appendChild(itemElement);
       });
 
       cartEmpty.style.display = cart.length === 0 ? 'block' : 'none';
-      cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+      const totalDisplay = totalPKR > 0 ? `Total: $${totalUSD.toFixed(2)} (Includes PKR${totalPKR.toLocaleString()})` : `Total: $${totalUSD.toFixed(2)}`;
+      cartTotal.textContent = totalDisplay;
       cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
 
       try {
@@ -651,10 +661,21 @@
         alert('Your cart is empty!');
         return;
       }
-      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      let totalUSD = 0;
+      let totalPKR = 0;
+      cart.forEach(item => {
+        const itemPrice = item.price * item.quantity;
+        if (item.id === 1) {
+          totalPKR += itemPrice;
+          totalUSD += itemPrice / 280; // Convert to USD
+        } else {
+          totalUSD += itemPrice;
+        }
+      });
       const modal = document.getElementById('payment-modal');
       const paymentTotal = document.getElementById('payment-total');
-      paymentTotal.textContent = `$${total.toFixed(2)}`;
+      const totalDisplay = totalPKR > 0 ? `$${totalUSD.toFixed(2)} (Includes PKR${totalPKR.toLocaleString()})` : `$${totalUSD.toFixed(2)}`;
+      paymentTotal.textContent = totalDisplay;
       modal.classList.remove('hidden');
 
       // Payment method buttons
@@ -712,11 +733,11 @@
 
       wishlistItems.innerHTML = '';
       wishlist.forEach(item => {
-        const itemElement = document.createElement('div');
-        itemElement.className = 'wishlist-item flex justify-between items-center p-4 bg-gray-800 rounded-lg shadow-md border border-gray-700 animate-slide-up';
+        const currency = item.id === 1 ? 'PKR' : '$';
+        const 'wishlist-item flex justify-between items-center p-4 bg-gray-800 rounded-lg shadow-md border border-gray-700 animate-slide-up';
         itemElement.innerHTML = `
           <span class="text-base text-white">${item.name}</span>
-          <span class="text-base text-white">$${item.price}</span>
+          <span class="text-base text-white">${currency}${item.price.toLocaleString()}</span>
           <button onclick="removeFromWishlist()" class="cart-button bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">Clear</button>
         `;
         wishlistItems.appendChild(itemElement);
@@ -759,7 +780,13 @@
       shoeCards.forEach(card => {
         const name = card.getAttribute('data-name').toLowerCase();
         const condition = card.getAttribute('data-condition').toLowerCase();
-        const price = parseFloat(card.getAttribute('data-price'));
+        let price = parseFloat(card.getAttribute('data-price'));
+        const id = parseInt(card.getAttribute('onclick').match(/showShoeDetails\((\d+)/)[1]);
+
+        // Convert PKR to USD for the first product (assuming 1 USD = 280 PKR)
+        if (id === 1) {
+          price = price / 280; // Convert PKR to USD
+        }
 
         const matchesSearch = name.includes(searchTerm);
         const matchesName = !filterName || name === filterName;
