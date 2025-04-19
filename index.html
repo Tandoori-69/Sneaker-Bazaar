@@ -158,7 +158,181 @@
         <span class="text-white">Sneaker</span>
         <span class="text-red-500">Bazaar</span>
       </h1>
-      <button id="menu-toggle" class="sm:hidden text-2xl text-white" aria-label="Toggle navigation" aria-expanded="false">?</button>
+      <button id="menu-toggle" class="sm:hidden text-2xl text-white" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <ul id="nav-links" class="hidden sm:flex sm:space-x-8 flex-col sm:flex-row absolute sm:static top-16 left-0 w-full sm:w-auto bg-black p-6 sm:p-0">
+        <li><a href="#home" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Home</a></li>
+        <li><a href="#shop" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Shop</a></li>
+        <li><a href="#why-used" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Why Used?</a></li>
+        <li><a href="#shipping-returns" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Shipping & Returns</a></li>
+        <li><a href="#contact-us" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Contact Us</a></li>
+        <li><a href="#cart" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Cart (<span id="cartárov
+
+System: To fulfill your request, I will modify the provided HTML to include multiple images for each product in the "Our Pre-Owned Collection" section and ensure that when a product is clicked, a high-resolution (1000x1000) image is displayed in the modal. The `data-details` attribute for each shoe will be updated to include three images per product, and the JavaScript will be adjusted to handle the display of high-resolution images in the modal. I'll focus on updating the shop section's product cards and the relevant JavaScript logic, keeping the rest of the code intact.
+
+Here’s the updated HTML with the requested changes:
+
+<xaiArtifact artifact_id="1f7691a0-2074-4aa6-860c-af1e24142028" artifact_version_id="a4bde467-dad3-44fd-ab2c-4bb9f59ba845" title="index.html" contentType="text/html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sneaker Bazaar - Pre-Owned Sneakers</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Anton&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+      color: #ffffff;
+      font-family: 'Poppins', sans-serif;
+      padding-top: 80px;
+    }
+    .animate-slide-up {
+      animation: slideUp 0.8s ease-out;
+    }
+    .animate-zoom-in {
+      transition: transform 0.3s ease;
+    }
+    .animate-zoom-in:hover {
+      transform: scale(1.03);
+    }
+    .thumbnail-hover {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .thumbnail-hover:hover {
+      transform: scale(1.15);
+      box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .thumbnail {
+      cursor: pointer;
+      opacity: 0.8;
+      transition: opacity 0.3s, border 0.3s;
+    }
+    .thumbnail:hover, .thumbnail.active {
+      opacity: 1;
+      border: 2px solid #3b82f6;
+    }
+    .shoe-card {
+      animation-delay: calc(var(--index) * 0.15s);
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+    .shoe-card.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .social-icon, .contact-icon {
+      width: 28px;
+      height: 28px;
+      fill: #ffffff;
+      transition: fill 0.3s ease, transform 0.3s ease;
+    }
+    .social-icon:hover, .contact-icon:hover {
+      fill: #ff4b4b;
+      transform: scale(1.2);
+    }
+    section {
+      scroll-margin-top: 80px;
+    }
+    .section-spacing {
+      margin-bottom: 2.5rem;
+    }
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 30;
+    }
+    .modal-content {
+      background: #1a1a1a;
+      padding: 2rem;
+      border-radius: 1rem;
+      max-width: 600px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 40;
+    }
+    .cart-button, .payment-button {
+      min-width: 48px;
+      min-height: 48px;
+      touch-action: manipulation;
+    }
+    .payment-button {
+      background-color: #ff4b4b;
+      color: #ffffff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-align: center;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .payment-button:hover {
+      background-color: #e03e3e;
+      transform: scale(1.05);
+    }
+    @media (max-width: 640px) {
+      .cart-item, .wishlist-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      .cart-button, .payment-button {
+        width: 100%;
+      }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .payment-options {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+    @media (min-width: 640px) {
+      .section-spacing {
+        margin-bottom: 4rem;
+      }
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .payment-options {
+        flex-direction: row;
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="bg-black p-4 fixed top-0 w-full z-20 shadow-xl">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl sm:text-3xl font-anton">
+        <span class="text-white">Sneaker</span>
+        <span class="text-red-500">Bazaar</span>
+      </h1>
+      <button id="menu-toggle" class="sm:hidden text-2xl text-white" aria-label="Toggle navigation" aria-expanded="false">☰</button>
       <ul id="nav-links" class="hidden sm:flex sm:space-x-8 flex-col sm:flex-row absolute sm:static top-16 left-0 w-full sm:w-auto bg-black p-6 sm:p-0">
         <li><a href="#home" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Home</a></li>
         <li><a href="#shop" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Shop</a></li>
@@ -212,28 +386,28 @@
       </div>
       <div id="shoe-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- Product Card 1 -->
-        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Nike Air Jordan 1s" data-brand="Nike" data-condition="Lightly Used" data-price="20000" data-rating="6/10" data-id="1" data-details='{"name":"Nike Air Jordan 1s","price":20000,"condition":"Lightly Used","rating":"6/10","description":"Iconic Air Jordan 1s with slight wear, ready for your collection.","images":[""]}'>
+        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Nike Air Jordan 1s" data-brand="Nike" data-condition="Lightly Used" data-price="20000" data-rating="6/10" data-id="1" data-details='{"name":"Nike Air Jordan 1s","price":20000,"condition":"Lightly Used","rating":"6/10","description":"Iconic Air Jordan 1s with slight wear, ready for your collection.","images":["https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80","https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80","https://images.unsplash.com/photo-1600185365926-40d762f7f9cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"]}'>
           <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Nike Air Jordan 1s" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
           <div class="p-6">
             <h3 class="text-lg font-semibold text-white text-center">Nike Air Jordan 1s</h3>
           </div>
         </div>
         <!-- Product Card 2 -->
-        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Qiaodan Basketball Sneaker" data-brand="Qiaodan" data-condition="Lightly Used" data-price="5000" data-rating="6/10" data-id="2" data-details='{"name":"Qiaodan Basketball Sneaker","price":5000,"condition":"Lightly Used","rating":"6/10","description":"Iconic Qiaodan Basketball Sneaker with slight wear, ready for your collection.","images":[""]}'>
+        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Qiaodan Basketball Sneaker" data-brand="Qiaodan" data-condition="Lightly Used" data-price="5000" data-rating="6/10" data-id="2" data-details='{"name":"Qiaodan Basketball Sneaker","price":5000,"condition":"Lightly Used","rating":"6/10","description":"Iconic Qiaodan Basketball Sneaker with slight wear, ready for your collection.","images":["https://images.unsplash.com/photo-1597045566899-1c824782e05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80","https://images.unsplash.com/photo-1612902376491-7c81d124d8c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80","https://images.unsplash.com/photo-1602872035108-4ae3e9b75e3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"]}'>
           <img src="https://images.unsplash.com/photo-1597045566899-1c824782e05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Qiaodan Basketball Sneaker" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
           <div class="p-6">
             <h3 class="text-lg font-semibold text-white text-center">Qiaodan Basketball Sneaker</h3>
           </div>
         </div>
-        <!-- Product Card 3: Quechua Forclaz Hiking Shoe -->
-        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Quechua Forclaz Hiking Shoe" data-brand="Quechua" data-condition="Good" data-price="10000" data-rating="8/10" data-id="3" data-details='{"name":"Quechua Forclaz Hiking Shoe","price":10000,"condition":"Good","rating":"8/10","description":"Rugged Quechua Forclaz hiking shoe in good condition, ready for your next adventure.","images":[""]}'>
+        <!-- Product Card 3 -->
+        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Quechua Forclaz Hiking Shoe" data-brand="Quechua" data-condition="Good" data-price="10000" data-rating="8/10" data-id="3" data-details='{"name":"Quechua Forclaz Hiking Shoe","price":10000,"condition":"Good","rating":"8/10","description":"Rugged Quechua Forclaz hiking shoe in good condition, ready for your next adventure.","images":["https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80","https://images.unsplash.com/photo-1544473244-f6895e69ad8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80","https://images.unsplash.com/photo-1600585152915-d208bec867a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"]}'>
           <img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Quechua Forclaz Hiking Shoe" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
           <div class="p-6">
             <h3 class="text-lg font-semibold text-white text-center">Quechua Forclaz Hiking Shoe</h3>
           </div>
         </div>
         <!-- Product Card 4 -->
-        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="New Balance 990v5" data-brand="New Balance" data-condition="Very Good" data-price="100" data-rating="8.5/10" data-id="4" data-details='{"name":"New Balance 990v5","price":100,"condition":"Very Good","rating":"8.5/10","description":"Comfortable 990v5s in excellent condition for everyday wear.","images":[""]}'>
+        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="New Balance 990v5" data-brand="New Balance" data-condition="Very Good" data-price="100" data-rating="8.5/10" data-id="4" data-details='{"name":"New Balance 990v5","price":100,"condition":"Very Good","rating":"8.5/10","description":"Comfortable 990v5s in excellent condition for everyday wear.","images":["https://images.unsplash.com/photo-1597045566899-1c824782e05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80","https://images.unsplash.com/photo-1600585153490-76fb20a0f2c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80","https://images.unsplash.com/photo-1600585152915-d208bec867a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"]}'>
           <img src="https://images.unsplash.com/photo-1597045566899-1c824782e05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="New Balance 990v5" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
           <div class="p-6">
             <h3 class="text-lg font-semibold text-white text-center">New Balance 990v5</h3>
@@ -364,7 +538,7 @@
 
   <!-- Back to Top Button -->
   <button id="back-to-top" class="fixed bottom-4 right-4 bg-red-500 text-white p-3 rounded-full hover:bg-red-600 hidden" aria-label="Back to top">
-    ?
+    ↑
   </button>
 
   <!-- Modal for Shoe Details -->
@@ -415,7 +589,7 @@
       const menuToggle = document.getElementById('menu-toggle');
       const isExpanded = !navLinks.classList.toggle('hidden');
       menuToggle.setAttribute('aria-expanded', isExpanded);
-      menuToggle.textContent = isExpanded ? '?' : '?';
+      menuToggle.textContent = isExpanded ? '✕' : '☰';
     });
 
     // Back to Top Button
@@ -459,11 +633,11 @@
         const priceDisplay = (id === 1 || id === 2 || id === 3) ? `${currency} ${price.toLocaleString()}` : `${currency}${price.toLocaleString()}`;
         modalContent.innerHTML = `
           <div class="relative">
-            <img src="${images[0]}" alt="${name}" class="w-full h-64 object-cover main-image rounded-xl" loading="lazy">
+            <img src="${images[0]}" alt="${name}" class="w-full h-64 object-contain main-image rounded-xl" loading="lazy">
           </div>
-          <div class="flex space-x-2 p-3 bg-gray-700 mt-2">
+          <div class="flex space-x-2 p-3 bg-gray-700 mt-2 justify-center">
             ${images.map((img, index) => `
-              <img src="${img.replace('w=500', 'w=100')}" class="w-14 h-14 object-cover thumbnail ${index === 0 ? 'active' : ''} thumbnail-hover rounded" onclick="changeImage(this, '${img}')" loading="lazy">
+              <img src="${img.replace('w=1000', 'w=100')}" class="w-14 h-14 object-cover thumbnail ${index === 0 ? 'active' : ''} thumbnail-hover rounded" onclick="changeImage(this, '${img}')" loading="lazy">
             `).join('')}
           </div>
           <div class="p-4">
@@ -475,7 +649,7 @@
             <p class="text-sm text-gray-400 mt-2">Size: US 7</p>
             <div class="flex space-x-2 mt-4">
               <button onclick="addToCart(${id}, '${name}', ${price})" class="cart-button flex-1 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">Add to Cart</button>
-              <button onclick="addToWishlist(${id}, '${name}', ${price})" class="cart-button bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-800">?</button>
+              <button onclick="addToWishlist(${id}, '${name}', ${price})" class="cart-button bg-gray-700 text-white px-4 py-2 rounded-lg hover:bg-gray-800">♥</button>
             </div>
           </div>
         `;
