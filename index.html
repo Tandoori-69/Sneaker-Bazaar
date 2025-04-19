@@ -92,10 +92,23 @@
       cursor: pointer;
       z-index: 40;
     }
-    .cart-button {
+    .cart-button, .payment-button {
       min-width: 48px;
       min-height: 48px;
       touch-action: manipulation;
+    }
+    .payment-button {
+      background-color: #ff4b4b;
+      color: #ffffff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      text-align: center;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .payment-button:hover {
+      background-color: #e03e3e;
+      transform: scale(1.05);
     }
     @media (max-width: 640px) {
       .cart-item, .wishlist-item {
@@ -103,13 +116,17 @@
         align-items: flex-start;
         gap: 1rem;
       }
-      .cart-button {
+      .cart-button, .payment-button {
         width: 100%;
       }
       .contact-item {
         display: flex;
         align-items: center;
         gap: 0.5rem;
+      }
+      .payment-options {
+        flex-direction: column;
+        gap: 1rem;
       }
     }
     @media (min-width: 640px) {
@@ -120,6 +137,10 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
+      }
+      .payment-options {
+        flex-direction: row;
+        gap: 1rem;
       }
     }
   </style>
@@ -299,7 +320,7 @@
           </a>
           <a href="https://wa.me/923201413504" target="_blank" class="hover:text-red-500" aria-label="Contact us on WhatsApp">
             <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12.04 2c-5.52 0-10 4.48-10 10 0 1.77.46 3.43 1.27 4.88L2 22l5.25-1.38c1.39.79 2.97 1.21 4.79 1.21 5.52 0 10-4.48 10-10s-4.48-10-10-10zm0 18.18c-1.5 0-2.97-.39-4.25-1.13l-.3-.17-3.12.82.83-3.04-.2-.31c-.79-1.25-1.21-2.7-1.21-4.19 0-4.58 3.73-8.31 8.31-8.31s8.31 3.73 8.31 8.31-3.73 8.31-8.31 8.31zm4.58-5.96c-.25-.12-1.47-.73-1.7-.81-.23-.08-.4-.12-.56.12-.16.24-.62.81-.77.97-.14.16-.28.18-.52.06-.25-.12-1.05-.39-2-1.24-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.01-.38.11-.50.11-.11.25-.28.37-.42.12-.14.16-.24.24-.40.08-.16.04-.30-.02-.42-.06-.12-.56-1.34-.77-1.83-.20-.48-.41-.41-.56-.42-.14-.01-.30-.01-.46-.01s-.42.06-.64.31c-.22.25-.85.83-.85 2.02s.87 2.34 1 2.50c.12.16 1.74 2.65 4.22 3.71.59.25 1.05.40 1.41.51.59.19 1.13.16 1.55.10.47-.07 1.47-.60 1.68-1.18.20-.58.20-1.08.14-1.18-.06-.10-.22-.16-.47-.28z"/>
+              <path d="M12.04 2c-5.52 0-10 4.48-10 10 0 1.77.46 3.43 1.27 4.88L2 22l5.25-1.38c1.39.79 2.97 1.21 4.79 1.21 5.52 0 10-4.48 10-10s-4.48-10-10-10zm0 18.18c-1.5 0-2.97-.39-4.25-1.13l-.3-.17-3.12.82.83-3.04-.2-.31c-.79-1.25-1.21-2.7-1.21-4.19 0-4.58 3.73-8.31 8.31-8.31s8.31 3.73 8.31 8.31-3.73 8.31-8.31 8.31zm4.58-5.96c-.25-.12-1.47-.73-1.7-.81-.23-.08-.40-.12-.56.12-.16.24-.62.81-.77.97-.14.16-.28.18-.52.06-.25-.12-1.05-.39-2-1.24-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.01-.38.11-.50.11-.11.25-.28.37-.42.12-.14.16-.24.24-.40.08-.16.04-.30-.02-.42-.06-.12-.56-1.34-.77-1.83-.20-.48-.41-.41-.56-.42-.14-.01-.30-.01-.46-.01s-.42.06-.64.31c-.22.25-.85.83-.85 2.02s.87 2.34 1 2.50c.12.16 1.74 2.65 4.22 3.71.59.25 1.05.40 1.41.51.59.19 1.13.16 1.55.10.47-.07 1.47-.60 1.68-1.18.20-.58.20-1.08.14-1.18-.06-.10-.22-.16-.47-.28z"/>
             </svg>
           </a>
         </div>
@@ -317,6 +338,35 @@
     <div class="modal-content">
       <button id="close-modal" class="close-modal text-white" aria-label="Close shoe details modal">×</button>
       <div id="modal-content-inner"></div>
+    </div>
+  </div>
+
+  <!-- Modal for Payment Options -->
+  <div id="payment-modal" class="modal hidden">
+    <div class="modal-content">
+      <button id="close-payment-modal" class="close-modal text-white" aria-label="Close payment options modal">×</button>
+      <div id="payment-content">
+        <h3 class="text-xl font-semibold text-white mb-4 text-center">Select Payment Method</h3>
+        <p class="text-base text-gray-300 mb-4 text-center">Total Amount: <span id="payment-total">$0</span></p>
+        <div class="payment-options flex justify-center mb-4">
+          <button id="jazzcash-button" class="payment-button">Pay with JazzCash</button>
+          <button id="easypaisa-button" class="payment-button">Pay with EasyPaisa</button>
+        </div>
+        <div id="payment-instructions" class="text-sm text-gray-400 hidden">
+          <p class="mb-2">Please send the total amount to <strong>03201413504</strong> using the selected payment method:</p>
+          <ul class="list-disc list-inside mb-4">
+            <li>Open the JazzCash/EasyPaisa app.</li>
+            <li>Select "Send Money" or "Payments."</li>
+            <li>Enter <strong>03201413504</strong> as the recipient.</li>
+            <li>Input the total amount shown above.</li>
+            <li>Confirm the transaction with your PIN (you’ll receive a confirmation SMS).</li>
+          </ul>
+          <p>After payment, please message us on <a href="https://wa.me/923201413504" class="text-red-500 hover:text-red-400" target="_blank">WhatsApp (03201413504)</a> or call <a href="tel:+923201413504" class="text-red-500 hover:text-red-400">03201413504</a> with your order details to confirm.</p>
+        </div>
+        <div class="text-center mt-4">
+          <button id="confirm-payment" class="payment-button hidden">Confirm Payment</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -343,13 +393,19 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Modal Close Button
+    // Modal Close Buttons
     document.getElementById('close-modal').addEventListener('click', closeShoeDetails);
+    document.getElementById('close-payment-modal').addEventListener('click', closePaymentModal);
 
-    // Close modal when clicking outside content
+    // Close modals when clicking outside content
     document.getElementById('shoe-modal').addEventListener('click', (e) => {
       if (e.target === document.getElementById('shoe-modal')) {
         closeShoeDetails();
+      }
+    });
+    document.getElementById('payment-modal').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('payment-modal')) {
+        closePaymentModal();
       }
     });
 
@@ -392,8 +448,17 @@
     function closeShoeDetails() {
       const modal = document.getElementById('shoe-modal');
       modal.classList.add('hidden');
-      // Clear modal content to prevent stale event listeners
       document.getElementById('modal-content-inner').innerHTML = '';
+    }
+
+    // Close Payment Modal
+    function closePaymentModal() {
+      const modal = document.getElementById('payment-modal');
+      modal.classList.add('hidden');
+      document.getElementById('payment-instructions').classList.add('hidden');
+      document.getElementById('confirm-payment').classList.add('hidden');
+      document.getElementById('jazzcash-button').classList.remove('hidden');
+      document.getElementById('easypaisa-button').classList.remove('hidden');
     }
 
     // Image Thumbnail Switcher
@@ -546,14 +611,38 @@
       document.getElementById('cart-count').textContent = '0';
     }
 
-    // Checkout (Simulated)
+    // Checkout with Payment Options
     function checkout() {
       if (cart.length === 0) {
         alert('Your cart is empty!');
         return;
       }
-      alert('Checkout successful! Thank you for your purchase.');
-      clearCart();
+      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      const modal = document.getElementById('payment-modal');
+      const paymentTotal = document.getElementById('payment-total');
+      paymentTotal.textContent = `$${total.toFixed(2)}`;
+      modal.classList.remove('hidden');
+
+      // Payment method buttons
+      document.getElementById('jazzcash-button').onclick = () => {
+        document.getElementById('payment-instructions').classList.remove('hidden');
+        document.getElementById('confirm-payment').classList.remove('hidden');
+        document.getElementById('jazzcash-button').classList.add('hidden');
+        document.getElementById('easypaisa-button').classList.add('hidden');
+      };
+      document.getElementById('easypaisa-button').onclick = () => {
+        document.getElementById('payment-instructions').classList.remove('hidden');
+        document.getElementById('confirm-payment').classList.remove('hidden');
+        document.getElementById('jazzcash-button').classList.add('hidden');
+        document.getElementById('easypaisa-button').classList.add('hidden');
+      };
+
+      // Confirm payment
+      document.getElementById('confirm-payment').onclick = () => {
+        alert('Payment submitted! Please check your JazzCash/EasyPaisa app for confirmation and contact us to verify.');
+        clearCart();
+        closePaymentModal();
+      };
     }
 
     // Add to Wishlist
@@ -664,7 +753,6 @@
         card.style.setProperty('--index', index);
       });
       updateShoeList();
-      // Initialize cart and wishlist counts
       document.getElementById('cart-count').textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
       document.getElementById('wishlist-count').textContent = wishlist.length;
     });
