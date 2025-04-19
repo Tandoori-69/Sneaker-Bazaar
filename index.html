@@ -82,6 +82,15 @@
       width: 90%;
       max-height: 90vh;
       overflow-y: auto;
+      position: relative;
+    }
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 40;
     }
     @media (min-width: 640px) {
       .section-spacing {
@@ -104,7 +113,6 @@
         <li><a href="#shop" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Shop</a></li>
         <li><a href="#why-used" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Why Used?</a></li>
         <li><a href="#shipping-returns" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Shipping & Returns</a></li>
-        <li><a href="#contact-us" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Contact Us</a></li>
         <li><a href="#cart" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Cart (<span id="cart-count">0</span>)</a></li>
         <li><a href="#wishlist" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Wishlist (<span id="wishlist-count">0</span>)</a></li>
       </ul>
@@ -121,37 +129,18 @@
     </div>
   </section>
 
+  <!-- Search Bar -->
+  <section class="py-8 bg-gray-900 animate-slide-up section-spacing">
+    <div class="container mx-auto px-4 flex justify-center">
+      <input type="text" id="search-bar" placeholder="Find your kicks..." class="w-full max-w-3xl p-4 border-2 border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-gray-800 text-white text-lg" aria-label="Search for sneakers">
+    </div>
+  </section>
+
   <!-- Shop Section -->
   <section id="shop" class="py-16 sm:py-24 bg-gray-900 animate-slide-up section-spacing">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl sm:text-4xl font-anton text-center mb-8 text-white">Our Pre-Owned Collection</h2>
       <p class="text-lg mb-12 text-gray-300 text-center max-w-2xl mx-auto font-medium">Explore our curated selection of pre-owned sneakers, each verified for quality and authenticity. Grab your favorite styles at unbeatable prices.</p>
-      <div class="mb-8">
-        <label for="search-bar" class="sr-only">Search for sneakers</label>
-        <input type="text" id="search-bar" placeholder="Find your kicks..." class="w-full max-w-3xl mx-auto p-4 border-2 border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-gray-800 text-white text-lg" aria-label="Search for sneakers">
-        <div id="filters" class="mt-6 flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0 justify-center">
-          <select id="brand-filter" class="p-2 bg-gray-700 text-white rounded">
-            <option value="">All Brands</option>
-            <option value="Nike">Nike</option>
-            <option value="Adidas">Adidas</option>
-            <option value="Puma">Puma</option>
-            <option value="New Balance">New Balance</option>
-          </select>
-          <select id="condition-filter" class="p-2 bg-gray-700 text-white rounded">
-            <option value="">All Conditions</option>
-            <option value="Like New">Like New</option>
-            <option value="Very Good">Very Good</option>
-            <option value="Good">Good</option>
-            <option value="Lightly Used">Lightly Used</option>
-          </select>
-          <select id="price-filter" class="p-2 bg-gray-700 text-white rounded">
-            <option value="">All Prices</option>
-            <option value="0-100">$0 - $100</option>
-            <option value="100-150">$100 - $150</option>
-            <option value="150+">$150+</option>
-          </select>
-        </div>
-      </div>
       <div id="shoe-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- Product Card 1 -->
         <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in animate-slide-up" data-name="Nike Air Jordan 1" data-brand="Nike" data-condition="Lightly Used" data-price="120" data-rating="8/10" onclick="showShoeDetails(1, 'Nike Air Jordan 1', 120, 'Lightly Used', '8/10', 'Iconic Air Jordan 1s with slight wear, ready for your collection.', ['https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60', 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60', 'https://images.unsplash.com/photo-1543508282-6319a3e26236?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60'])">
@@ -257,49 +246,35 @@
     </div>
   </section>
 
-  <!-- Contact Us Section -->
-  <section id="contact-us" class="py-16 bg-gray-900 animate-slide-up section-spacing">
+  <!-- Footer with Contact Info -->
+  <footer class="bg-black text-white py-8 border-t border-gray-800">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl sm:text-4xl font-anton text-center mb-8 text-white">Contact Us</h2>
-      <div class="max-w-lg mx-auto bg-gray-800 p-8 rounded-xl shadow-xl border border-gray-700 text-white">
-        <p class="text-lg font-semibold mb-2">Address:</p>
-        <p class="text-base mb-4">456 Kicks Avenue, Sneaker Town, ST 67890, USA</p>
-        <p class="text-lg font-semibold mb-2">Phone:</p>
-        <p class="text-base mb-4"><a href="tel:+1-800-555-6789" class=" Metamorphosis: The Evolution of Sneaker Culture</a></p>
-        <p class="text-lg font-semibold mb-2">Business Hours:</p>
-        <p class="text-base mb-4">Monday - Friday: 8 AM - 6 PM<br>Saturday: 9 AM - 3 PM<br>Sunday: Closed</p>
-        <p class="text-base">Questions about our pre-owned sneakers? Call us or hit us up on social media for fast replies!</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-black text-white py-8">
-    <div class="container mx-auto text-center px-4">
-      <p class="text-base font-anton">© 2025 KicksVault. All rights reserved.</p>
-      <div class="flex justify-center space-x-6 mt-4">
-        <a href="https://facebook.com" class="hover:text-red-500" aria-label="Visit our Facebook page">
-          <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96 0 4.95 3.62 9.06 8.36 9.81v-6.94h-2.52v-2.87h2.52v-2.18c0-2.5 1.49-3.87 3.77-3.87 1.09 0 2.23.19 2.23.19v2.46h-1.26c-1.24 0-1.62.77-1.62 1.56v1.84h2.76l-.44 2.87h-2.32v6.94c4.74-.75 8.36-4.86 8.36-9.81 0-5.5-4.46-9.96-9.96-9.96z"/>
-          </svg>
-        </a>
-        <a href="https://instagram.com" class="hover:text-red-500" aria-label="Visit our Instagram page">
-          <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2.16c3.21 0 3.58.01 4.85.07 1.17.06 1.81.25 2.23.42.56.22.96.49 1.38.91.42.42.69.82.91 1.38.17.42.36 1.06.42 2.23.06 1.27.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.06 1.17-.25 1.81-.42 2.23-.22.56-.49.96-.91 1.38-.42.42-.82.69-1.38.91-.42.17-1.06.36-2.23.42-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.06-1.81-.25-2.23-.42-.56-.22-.96-.49-1.38-.91-.42-.42-.69-.82-.91-1.38-.17-.42-.36-1.06-.42-2.23-.06-1.27-.07-1.64-.07-4.85s.01-3.58.07-4.85c.06-1.17.25-1.81.42-2.23.22-.56.49-.96.91-1.38.42-.42.82-.69 1.38-.91.42-.17 1.06-.36 2.23-.42 1.27-.06 1.64-.07 4.85-.07zm0-2.16c-3.25 0-3.66.01-4.94.07-1.29.06-2.17.26-2.94.56-.8.31-1.48.73-2.15 1.4-.67.67-1.09 1.35-1.4 2.15-.3.77-.5 1.65-.56 2.94-.06 1.28-.07 1.69-.07 4.94s.01 3.66.07 4.94c.06 1.29.26 2.17.56 2.94.31.8.73 1.48 1.4 2.15.67.67 1.35 1.09 2.15 1.4.77.3 1.65.5 2.94.56 1.28.06 1.69.07 4.94.07s3.66-.01 4.94-.07c1.29-.06 2.17-.26 2.94-.56.8-.31 1.48-.73 2.15-1.4.67-.67 1.09-1.35 1.4-2.15.3-.77.5-1.65.56-2.94.06-1.28.07-1.69.07-4.94s-.01-3.66-.07-4.94c-.06-1.29-.26-2.17-.56-2.94-.31-.8-.73-1.48-1.4-2.15-.67-.67-1.35-1.09-2.15-1.4-.77-.3-1.65-.5-2.94-.56-1.28-.06-1.69-.07-4.94-.07zm0 5.83c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 9.83c-2.1 0-3.83-1.73-3.83-3.83s1.73-3.83 3.83-3.83 3.83 1.73 3.83 3.83-1.73 3.83-3.83 3.83zm6.26-9.66c0 .78-.63 1.41-1.41 1.41s-1.41-.63-1.41-1.41.63-1.41 1.41-1.41 1.41.63 1.41 1.41z"/>
-          </svg>
-        </a>
-        <a href="https://whatsapp.com" class="hover:text-red-500" aria-label="Contact us on WhatsApp">
-          <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12.04 2c-5.52 0-10 4.48-10 10 0 1.77.46 3.43 1.27 4.88L2 22l5.25-1.38c1.39.79 2.97 1.21 4.79 1.21 5.52 0 10-4.48 10-10s-4.48-10-10-10zm0 18.18c-1.5 0-2.97-.39-4.25-1.13l-.3-.17-3.12.82.83-3.04-.2-.31c-.79-1.25-1.21-2.7-1.21-4.19 0-4.58 3.73-8.31 8.31-8.31s8.31 3.73 8.31 8.31-3.73 8.31-8.31 8.31zm4.58-5.96c-.25-.12-1.47-.73-1.7-.81-.23-.08-.4-.12-.56.12-.16.24-.62.81-.77.97-.14.16-.28.18-.52.06-.25-.12-1.05-.39-2-1.24-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.01-.38.11-.50.11-.11.25-.28.37-.42.12-.14.16-.24.24-.40.08-.16.04-.30-.02-.42-.06-.12-.56-1.34-.77-1.83-.20-.48-.41-.41-.56-.42-.14-.01-.30-.01-.46-.01s-.42.06-.64.31c-.22.25-.85.83-.85 2.02s.87 2.34 1 2.50c.12.16 1.74 2.65 4.22 3.71.59.25 1.05.40 1.41.51.59.19 1.13.16 1.55.10.47-.07 1.47-.60 1.68-1.18.20-.58.20-1.08.14-1.18-.06-.10-.22-.16-.47-.28z"/>
-          </svg>
-        </a>
-      </div>
-      <div class="mt-6">
-        <h3 class="text-lg font-anton mb-4">Subscribe to Our Newsletter</h3>
-        <form class="max-w-md mx-auto flex">
-          <input type="email" id="newsletter-email" placeholder="Enter your email" class="flex-1 p-2 border-2 border-gray-700 rounded-l-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-red-500" required>
-          <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-r-lg hover:bg-red-600">Subscribe</button>
-        </form>
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <p class="text-base font-anton">© 2025 KicksVault. All rights reserved.</p>
+        </div>
+        <div class="text-center mb-4 md:mb-0">
+          <h3 class="text-lg font-semibold mb-2">Contact Us</h3>
+          <p class="text-sm">456 Kicks Avenue, Sneaker Town</p>
+          <p class="text-sm"><a href="tel:+1-800-555-6789" class="text-red-500 hover:text-red-400">+1-800-555-6789</a></p>
+        </div>
+        <div class="flex justify-center space-x-6">
+          <a href="https://facebook.com" class="hover:text-red-500" aria-label="Visit our Facebook page">
+            <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96 0 4.95 3.62 9.06 8.36 9.81v-6.94h-2.52v-2.87h2.52v-2.18c0-2.5 1.49-3.87 3.77-3.87 1.09 0 2.23.19 2.23.19v2.46h-1.26c-1.24 0-1.62.77-1.62 1.56v1.84h2.76l-.44 2.87h-2.32v6.94c4.74-.75 8.36-4.86 8.36-9.81 0-5.5-4.46-9.96-9.96-9.96z"/>
+            </svg>
+          </a>
+          <a href="https://instagram.com" class="hover:text-red-500" aria-label="Visit our Instagram page">
+            <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2.16c3.21 0 3.58.01 4.85.07 1.17.06 1.81.25 2.23.42.56.22.96.49 1.38.91.42.42.69.82.91 1.38.17.42.36 1.06.42 2.23.06 1.27.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.06 1.17-.25 1.81-.42 2.23-.22.56-.49.96-.91 1.38-.42.42-.82.69-1.38.91-.42.17-1.06.36-2.23.42-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.06-1.81-.25-2.23-.42-.56-.22-.96-.49-1.38-.91-.42-.42-.69-.82-.91-1.38-.17-.42-.36-1.06-.42-2.23-.06-1.27-.07-1.64-.07-4.85s.01-3.58.07-4.85c.06-1.17.25-1.81.42-2.23.22-.56.49-.96.91-1.38.42-.42.82-.69 1.38-.91.42-.17 1.06-.36 2.23-.42 1.27-.06 1.64-.07 4.85-.07zm0-2.16c-3.25 0-3.66.01-4.94.07-1.29.06-2.17.26-2.94.56-.8.31-1.48.73-2.15 1.4-.67.67-1.09 1.35-1.4 2.15-.3.77-.5 1.65-.56 2.94-.06 1.28-.07 1.69-.07 4.94s.01 3.66.07 4.94c.06 1.29.26 2.17.56 2.94.31.8.73 1.48 1.4 2.15.67.67 1.35 1.09 2.15 1.4.77.3 1.65.5 2.94.56 1.28.06 1.69.07 4.94.07s3.66-.01 4.94-.07c1.29-.06 2.17-.26 2.94-.56.8-.31 1.48-.73 2.15-1.4.67-.67 1.09-1.35 1.4-2.15.3-.77.5-1.65.56-2.94.06-1.28.07-1.69.07-4.94s-.01-3.66-.07-4.94c-.06-1.29-.26-2.17-.56-2.94-.31-.8-.73-1.48-1.4-2.15-.67-.67-1.35-1.09-2.15-1.4-.77-.3-1.65-.5-2.94-.56-1.28-.06-1.69-.07-4.94-.07zm0 5.83c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 9.83c-2.1 0-3.83-1.73-3.83-3.83s1.73-3.83 3.83-3.83 3.83 1.73 3.83 3.83-1.73 3.83-3.83 3.83zm6.26-9.66c0 .78-.63 1.41-1.41 1.41s-1.41-.63-1.41-1.41.63-1.41 1.41-1.41 1.41.63 1.41 1.41z"/>
+            </svg>
+          </a>
+          <a href="https://whatsapp.com" class="hover:text-red-500" aria-label="Contact us on WhatsApp">
+            <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12.04 2c-5.52 0-10 4.48-10 10 0 1.77.46 3.43 1.27 4.88L2 22l5.25-1.38c1.39.79 2.97 1.21 4.79 1.21 5.52 0 10-4.48 10-10s-4.48-10-10-10zm0 18.18c-1.5 0-2.97-.39-4.25-1.13l-.3-.17-3.12.82.83-3.04-.2-.31c-.79-1.25-1.21-2.7-1.21-4.19 0-4.58 3.73-8.31 8.31-8.31s8.31 3.73 8.31 8.31-3.73 8.31-8.31 8.31zm4.58-5.96c-.25-.12-1.47-.73-1.7-.81-.23-.08-.4-.12-.56.12-.16.24-.62.81-.77.97-.14.16-.28.18-.52.06-.25-.12-1.05-.39-2-1.24-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.01-.38.11-.50.11-.11.25-.28.37-.42.12-.14.16-.24.24-.40.08-.16.04-.30-.02-.42-.06-.12-.56-1.34-.77-1.83-.20-.48-.41-.41-.56-.42-.14-.01-.30-.01-.46-.01s-.42.06-.64.31c-.22.25-.85.83-.85 2.02s.87 2.34 1 2.50c.12.16 1.74 2.65 4.22 3.71.59.25 1.05.40 1.41.51.59.19 1.13.16 1.55.10.47-.07 1.47-.60 1.68-1.18.20-.58.20-1.08.14-1.18-.06-.10-.22-.16-.47-.28z"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </footer>
@@ -312,7 +287,7 @@
   <!-- Modal for Shoe Details -->
   <div id="shoe-modal" class="modal hidden">
     <div class="modal-content">
-      <button onclick="closeShoeDetails()" class="float-right text-white text-2xl">&times;</button>
+      <button id="close-modal" class="close-modal text-white">&times;</button>
       <div id="modal-content-inner"></div>
     </div>
   </div>
@@ -340,6 +315,16 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
+    // Modal Close Button
+    document.getElementById('close-modal').addEventListener('click', closeShoeDetails);
+
+    // Close modal when clicking outside content
+    document.getElementById('shoe-modal').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('shoe-modal')) {
+        closeShoeDetails();
+      }
+    });
+
     // Show Shoe Details
     function showShoeDetails(id, name, price, condition, rating, description, images) {
       const modal = document.getElementById('shoe-modal');
@@ -355,7 +340,7 @@
         </div>
         <div class="p-4">
           <h3 class="text-xl font-semibold text-white mb-2">${name}</h3>
-          <p class="text-red-500 font-bold">${price}</p>
+          <p class="text-red-500 font-bold">$${price}</p>
           <p class="text-sm text-gray-400">Condition: ${condition}</p>
           <p class="text-sm text-gray-400">Rating: ${rating}</p>
           <p class="text-sm text-gray-400 font-medium mt-2">${description}</p>
@@ -503,50 +488,14 @@
       document.getElementById('wishlist').classList.add('hidden');
     }
 
-    // Search and Filter Functionality
-    function applyFilters() {
-      const searchTerm = document.getElementById('search-bar').value.toLowerCase();
-      const brandFilter = document.getElementById('brand-filter').value;
-      const conditionFilter = document.getElementById('condition-filter').value;
-      const priceFilter = document.getElementById('price-filter').value;
+    // Search Functionality
+    document.getElementById('search-bar').addEventListener('input', function(e) {
+      const searchTerm = e.target.value.toLowerCase();
       const shoeCards = document.querySelectorAll('.shoe-card');
-
       shoeCards.forEach(card => {
-        card.style.opacity = '0.5';
-        setTimeout(() => {
-          const name = card.getAttribute('data-name').toLowerCase();
-          const brand = card.getAttribute('data-brand');
-          const condition = card.getAttribute('data-condition');
-          const price = parseFloat(card.getAttribute('data-price'));
-
-          const matchesSearch = searchTerm ? name.includes(searchTerm) : true;
-          const matchesBrand = brandFilter ? brand === brandFilter : true;
-          const matchesCondition = conditionFilter ? condition === conditionFilter : true;
-          let matchesPrice = true;
-          if (priceFilter) {
-            const [min, max] = priceFilter.split('-').map(Number);
-            matchesPrice = max ? price >= min && price <= max : price >= min;
-          }
-
-          card.style.display = matchesSearch && matchesBrand && matchesCondition && matchesPrice ? 'block' : 'none';
-          card.style.opacity = '1';
-        }, 100);
+        const name = card.getAttribute('data-name').toLowerCase();
+        card.style.display = name.includes(searchTerm) ? 'block' : 'none';
       });
-    }
-
-    document.getElementById('search-bar').addEventListener('input', applyFilters);
-    document.getElementById('brand-filter').addEventListener('change', applyFilters);
-    document.getElementById('condition-filter').addEventListener('change', applyFilters);
-    document.getElementById('price-filter').addEventListener('change', applyFilters);
-
-    // Newsletter Signup (Simulated)
-    document.querySelector('footer form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = document.getElementById('newsletter-email').value;
-      if (email) {
-        alert('Thank you for subscribing!');
-        document.getElementById('newsletter-email').value = '';
-      }
     });
 
     // Initialize Animations and State
