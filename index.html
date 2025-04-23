@@ -149,7 +149,7 @@
       color: #ffffff;
       z-index: 1100;
     }
-    .cart-button, .payment-button {
+    .buy-now-button, .payment-button {
       min-width: 48px;
       min-height: 48px;
       touch-action: manipulation;
@@ -168,18 +168,13 @@
       transform: scale(1.05);
     }
     @media (max-width: 640px) {
-      .cart-item, .wishlist-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-      }
-      .cart-button, .payment-button {
-        width: 100%;
-      }
       .contact-item {
         display: flex;
         align-items: center;
         gap: 0.5rem;
+      }
+      .buy-now-button, .payment-button {
+        width: 100%;
       }
       .payment-options {
         flex-direction: column;
@@ -217,8 +212,6 @@
         <li><a href="#why-used" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Why Used?</a></li>
         <li><a href="#shipping-returns" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Shipping & Returns</a></li>
         <li><a href="#contact-us" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Contact Us</a></li>
-        <li><a href="#cart" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Cart (<span id="cart-count">0</span>)</a></li>
-        <li><a href="#wishlist" class="hover:text-red-500 block py-2 sm:py-0 text-white text-lg">Wishlist (<span id="wishlist-count">0</span>)</a></li>
       </ul>
     </div>
   </nav>
@@ -297,7 +290,7 @@
             <img src="https://images.unsplash.com/photo-1597045566899-1c824782e05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=960&h=1280&q=80" alt="Qiaodan Basketball Sneaker" loading="lazy">
           </div>
           <div class="p-6">
-            <h3 class="text-lg font-semibold text-white text-center">Qiaodan Basketball Sneaker</h3>
+            <h3 class="text-lg font-semibold text-white text картины">Qiaodan Basketball Sneaker</h3>
           </div>
         </div>
         <!-- Product Card: Quechua Forclaz Hiking Shoe -->
@@ -491,16 +484,11 @@
 
   <!-- JavaScript for Functionality -->
   <script>
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-
     // Ensure modals are hidden on load
     document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('shoe-modal').classList.add('hidden');
       document.getElementById('payment-modal').classList.add('hidden');
       document.getElementById('thank-you-modal').classList.add('hidden');
-      updateCart();
-      updateWishlist();
     });
 
     // Hamburger Menu Toggle
@@ -579,9 +567,8 @@
             <p class="text-sm text-gray-400">Rating: ${rating}</p>
             <p class="text-sm text-gray-400 font-medium mt-2">${description}</p>
             <p class="text-sm text-gray-400 mt-2">Size: ${size}</p>
-            <div class="flex space-x-4 mt-4">
-              <button onclick="addToCart(${id}, '${name}', ${price}, '${size}')" class="cart-button w-full bg-red-500 text-white px-6 py-3 text-lg rounded-full hover:bg-red-600">Add to Cart</button>
-              <button onclick="addToWishlist(${id}, '${name}', ${price})" class="cart-button w-full bg-gray-600 text-white px-6 py-3 text-lg rounded-full hover:bg-gray-700">♥</button>
+            <div class="mt-4 text-center">
+              <button onclick="buyNow(${id}, '${name}', ${price}, '${size}')" class="buy-now-button w-full bg-red-500 text-white px-6 py-3 text-lg rounded-full hover:bg-red-600">Buy Now</button>
             </div>
           </div>
         `;
@@ -641,166 +628,12 @@
       thumbnail.classList.add('active');
     };
 
-    // Create Cart Section
-    function createCartSection() {
-      let cartSection = document.getElementById('cart');
-      if (!cartSection) {
-        cartSection = document.createElement('section');
-        cartSection.id = 'cart';
-        cartSection.className = 'py-12 bg-gray-900 animate-slide-up section-spacing';
-        cartSection.innerHTML = `
-          <div class="container mx-auto px-4">
-            <h2 class="text-3xl sm:text-4xl font-anton text-center mb-8 text-white">Your Cart</h2>
-            <div id="cart-items" class="space-y-4">
-              <p class="text-center text-gray-400" id="cart-empty">Your cart is empty.</p>
-            </div>
-            <p id="cart-total" class="text-xl font-semibold text-center mt-8 text-white">Total: PKR 0</p>
-            <div class="text-center mt-8 flex flex-col sm:flex-row sm:justify-center sm:space-x-4 space-y-4 sm:space-y-0">
-              <button onclick="checkout()" class="cart-button bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600">Checkout</button>
-              <button onclick="clearCart()" class="cart-button bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-gray-800">Clear Cart</button>
-            </div>
-          </div>
-        `;
-        const shopSection = document.getElementById('shop');
-        shopSection.insertAdjacentElement('afterend', cartSection);
-      }
-      return cartSection;
-    }
-
-    // Create Wishlist Section
-    function createWishlistSection() {
-      let wishlistSection = document.getElementById('wishlist');
-      if (!wishlistSection) {
-        wishlistSection = document.createElement('section');
-        wishlistSection.id = 'wishlist';
-        wishlistSection.className = 'py-12 bg-gray-900 animate-slide-up section-spacing';
-        wishlistSection.innerHTML = `
-          <div class="container mx-auto px-4">
-            <h2 class="text-3xl sm:text-4xl font-anton text-center mb-8 text-white">Your Wishlist</h2>
-            <div id="wishlist-items" class="space-y-4">
-              <p class="text-center text-gray-400" id="wishlist-empty">Your wishlist is empty.</p>
-            </div>
-            <div class="text-center mt-8">
-              <button onclick="clearWishlist()" class="cart-button bg-gray-700 text-white px-6 py-3 rounded-lg hover:bg-gray-800">Clear Wishlist</button>
-            </div>
-          </div>
-        `;
-        const cartSection = document.getElementById('cart');
-        const shopSection = document.getElementById('shop');
-        if (cartSection) {
-          cartSection.insertAdjacentElement('afterend', wishlistSection);
-        } else {
-          shopSection.insertAdjacentElement('afterend', wishlistSection);
-        }
-      }
-      return wishlistSection;
-    }
-
-    // Add to Cart
-    function addToCart(id, name, price, size) {
-      const existingItem = cart.find(item => item.id === id && item.size === size);
-      if (existingItem) {
-        existingItem.quantity += 1;
-      } else {
-        cart.push({ id, name, price, size, quantity: 1 });
-      }
+    // Buy Now Functionality
+    function buyNow(id, name, price, size) {
       closeShoeDetails();
-      const cartSection = createCartSection();
-      updateCart();
-      cartSection.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Update Quantity
-    function updateQuantity(id, size, delta) {
-      const item = cart.find(item => item.id === id && item.size === size);
-      if (item) {
-        item.quantity = Math.max(1, item.quantity + delta);
-        updateCart();
-      }
-    }
-
-    // Remove from Cart
-    function removeFromCart(id, size) {
-      cart = cart.filter(item => !(item.id === id && item.size === size));
-      updateCart();
-      if (cart.length === 0) {
-        const cartSection = document.getElementById('cart');
-        if (cartSection) cartSection.remove();
-      }
-    }
-
-    // Update Cart Display
-    function updateCart() {
-      const cartCount = document.getElementById('cart-count');
-      cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-      if (cart.length === 0) {
-        const cartSection = document.getElementById('cart');
-        if (cartSection) cartSection.remove();
-        return;
-      }
-      const cartSection = createCartSection();
-      const cartItems = document.getElementById('cart-items');
-      const cartEmpty = document.getElementById('cart-empty');
-      const cartTotal = document.getElementById('cart-total');
-
-      cartItems.innerHTML = '';
-      let totalPKR = 0;
-      cart.forEach(item => {
-        const itemPrice = item.price * item.quantity;
-        const priceDisplay = `PKR ${itemPrice.toLocaleString()}`;
-        totalPKR += itemPrice;
-        const itemElement = document.createElement('div');
-        itemElement.className = 'cart-item flex justify-between items-center p-4 bg-gray-800 rounded-lg shadow-md border border-gray-700 animate-slide-up';
-        itemElement.innerHTML = `
-          <span class="text-base text-white">${item.name} (Size: ${item.size})</span>
-          <div class="flex items-center space-x-2">
-            <button onclick="updateQuantity(${item.id}, '${item.size}', -1)" class="cart-button bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700">-</button>
-            <span class="text-base text-white">x${item.quantity}</span>
-            <button onclick="updateQuantity(${item.id}, '${item.size}', 1)" class="cart-button bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700">+</button>
-          </div>
-          <span class="text-base text-white">${priceDisplay}</span>
-          <button onclick="removeFromCart(${item.id}, '${item.size}')" class="cart-button bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">Remove</button>
-        `;
-        cartItems.appendChild(itemElement);
-      });
-
-      cartEmpty.style.display = cart.length === 0 ? 'block' : 'none';
-      cartTotal.textContent = `Total: PKR ${totalPKR.toLocaleString()}`;
-
-      try {
-        localStorage.setItem('cart', JSON.stringify(cart));
-      } catch (e) {
-        console.error('Local storage error:', e);
-        alert('Unable to save cart due to storage limitations.');
-      }
-    }
-
-    // Clear Cart
-    function clearCart() {
-      cart = [];
-      try {
-        localStorage.removeItem('cart');
-      } catch (e) {
-        console.error('Local storage error:', e);
-      }
-      const cartSection = document.getElementById('cart');
-      if (cartSection) cartSection.remove();
-      document.getElementById('cart-count').textContent = '0';
-    }
-
-    // Checkout with Payment Options
-    function checkout() {
-      if (cart.length === 0) {
-        alert('Your cart is empty!');
-        return;
-      }
-      let totalPKR = 0;
-      cart.forEach(item => {
-        totalPKR += item.price * item.quantity;
-      });
       const modal = document.getElementById('payment-modal');
       const paymentTotal = document.getElementById('payment-total');
-      paymentTotal.textContent = `PKR ${totalPKR.toLocaleString()}`;
+      paymentTotal.textContent = `PKR ${price.toLocaleString()}`;
       modal.classList.remove('hidden');
 
       document.getElementById('jazzcash-button').onclick = () => {
@@ -818,87 +651,9 @@
 
       const confirmButton = document.getElementById('confirm-payment');
       confirmButton.onclick = () => {
-        clearCart();
         closePaymentModal();
         openThankYouModal();
       };
-    }
-
-    // Add to Wishlist
-    function addToWishlist(id, name, price) {
-      if (!wishlist.find(item => item.id === id)) {
-        wishlist.push({ id, name, price });
-        closeShoeDetails();
-        const wishlistSection = createWishlistSection();
-        updateWishlist();
-        wishlistSection.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        closeShoeDetails();
-        const wishlistSection = document.getElementById('wishlist');
-        if (wishlistSection) {
-          updateWishlist();
-          wishlistSection.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    }
-
-    // Remove from Wishlist
-    function removeFromWishlist(id) {
-      wishlist = wishlist.filter(item => item.id !== id);
-      updateWishlist();
-      if (wishlist.length === 0) {
-        const wishlistSection = document.getElementById('wishlist');
-        if (wishlistSection) wishlistSection.remove();
-      }
-    }
-
-    // Update Wishlist Display
-    function updateWishlist() {
-      const wishlistCount = document.getElementById('wishlist-count');
-      wishlistCount.textContent = wishlist.length;
-      if (wishlist.length === 0) {
-        const wishlistSection = document.getElementById('wishlist');
-        if (wishlistSection) wishlistSection.remove();
-        return;
-      }
-      const wishlistSection = createWishlistSection();
-      const wishlistItems = document.getElementById('wishlist-items');
-      const wishlistEmpty = document.getElementById('wishlist-empty');
-
-      wishlistItems.innerHTML = '';
-      wishlist.forEach(item => {
-        const priceDisplay = `PKR ${item.price.toLocaleString()}`;
-        const itemElement = document.createElement('div');
-        itemElement.className = 'wishlist-item flex justify-between items-center p-4 bg-gray-800 rounded-lg shadow-md border border-gray-700 animate-slide-up';
-        itemElement.innerHTML = `
-          <span class="text-base text-white">${item.name}</span>
-          <span class="text-base text-white">${priceDisplay}</span>
-          <button onclick="removeFromWishlist(${item.id})" class="cart-button bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">Remove</button>
-        `;
-        wishlistItems.appendChild(itemElement);
-      });
-
-      wishlistEmpty.style.display = wishlist.length === 0 ? 'block' : 'none';
-
-      try {
-        localStorage.setItem('wishlist', JSON.stringify(wishlist));
-      } catch (e) {
-        console.error('Local storage error:', e);
-        alert('Unable to save wishlist due to storage limitations.');
-      }
-    }
-
-    // Clear Wishlist
-    function clearWishlist() {
-      wishlist = [];
-      try {
-        localStorage.removeItem('wishlist');
-      } catch (e) {
-        console.error('Local storage error:', e);
-      }
-      const wishlistSection = document.getElementById('wishlist');
-      if (wishlistSection) wishlistSection.remove();
-      document.getElementById('wishlist-count').textContent = '0';
     }
 
     // Filter and Search Functionality
