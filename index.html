@@ -81,7 +81,7 @@
     .card-image-wrapper img {
       position: absolute;
       top: 0;
-      left: тестировался0;
+      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -98,15 +98,9 @@
     }
     .shoe-card img {
       width: 100%;
-      height: auto; /* Remove fixed height to respect aspect ratio */
+      height: auto;
       object-fit: cover;
       border-radius: 0.75rem 0.75rem 0 0;
-    }
-    .shoe-card.jordan {
-      height: auto;
-    }
-    .shoe-card.jordan img {
-      border-radius: 0;
     }
     .social-icon, .contact-icon {
       width: 28px;
@@ -250,7 +244,6 @@
         <select id="filter-name" class="w-full sm:w-1/3 p-4 border-2 border-gray-700 rounded-lg bg-gray-800 text-white text-lg focus:outline-none focus:ring-2 focus:ring-red-500" aria-label="Filter by shoe name">
           <option value="">All Shoes</option>
           <option value="Allbirds Women's Wool Runners">Allbirds Women's Wool Runners</option>
-          <option value="Allbirds Women's Wool Runners (Beige)">Allbirds Women's Wool Runners (Beige)</option>
           <option value="Merrell Unlimited Hiking Shoes">Merrell Unlimited Hiking Shoes</option>
           <option value="Nike Air Jordan 1s">Nike Air Jordan 1s</option>
           <option value="Qiaodan Basketball Sneaker">Qiaodan Basketball Sneaker</option>
@@ -280,15 +273,6 @@
             <h3 class="text-lg font-semibold text-white text-center">Allbirds Women's Wool Runners</h3>
           </div>
         </div>
-        <!-- Product Card: Allbirds Women's Wool Runners (Beige) -->
-        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Allbirds Women's Wool Runners (Beige)" data-brand="Allbirds" data-condition="Lightly Used" data-price="20000" data-rating="6/10" data-id="6" data-details='{"name":"Allbirds Women''s Wool Runners (Beige)","price":20000,"condition":"Lightly Used","rating":"6/10","description":"Allbirds Women''s Wool Runners in beige, made from sustainable merino wool. Lightly used with visible wear and dirt marks, but still comfortable and stylish for casual wear.","images":["https://images.unsplash.com/photo-1595957884097-2a4f532b98ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=960&h=1280&q=80","https://images.unsplash.com/photo-1607522370275-f14206abe5d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=960&h=1280&q=80","https://images.unsplash.com/photo-1605733160314-4fc7dac4bb16?ixlib=rb-4.0.3&auto=format&fit=crop&w=960&h=1280&q=80"]}'>
-          <div class="card-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1595957884097-2a4f532b98ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=960&h=1280&q=80" alt="Allbirds Women's Wool Runners (Beige)" loading="lazy">
-          </div>
-          <div class="p-6">
-            <h3 class="text-lg font-semibold text-white text-center">Allbirds Women's Wool Runners (Beige)</h3>
-          </div>
-        </div>
         <!-- Product Card: Merrell Unlimited Hiking Shoes -->
         <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Merrell Unlimited Hiking Shoes" data-brand="Merrell" data-condition="Good" data-price="20000" data-rating="7/10" data-id="5" data-details='{"name":"Merrell Unlimited Hiking Shoes","price":20000,"condition":"Good","rating":"7/10","description":"Rugged Merrell Unlimited hiking shoes with a durable Vibram sole, in good condition for your next outdoor adventure.","images":["https://i.imghippo.com/files/ycE7161FM.jpg?auto=format&fit=crop&w=960&h=1280&q=80","https://i.imghippo.com/files/OZnE2107uw.jpg?auto=format&fit=crop&w=960&h=1280&q=80","https://i.imghippo.com/files/ehi1756Zg.jpg?auto=format&fit=crop&w=960&h=1280&q=80","https://i.imghippo.com/files/Kwl3936RYc.jpg?auto=format&fit=crop&w=960&h=1280&q=80","https://i.imghippo.com/files/Gkm7664op.jpg?auto=format&fit=crop&w=960&h=1280&q=80","https://i.imghippo.com/files/IYnK5009Q.jpg?auto=format&fit=crop&w=960&h=1280&q=80"]}'>
           <div class="card-image-wrapper">
@@ -299,7 +283,7 @@
           </div>
         </div>
         <!-- Product Card: Nike Air Jordan 1s -->
-        <div class="shoe-card jordan bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Nike Air Jordan 1s" data-brand="Nike" data-condition="Lightly Used" data-price="35000" data-rating="6/10" data-id="1" data-details='{"name":"Nike Air Jordan 1s","price":35000,"condition":"Lightly Used","rating":"6/10","description":"Iconic Air Jordan 1s with slight wear, ready for your collection.","images":["https://i.imghippo.com/files/TMjD5250bIc.jpg?auto=format&fit=crop&w=960&h=1280&q=80","https://i.imghippo.com/files/afde6682KTk.jpg?auto=format&fit=crop&w=720&h=1280&q=80","https://i.imghippo.com/files/eevr6752Wg.jpg?auto=format&fit=crop&w=960&h=1280&q=80","https://i.imghippo.com/files/KAn8365Vwg.jpg?auto=format&fit=crop&w=960&h=1280&q=80","https://i.imghippo.com/files/UrOz1600SkU.jpg?auto=format&fit=crop&w=960&h=1280&q=80","https://i.imghippo.com/files/GhU3299wXw.jpg?auto=format&fit=crop&w=960&h=1280&q=80"]}'>
+        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Nike Air Jordan 1s" data-brand="Nike" data-condition="Lightly Used" data-price="35000" data-rating="6/10" data-id="1" data-details='{"name":"Nike Air Jordan 1s","price":35000,"condition":"Lightly Used","rating":"6/10","description":"Iconic Air Jordan 1s with slight wear, ready for your collection.","images":["https://i.imghippo.com/files/TMjD5250bIc.jpg?auto=format&fit=crop&w=960&h=1280&q=80","https://i.imghippo.com/files/afde6682KTk.jpg?auto=format&fit=crop&w=720&h=1280&q=80","https://i.imghippo.com/files/eevr6752Wg.jpg?auto=format&fit=crop&w=960&h=1280&q=80","https://i.imghippo.com/files/KAn8365Vwg.jpg?auto=format&fit=crop&w=960&h=1280&q=80","https://i.imghippo.com/files/UrOz1600SkU.jpg?auto=format&fit=crop&w=960&h=1280&q=80","https://i.imghippo.com/files/GhU3299wXw.jpg?auto=format&fit=crop&w=960&h=1280&q=80"]}'>
           <div class="card-image-wrapper">
             <img src="https://i.imghippo.com/files/xYA1576Bk.jpg?auto=format&fit=crop&w=960&h=1280&q=80" alt="Nike Air Jordan 1s" loading="lazy">
           </div>
@@ -435,7 +419,7 @@
           </a>
           <a href="https://www.instagram.com/sneaker_bazaar_69/?hl=en" target="_blank" class="hover:text-red-500" aria-label="Visit our Instagram page">
             <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-              <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.06 1.81.25 2.23.42.56.22.96.49 1.38.91s.69.82.91 1.38c.17.42.36 1.06.42 2.23.06 1.27.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.06 1.17-.25 1.81-.42 2.23-.22.56-.49.96-.91 1.38s-.82.69-1.38.91c-.42.17-1.06.36-2.23.42-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.06-1.81-.25-2.23-.42-.56-.22-.96-.49-1.38-.91s-.69-.82-.91-1.38c-.17-.42-.36-1.06-.42-2.23-.06-1.27-.07-1.64-.07-4.85s.01-3.58.07-4.85c.06-1.17.25-1.81.42-2.23.22-.56.49-.96.91-1.38s.82-.69 1.38-.91c.42-.17 1.06-.36 2.23-.42 1.27-.06 1.64-.07 4.85-.07zm0 1.68c-3.14 0-3.53.01-4.77.07-.95.05-1.46.2-1.8.34-.45.18-.78.4-1.12.74s-.56.67-.74 1.12c-.14.34-.29.85-.34 1.8-.06 1.24-.07 1.58-.07 4.77s.01 3.53.07 4.77c.05.95.2 1.46.34 1.8.18.45.4.78.74 1.12s.67.56 1.12.74c.34.14.85.29 1.8.34 1.24.06 1.58.07 4.77.07s3.53-.01 4.77-.07c.95-.05 1.46-.2 1.8-.34.45-.18.78-.4 1.12-.74s.56-.67.74-1.12c.14-.34.29-.85.34-1.8.06-1.24.07-1.58.07-4.77s-.01-3.53-.07-4.77c-.05-.95-.2-1.46-.34-1.8-.18-.45-.4-.78-.74-1.12s-.67-.56-1.12-.74c-.34-.14-.85-.29-1.8-.34-1.24-.06-1.58-.07-4.77-.07zm0 3.36c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8.33c-1.82 0-3.33-1.48-3.33-3.33s1.48-3.33 3.33-3.33 3.33 1.48 3.33 3.33-1.48 3.33-3.33 3.33zm5.21-6.67c-.65 0-1.17-.52-1.17-1.17s.52-1.17 1.17-1.17 1.17.52 1.17 1.17-.52 1.17-1.17 1.17z"/>
+              <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.06 1.81.25 2.23.42.56.22.96.49 1.38.91s.69.82.91 1.38c.17.42.36 1.06.42 2.23.06 1.27.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.06 1.17-.25 1.81-.42 2.23-.22.56-.49.96-.91 1.38s-.82.69-1.38.91c-.42.17-1.06.36-2.23.42-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.06-1.81-.25-2.23-.42-.56-.22-.96-.49-1.38-.91s-.69-.82-.91-1.38c-.17-.42-.36-1.06-.42-2.23-.06-1.27-.07-1.64-.07-4.85s.01-3.58.07-4.85c.06-1.17.25-1.81.42-2.23.22-.56.49-.96.91-1.38s.82-.69 1.38-.91c.42-.17 1.06-.36 2.23-.42 1.27-.06 1.64-.07 4.85-.07zm0 1.68c-3.14 0-3.53.01-4.77.07-.95.05-1.46.2-1.8.34-.45.18-.78.4-1.12.74s-.56.67-.74 1.12c-.14.34-.29.85-.34 1.8-.06 1.24-.07 1.58-.07 4.77s.01 3.53.07 4.77c.05.95.20 1.46.34 1.8.18.45.4.78.74 1.12s.67.56 1.12.74c.34.14.85.29 1.8.34 1.24.06 1.58.07 4.77.07s3.53-.01 4.77-.07c.95-.05 1.46-.2 1.8-.34.45-.18.78-.4 1.12-.74s.56-.67.74-1.12c.14-.34.29-.85.34-1.8.06-1.24.07-1.58.07-4.77s-.01-3.53-.07-4.77c-.05-.95-.20-1.46-.34-1.8-.18-.45-.4-.78-.74-1.12s-.67-.56-1.12-.74c-.34-.14-.85-.29-1.8-.34-1.24-.06-1.58-.07-4.77-.07zm0 3.36c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8.33c-1.82 0-3.33-1.48-3.33-3.33s1.48-3.33 3.33-3.33 3.33 1.48 3.33 3.33-1.48 3.33-3.33 3.33zm5.21-6.67c-.65 0-1.17-.52-1.17-1.17s.52-1.17 1.17-1.17 1.17.52 1.17 1.17-.52 1.17-1.17 1.17z"/>
             </svg>
           </a>
           <a href="https://wa.me/923201413504" target="_blank" class="hover:text-red-500" aria-label="Contact us on WhatsApp">
@@ -479,7 +463,7 @@
             <li>Select "Send Money" or "Payments."</li>
             <li>Enter <strong>03201413504</strong> as the recipient.</li>
             <li>Input the total amount shown above.</li>
- saav            <li>Confirm the transaction with your PIN (you’ll receive a confirmation SMS).</li>
+            <li>Confirm the transaction with your PIN (you’ll receive a confirmation SMS).</li>
           </ul>
           <p>After payment, please message us on <a href="https://wa.me/923201413504" class="text-red-500 hover:text-red-400" target="_blank">WhatsApp (03201413504)</a> or call <a href="tel:+923201413504" class="text-red-500 hover:text-red-400">03201413504</a> with your order details to confirm.</p>
         </div>
