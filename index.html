@@ -46,7 +46,7 @@
     .modal-image-wrapper {
       position: relative;
       width: 100%;
-      padding-bottom: 100%;
+      padding-bottom: 133.33%; /* 1280/960 = 4:3 aspect ratio */
     }
     .modal-image-wrapper img {
       position: absolute;
@@ -60,7 +60,7 @@
     .thumbnail-wrapper {
       position: relative;
       width: 3.5rem;
-      height: 3.5rem;
+      height: 4.67rem; /* Maintain 3:4 aspect ratio for thumbnails */
       overflow: hidden;
     }
     .thumbnail-wrapper img {
@@ -69,19 +69,19 @@
       left: 50%;
       width: 100%;
       height: auto;
-      object-fit: contain;
+      object-fit: cover;
       transform: translate(-50%, -50%);
       border-radius: 0.25rem;
     }
     .card-image-wrapper {
       position: relative;
       width: 100%;
-      padding-bottom: 100%;
+      padding-bottom: 133.33%; /* 1280/960 = 4:3 aspect ratio */
     }
     .card-image-wrapper img {
       position: absolute;
       top: 0;
-      left: 0;
+      left: тестировался0;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -98,7 +98,7 @@
     }
     .shoe-card img {
       width: 100%;
-      height: 12rem; /* h-48 */
+      height: auto; /* Remove fixed height to respect aspect ratio */
       object-fit: cover;
       border-radius: 0.75rem 0.75rem 0 0;
     }
@@ -272,45 +272,55 @@
       </div>
       <div id="shoe-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <!-- Product Card: Allbirds Women's Wool Runners -->
-        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Allbirds Women's Wool Runners" data-brand="Allbirds" data-condition="Lightly Used" data-price="20000" data-rating="6/10" data-id="4" data-details='{"name":"Allbirds Women''s Wool Runners","price":20000,"condition":"Lightly Used","rating":"6/10","description":"Sustainable Allbirds Wool Runners with a cozy merino wool upper, lightly used but still stylish.","images":["https://images.unsplash.com/photo-1595957884097-2a4f532b98ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80","https://images.unsplash.com/photo-1607522370275-f14206abe5d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80","https://images.unsplash.com/photo-1605733160314-4fc7dac4bb16?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"]}'>
-          <img src="https://images.unsplash.com/photo-1595957884097-2a4f532b98ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Allbirds Women's Wool Runners" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Allbirds Women's Wool Runners" data-brand="Allbirds" data-condition="Lightly Used" data-price="20000" data-rating="6/10" data-id="4" data-details='{"name":"Allbirds Women''s Wool Runners","price":20000,"condition":"Lightly Used","rating":"6/10","description":"Sustainable Allbirds Wool Runners with a cozy merino wool upper, lightly used but still stylish.","images":["https://images.unsplash.com/photo-1595957884097-2a4f532b98ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=960&h=1280&q=80","https://images.unsplash.com/photo-1607522370275-f14206abe5d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=960&h=1280&q=80","https://images.unsplash.com/photo-1605733160314-4fc7dac4bb16?ixlib=rb-4.0.3&auto=format&fit=crop&w=960&h=1280&q=80"]}'>
+          <div class="card-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1595957884097-2a4f532b98ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=960&h=1280&q=80" alt="Allbirds Women's Wool Runners" loading="lazy">
+          </div>
           <div class="p-6">
             <h3 class="text-lg font-semibold text-white text-center">Allbirds Women's Wool Runners</h3>
           </div>
         </div>
         <!-- Product Card: Allbirds Women's Wool Runners (Beige) -->
-        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Allbirds Women's Wool Runners (Beige)" data-brand="Allbirds" data-condition="Lightly Used" data-price="20000" data-rating="6/10" data-id="6" data-details='{"name":"Allbirds Women''s Wool Runners (Beige)","price":20000,"condition":"Lightly Used","rating":"6/10","description":"Allbirds Women''s Wool Runners in beige, made from sustainable merino wool. Lightly used with visible wear and dirt marks, but still comfortable and stylish for casual wear.","images":["https://images.unsplash.com/photo-1595957884097-2a4f532b98ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80","https://images.unsplash.com/photo-1607522370275-f14206abe5d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80","https://images.unsplash.com/photo-1605733160314-4fc7dac4bb16?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"]}'>
-          <img src="https://images.unsplash.com/photo-1595957884097-2a4f532b98ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Allbirds Women's Wool Runners (Beige)" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Allbirds Women's Wool Runners (Beige)" data-brand="Allbirds" data-condition="Lightly Used" data-price="20000" data-rating="6/10" data-id="6" data-details='{"name":"Allbirds Women''s Wool Runners (Beige)","price":20000,"condition":"Lightly Used","rating":"6/10","description":"Allbirds Women''s Wool Runners in beige, made from sustainable merino wool. Lightly used with visible wear and dirt marks, but still comfortable and stylish for casual wear.","images":["https://images.unsplash.com/photo-1595957884097-2a4f532b98ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=960&h=1280&q=80","https://images.unsplash.com/photo-1607522370275-f14206abe5d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=960&h=1280&q=80","https://images.unsplash.com/photo-1605733160314-4fc7dac4bb16?ixlib=rb-4.0.3&auto=format&fit=crop&w=960&h=1280&q=80"]}'>
+          <div class="card-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1595957884097-2a4f532b98ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=960&h=1280&q=80" alt="Allbirds Women's Wool Runners (Beige)" loading="lazy">
+          </div>
           <div class="p-6">
             <h3 class="text-lg font-semibold text-white text-center">Allbirds Women's Wool Runners (Beige)</h3>
           </div>
         </div>
         <!-- Product Card: Merrell Unlimited Hiking Shoes -->
-        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Merrell Unlimited Hiking Shoes" data-brand="Merrell" data-condition="Good" data-price="20000" data-rating="7/10" data-id="5" data-details='{"name":"Merrell Unlimited Hiking Shoes","price":20000,"condition":"Good","rating":"7/10","description":"Rugged Merrell Unlimited hiking shoes with a durable Vibram sole, in good condition for your next outdoor adventure.","images":["https://images.unsplash.com/photo-1600585152915-d208bec867a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80","https://images.unsplash.com/photo-1600585152915-d208bec867a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80&hue=0.2","https://images.unsplash.com/photo-1600585152915-d208bec867a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80&hue=0.4"]}'>
-          <img src="https://images.unsplash.com/photo-1600585152915-d208bec867a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Merrell Unlimited Hiking Shoes" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Merrell Unlimited Hiking Shoes" data-brand="Merrell" data-condition="Good" data-price="20000" data-rating="7/10" data-id="5" data-details='{"name":"Merrell Unlimited Hiking Shoes","price":20000,"condition":"Good","rating":"7/10","description":"Rugged Merrell Unlimited hiking shoes with a durable Vibram sole, in good condition for your next outdoor adventure.","images":["https://images.unsplash.com/photo-1600585152915-d208bec867a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=960&h=1280&q=80","https://images.unsplash.com/photo-1600585152915-d208bec867a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=960&h=1280&q=80&hue=0.2","https://images.unsplash.com/photo-1600585152915-d208bec867a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=960&h=1280&q=80&hue=0.4"]}'>
+          <div class="card-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1600585152915-d208bec867a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=960&h=1280&q=80" alt="Merrell Unlimited Hiking Shoes" loading="lazy">
+          </div>
           <div class="p-6">
             <h3 class="text-lg font-semibold text-white text-center">Merrell Unlimited Hiking Shoes</h3>
           </div>
         </div>
-        <!-- Product Card: Nike Air Jordan 1s (Updated with card-image-wrapper) -->
-        <div class="shoe-card jordan bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Nike Air Jordan 1s" data-brand="Nike" data-condition="Lightly Used" data-price="35000" data-rating="6/10" data-id="1" data-details='{"name":"Nike Air Jordan 1s","price":35000,"condition":"Lightly Used","rating":"6/10","description":"Iconic Air Jordan 1s with slight wear, ready for your collection.","images":["https://i.imghippo.com/files/dBb5853SQ.jpeg","https://i.imghippo.com/files/qzq6418Kw.jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&h=1500&q=80","https://i.imghippo.com/files/gVCW9932Acw.jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&h=1500&q=80","https://i.imghippo.com/files/Wv6246gs.jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&h=1500&q=80","https://i.imghippo.com/files/WJxR9602XpA.jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&h=1500&q=80","https://i.imghippo.com/files/uEB8579VSk.jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&h=1500&q=80"]}'>
+        <!-- Product Card: Nike Air Jordan 1s -->
+        <div class="shoe-card jordan bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Nike Air Jordan 1s" data-brand="Nike" data-condition="Lightly Used" data-price="35000" data-rating="6/10" data-id="1" data-details='{"name":"Nike Air Jordan 1s","price":35000,"condition":"Lightly Used","rating":"6/10","description":"Iconic Air Jordan 1s with slight wear, ready for your collection.","images":["https://i.imghippo.com/files/TMjD5250bIc.jpg?auto=format&fit=crop&w=960&h=1280&q=80","https://i.imghippo.com/files/afde6682KTk.jpg?auto=format&fit=crop&w=960&h=1280&q=80","https://i.imghippo.com/files/eevr6752Wg.jpg?auto=format&fit=crop&w=960&h=1280&q=80","https://i.imghippo.com/files/KAn8365Vwg.jpg?auto=format&fit=crop&w=960&h=1280&q=80","https://i.imghippo.com/files/UrOz1600SkU.jpg?auto=format&fit=crop&w=960&h=1280&q=80","https://i.imghippo.com/files/GhU3299wXw.jpg?auto=format&fit=crop&w=960&h=1280&q=80"]}'>
           <div class="card-image-wrapper">
-            <img src="https://i.imghippo.com/files/dBb5853SQ.jpeg" alt="Nike Air Jordan 1s" loading="lazy">
+            <img src="https://i.imghippo.com/files/xYA1576Bk.jpg?auto=format&fit=crop&w=960&h=1280&q=80" alt="Nike Air Jordan 1s" loading="lazy">
           </div>
           <div class="p-6">
             <h3 class="text-lg font-semibold text-white text-center">Nike Air Jordan 1s</h3>
           </div>
         </div>
         <!-- Product Card: Qiaodan Basketball Sneaker -->
-        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Qiaodan Basketball Sneaker" data-brand="Qiaodan" data-condition="Lightly Used" data-price="5000" data-rating="6/10" data-id="2" data-details='{"name":"Qiaodan Basketball Sneaker","price":5000,"condition":"Lightly Used","rating":"6/10","description":"Iconic Qiaodan Basketball Sneaker with slight wear, ready for your collection.","images":["https://images.unsplash.com/photo-1597045566899-1c824782e05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80","https://images.unsplash.com/photo-1612902376491-7c81d124d8c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80","https://images.unsplash.com/photo-1602872035108-4ae3e9b75e3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"]}'>
-          <img src="https://images.unsplash.com/photo-1597045566899-1c824782e05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Qiaodan Basketball Sneaker" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Qiaodan Basketball Sneaker" data-brand="Qiaodan" data-condition="Lightly Used" data-price="5000" data-rating="6/10" data-id="2" data-details='{"name":"Qiaodan Basketball Sneaker","price":5000,"condition":"Lightly Used","rating":"6/10","description":"Iconic Qiaodan Basketball Sneaker with slight wear, ready for your collection.","images":["https://images.unsplash.com/photo-1597045566899-1c824782e05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=960&h=1280&q=80","https://images.unsplash.com/photo-1612902376491-7c81d124d8c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=960&h=1280&q=80","https://images.unsplash.com/photo-1602872035108-4ae3e9b75e3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=960&h=1280&q=80"]}'>
+          <div class="card-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1597045566899-1c824782e05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=960&h=1280&q=80" alt="Qiaodan Basketball Sneaker" loading="lazy">
+          </div>
           <div class="p-6">
             <h3 class="text-lg font-semibold text-white text-center">Qiaodan Basketball Sneaker</h3>
           </div>
         </div>
         <!-- Product Card: Quechua Forclaz Hiking Shoe -->
-        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Quechua Forclaz Hiking Shoe" data-brand="Quechua" data-condition="Good" data-price="10000" data-rating="8/10" data-id="3" data-details='{"name":"Quechua Forclaz Hiking Shoe","price":10000,"condition":"Good","rating":"8/10","description":"Rugged Quechua Forclaz hiking shoe in good condition, ready for your next adventure.","images":["https://i.imghippo.com/files/r8418CrA.png","https://i.imghippo.com/files/tkc2865Ig.png","https://i.imghippo.com/files/JjL8418qo.png","https://i.imghippo.com/files/hk9428NnI.png"]}'>
-          <img src="https://i.imghippo.com/files/AKTk1266.png" alt="Quechua Forclaz Hiking Shoe" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="shoe-card bg-gray-800 rounded-xl shadow-xl border border-gray-700 animate-zoom-in" data-name="Quechua Forclaz Hiking Shoe" data-brand="Quechua" data-condition="Good" data-price="10000" data-rating="8/10" data-id="3" data-details='{"name":"Quechua Forclaz Hiking Shoe","price":10000,"condition":"Good","rating":"8/10","description":"Rugged Quechua Forclaz hiking shoe in good condition, ready for your next adventure.","images":["https://i.imghippo.com/files/r8418CrA.png?auto=format&fit=crop&w=960&h=1280&q=80","https://i.imghippo.com/files/tkc2865Ig.png?auto=format&fit=crop&w=960&h=1280&q=80","https://i.imghippo.com/files/JjL8418qo.png?auto=format&fit=crop&w=960&h=1280&q=80","https://i.imghippo.com/files/hk9428NnI.png?auto=format&fit=crop&w=960&h=1280&q=80"]}'>
+          <div class="card-image-wrapper">
+            <img src="https://i.imghippo.com/files/r8418CrA.png?auto=format&fit=crop&w=960&h=1280&q=80" alt="Quechua Forclaz Hiking Shoe" loading="lazy">
+          </div>
           <div class="p-6">
             <h3 class="text-lg font-semibold text-white text-center">Quechua Forclaz Hiking Shoe</h3>
           </div>
@@ -430,7 +440,7 @@
           </a>
           <a href="https://wa.me/923201413504" target="_blank" class="hover:text-red-500" aria-label="Contact us on WhatsApp">
             <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-              <path d="M12.04 2c-5.52 0-10 4.48-10 10 0 1.77.46 3.43 1.27 4.88L2 22l5.25-1.38c1.39.79 2.97 1.21 4.79 1.21 5.52 0 10-4.48 10-10s-4.48-10-10-10zm0 18.18c-1.5 0-2.97-.39-4.25-1.13l-.30-.17-3.12.82.83-3.04-.20-.31c-.79-1.25-1.21-2.7-1.21-4.19 0-4.58 3.73-8.31 8.31-8.31s8.31 3.73 8.31 8.31-3.73 8.31-8.31 8.31zm4.58-5.96crezent-.25-.12-1.47-.73-1.7-.81-.23-.08-.40-.12-.56.12-.16.24-.62.81-.77.97-.14.16-.28.18-.52.06-.25-.12-1.05-.39-2-1.24-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.01-.38.11-.50.11-.11.25-.28.37-.42.12-.14.16-.24.24-.40.08-.16.04-.30-.02-.42-.06-.12-.56-1.34-.77-1.83-.20-.48-.41-.41-.56-.42-.14-.01-.30-.01-.46-.01s-.42.06-.64.31c-.22.25-.85.83-.85 2.02s.87 2.34 1 2.50c.12.16 1.74 2.65 4.22 3.71.59.25 1.05.40 1.41.51.59.19 1.13.16 1.55.10.47-.07 1.47-.60 1.68-1.18.20-.58.20-1.08.14-1.18-.06-.10-.22-.16-.47-.28z"/>
+              <path d="M12.04 2c-5.52 0-10 4.48-10 10 0 1.77.46 3.43 1.27 4.88L2 22l5.25-1.38c1.39.79 2.97 1.21 4.79 1.21 5.52 0 10-4.48 10-10s-4.48-10-10-10zm0 18.18c-1.5 0-2.97-.39-4.25-1.13l-.30-.17-3.12.82.83-3.04-.20-.31c-.79-1.25-1.21-2.7-1.21-4.19 0-4.58 3.73-8.31 8.31-8.31s8.31 3.73 8.31 8.31-3.73 8.31-8.31 8.31zm4.58-5.96c-.25-.12-1.47-.73-1.7-.81-.23-.08-.40-.12-.56.12-.16.24-.62.81-.77.97-.14.16-.28.18-.52.06-.25-.12-1.05-.39-2-1.24-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.01-.38.11-.50.11-.11.25-.28.37-.42.12-.14.16-.24.24-.40.08-.16.04-.30-.02-.42-.06-.12-.56-1.34-.77-1.83-.20-.48-.41-.41-.56-.42-.14-.01-.30-.01-.46-.01s-.42.06-.64.31c-.22.25-.85.83-.85 2.02s.87 2.34 1 2.50c.12.16 1.74 2.65 4.22 3.71.59.25 1.05.40 1.41.51.59.19 1.13.16 1.55.10.47-.07 1.47-.60 1.68-1.18.20-.58.20-1.08.14-1.18-.06-.10-.22-.16-.47-.28z"/>
             </svg>
           </a>
         </div>
@@ -469,7 +479,7 @@
             <li>Select "Send Money" or "Payments."</li>
             <li>Enter <strong>03201413504</strong> as the recipient.</li>
             <li>Input the total amount shown above.</li>
-            <li>Confirm the transaction with your PIN (you’ll receive a confirmation SMS).</li>
+ saav            <li>Confirm the transaction with your PIN (you’ll receive a confirmation SMS).</li>
           </ul>
           <p>After payment, please message us on <a href="https://wa.me/923201413504" class="text-red-500 hover:text-red-400" target="_blank">WhatsApp (03201413504)</a> or call <a href="tel:+923201413504" class="text-red-500 hover:text-red-400">03201413504</a> with your order details to confirm.</p>
         </div>
@@ -574,7 +584,7 @@
           <div class="flex space-x-2 p-3 bg-gray-700 mt-2 justify-center">
             ${images.map((img, index) => `
               <div class="thumbnail-wrapper thumbnail-hover">
-                <img src="${img.replace('w=1500&h=1500', 'w=100')}" class="thumbnail" onclick="changeImage(this, '${img}')" loading="lazy">
+                <img src="${img.replace(/w=\d+&h=\d+/, 'w=100&h=133')}" class="thumbnail" onclick="changeImage(this, '${img}')" loading="lazy">
               </div>
             `).join('')}
           </div>
@@ -593,7 +603,7 @@
         `;
         modal.classList.remove('hidden');
       } catch (error) {
-        console.error('Error rendering  rendering modal:', error);
+        console.error('Error rendering modal:', error);
       }
     }
 
@@ -626,7 +636,7 @@
 
     // Close Thank You Modal
     function closeThankYouModal() {
-      const modal = document.getElementToId('thank-you-modal');
+      const modal = document.getElementById('thank-you-modal');
       if (modal) modal.classList.add('hidden');
     }
 
