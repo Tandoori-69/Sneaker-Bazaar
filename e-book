@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Book Library</title>
+  <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/babel-standalone@7.22.10/babel.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    // Debug: Log to confirm script execution
+    console.log('Script loaded. Starting React app...');
+
+    const { useState } = React;
+
+    function App() {
+      // Mock e-book data
+      const ebooks = [
+        { id: '1', title: 'Sample Book 1', author: 'John Doe' },
+        { id: '2', title: 'Sample Book 2', author: 'Jane Smith' },
+      ];
+
+      // Debug: Log to confirm rendering
+      console.log('Rendering App component with ebooks:', ebooks);
+
+      return (
+        <div className="min-h-screen bg-gray-100">
+          <header className="bg-blue-600 text-white p-4">
+            <h1 className="text-3xl font-bold text-center">E-Book Library</h1>
+          </header>
+          <main className="container mx-auto p-4">
+            <h2 className="text-2xl font-semibold mb-4">Available E-Books</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              {ebooks.map(ebook => (
+                <div key={ebook.id} className="bg-white p-4 rounded-lg shadow-md">
+                  <h3 className="text-lg font-semibold">{ebook.title}</h3>
+                  <p className="text-gray-600">By {ebook.author}</p>
+                  <a
+                    href="#"
+                    className="mt-2 inline-block bg-blue-600 text-white p-2 rounded hover:bg-blue-700"
+                  >
+                    Read Now
+                  </a>
+                </div>
+              ))}
+            </div>
+          </main>
+        </div>
+      );
+    }
+
+    // Render the app
+    try {
+      console.log('Attempting to render React app...');
+      ReactDOM.render(<App />, document.getElementById('root'));
+      console.log('React app rendered successfully.');
+    } catch (error) {
+      console.error('Error rendering React app:', error);
+    }
+  </script>
+</body>
+</html>
