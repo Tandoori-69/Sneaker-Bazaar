@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pro E-Book Haven</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .book-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .book-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); }
+    #home {
+      background-image: url('https://via.placeholder.com/1920x1080?text=Ancient+Library');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    #home::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(17, 24, 39, 0.7); /* Gray-900 with 70% opacity */
+      z-index: 1;
+    }
+    #home > * {
+      position: relative;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body class="bg-gray-800">
+  <!-- Navbar -->
+  <nav class="bg-gray-900 text-gray-100 py-4 px-6 fixed w-full z-10 shadow-lg">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">E-Book Haven</h1>
+      <ul class="flex space-x-6">
+        <li><a href="#home" class="hover:text-blue-400 transition">Home</a></li>
+        <li><a href="#books" class="hover:text-blue-400 transition">Books</a></li>
+        <li><a href="#about" class="hover:text-blue-400 transition">About</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home" class="text-gray-100 h-screen flex items-center justify-center pt-16">
+    <div class="text-center max-w-3xl mx-auto px-4">
+      <h2 class="text-5xl font-bold mb-4">Discover Your Next Favorite E-Book</h2>
+      <p class="text-lg mb-6">Explore a vast collection of e-books across genres, available at your fingertips.</p>
+      <a href="#books" class="bg-orange-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-orange-600 transition">Browse Now</a>
+    </div>
+  </section>
+
+  <!-- Books -->
+  <section id="books" class="py-16 bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-gray-100 text-center mb-8">Our E-Book Collection</h2>
+      <div class="max-w-lg mx-auto mb-8">
+        <input type="text" id="searchInput" placeholder="Search by title or author..." class="w-full p-3 bg-gray-700 text-gray-100 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+      </div>
+      <div id="bookGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Book 1 -->
+        <div class="book-card bg-gray-700 rounded-lg shadow-md overflow-hidden" data-title="The Future of AI" data-author="John Doe">
+          <img src="https://via.placeholder.com/200x300?text=AI+Book" alt="The Future of AI" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold text-gray-100 mb-2">The Future of AI</h3>
+            <p class="text-gray-400 mb-2">by John Doe</p>
+            <p class="text-gray-300 mb-4">Explore the advancements in artificial intelligence.</p>
+            <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition">Read Now</a>
+          </div>
+        </div>
+        <!-- Book 2 -->
+        <div class="book-card bg-gray-700 rounded-lg shadow-md overflow-hidden" data-title="Space Odyssey" data-author="Jane Smith">
+          <img src="https://via.placeholder.com/200x300?text=Space+Book" alt="Space Odyssey" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold text-gray-100 mb-2">Space Odyssey</h3>
+            <p class="text-gray-400 mb-2">by Jane Smith</p>
+            <p class="text-gray-300 mb-4">A thrilling journey through the cosmos.</p>
+            <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition">Read Now</a>
+          </div>
+        </div>
+        <!-- Book 3 -->
+        <div class="book-card bg-gray-700 rounded-lg shadow-md overflow-hidden" data-title="Quantum Worlds" data-author="Alex Brown">
+          <img src="https://via.placeholder.com/200x300?text=Quantum+Book" alt="Quantum Worlds" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold text-gray-100 mb-2">Quantum Worlds</h3>
+            <p class="text-gray-400 mb-2">by Alex Brown</p>
+            <p class="text-gray-300 mb-4">Dive into the mysteries of quantum physics.</p>
+            <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition">Read Now</a>
+          </div>
+        </div>
+        <!-- Book 4 -->
+        <div class="book-card bg-gray-700 rounded-lg shadow-md overflow-hidden" data-title="Digital Dreams" data-author="Emma Wilson">
+          <img src="https://via.placeholder.com/200x300?text=Digital+Book" alt="Digital Dreams" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-xl font-semibold text-gray-100 mb-2">Digital Dreams</h3>
+            <p class="text-gray-400 mb-2">by Emma Wilson</p>
+            <p class="text-gray-300 mb-4">A novel about life in a tech-driven world.</p>
+            <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition">Read Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-16 bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-gray-100 mb-4">About E-Book Haven</h2>
+      <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+        E-Book Haven is your one-stop platform for discovering and reading e-books. We offer a curated selection of titles across various genres, designed to inspire and entertain readers worldwide.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-100 py-8">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p class="mb-4">© 2025 E-Book Haven. All rights reserved.</p>
+      <div class="flex justify-center space-x-4">
+        <a href="#" class="hover:text-blue-400 transition">Terms</a>
+        <a href="#" class="hover:text-blue-400 transition">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Search bar functionality
+    const searchInput = document.getElementById('searchInput');
+    const bookGrid = document.getElementById('bookGrid');
+    const bookCards = bookGrid.getElementsByClassName('book-card');
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      Array.from(bookCards).forEach(card => {
+        const title = card.getAttribute('data-title').toLowerCase();
+        const author = card.getAttribute('data-author').toLowerCase();
+        if (title.includes(query) || author.includes(query)) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
