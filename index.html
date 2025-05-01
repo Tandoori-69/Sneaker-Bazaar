@@ -105,12 +105,20 @@
     .social-icon, .contact-icon {
       width: 28px;
       height: 28px;
-      fill: #ffffff;
-      transition: fill 0.3s ease, transform 0.3s ease;
+      transition: transform 0.3s ease, opacity 0.3s ease;
     }
     .social-icon:hover, .contact-icon:hover {
-      fill: #ff4b4b;
       transform: scale(1.2);
+      opacity: 0.9;
+    }
+    .contact-icon {
+      fill: #ffffff;
+    }
+    .contact-icon:hover {
+      fill: #ff4b4b;
+    }
+    .facebook-icon, .instagram-icon, .whatsapp-icon {
+      filter: none;
     }
     section {
       scroll-margin-top: 80px;
@@ -415,19 +423,13 @@
         </div>
         <div class="flex justify-center space-x-6">
           <a href="https://www.facebook.com/profile.php?id=61568479594469" target="_blank" class="hover:text-red-500" aria-label="Visit our Facebook page">
-            <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-              <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.84-.97 8.5-5.13 8.5-9.95z"/>
-            </svg>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook logo" class="social-icon facebook-icon">
           </a>
           <a href="https://www.instagram.com/sneaker_bazaar_69/?hl=en" target="_blank" class="hover:text-red-500" aria-label="Visit our Instagram page">
-            <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-              <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.06 1.81.25 2.23.42.56.22.96.49 1.38.91s.69.82.91 1.38c.17.42.36 1.06.42 2.23.06 1.27.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.06 1.17-.25 1.81-.42 2.23-.22.56-.49.96-.91 1.38s-.82.69-1.38.91c-.42.17-1.06.36-2.23.42-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.06-1.81-.25-2.23-.42-.56-.22-.96-.49-1.38-.91s-.69-.82-.91-1.38c-.17-.42-.36-1.06-.42-2.23-.06-1.27-.07-1.64-.07-4.85s.01-3.58.07-4.85c.06-1.17.25-1.81.42-2.23.22-.56.49-.96.91-1.38s.82-.69 1.38-.91c.42-.17 1.06-.36 2.23-.42 1.27-.06 1.64-.07 4.85-.07zm0 1.68c-3.14 0-3.53.01-4.77.07-.95.05-1.46.2-1.8.34-.45.18-.78.4-1.12.74s-.56.67-.74 1.12c-.14.34-.29.85-.34 1.8-.06 1.24-.07 1.58-.07 4.77s.01 3.53.07 4.77c.05.95.20 1.46.34 1.8.18.45.4.78.74 1.12s.67.56 1.12.74c.34.14.85.29 1.8.34 1.24. diferencia de pago6 1.58.07 4.77.07s3.53-.01 4.77-.07c.95-.05 1.46-.2 1.8-.34.45-.18.78-.4 1.12-.74s.56-.67.74-1.12c.14-.34.29-.85.34-1.8.06-1.24.07-1.58.07-4.77s-.01-3.53-.07-4.77c-.05-.95-.20-1.46-.34-1.8-.18-.45-.4-.78-.74-1.12s-.67-.56-1.12-.74c-.34-.14-.85-.29-1.8-.34-1.24-.06-1.58-.07-4.77-.07zm0 3.36c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0 8.33c-1.82 0-3.33-1.48-3.33-3.33s1.48-3.33 3.33-3.33 3.33 1.48 3.33 3.33-1.48 3.33-3.33 3.33zm5.21-6.67c-.65 0-1.17-.52-1.17-1.17s.52-1.17 1.17-1.17 1.17.52 1.17 1.17-.52 1.17-1.17 1.17z"/>
-            </svg>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram logo" class="social-icon instagram-icon">
           </a>
           <a href="https://wa.me/923201413504" target="_blank" class="hover:text-red-500" aria-label="Contact us on WhatsApp">
-            <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-              <path d="M12.04 2c-5.52 0-10 4.48-10 10 0 1.77.46 3.43 1.27 4.88L2 22l5.25-1.38c1.39.79 2.97 1.21 4.79 1.21 5.52 0 10-4.48 10-10s-4.48-10-10-10zm0 18.18c-1.5 0-2.97-.39-4.25-1.13l-.30-.17-3.12.82.83-3.04-.20-.31c-.79-1.25-1.21-2.7-1.21-4.19 0-4.58 3.73-8.31 8.31-8.31s8.31 3.73 8.31 8.31-3.73 8.31-8.31 8.31zm4.58-5.96c-.25-.12-1.47-.73-1.7-.81-.23-.08-.40-.12-.56.12-.16.24-.62.81-.77.97-.14.16-.28.18-.52.06-.25-.12-1.05-.39-2-1.24-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.01-.38.11-.50.11-.11.25-.28.37-.42.12-.14.16-.24.24-.40.08-.16.04-.30-.02-.42-.06-.12-.56-1.34-.77-1.83-.20-.48-.41-.41-.56-.42-.14-.01-.30-.01-.46-.01s-.42.06-.64.31c-.22.25-.85.83-.85 2.02s.87 2.34 1 2.50c.12.16 1.74 2.65 4.22 3.71.59.25 1.05.40 1.41.51.59.19 1.13.16 1.55.10.47-.07 1.47-.60 1.68-1.18.20-.58.20-1.08.14-1.18-.06-.10-.22-.16-.47-.28z"/>
-            </svg>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp logo" class="social-icon whatsapp-icon">
           </a>
         </div>
       </div>
